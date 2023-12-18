@@ -66,6 +66,8 @@ class ProductController extends Controller
         $product-> tacgia = $request->input('tacgia');
         $product-> ngayDang = $request->input('ngayDang');
         $product-> moTa = $request->input('moTa');
+        $product-> idCategory = $request->input('idCategory');
+
 
         if($request->hasFile('img')){
             $path='/uploads/'.$product->img;

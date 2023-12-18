@@ -31,7 +31,7 @@ Dashboard - Quản Trị Website
                                 <th scope="col" class="col-lg-1">ID user</th>
                                 <th scope="col" class="col-lg-1">ID Product</th>
                                 <th scope="col" class="col-lg-1">Content</th>
-                                <th scope="col" class="col-lg-1">Time</th>
+                                <th scope="col" class="col-lg-1">Ngày Đăng</th>
                                 <th scope="col" class="col-lg-1">Chức Năng</th>
                             </tr>
                         </thead>
@@ -39,10 +39,10 @@ Dashboard - Quản Trị Website
                             @foreach ($comment as $comment)
                             <tr>
                                 <td class="limited-text">{{$comment->id}}</td>
-                                <td class="limited-text">{{$comment->id_user}}</td>
-                                <td class="limited-text">{{$comment->id_product}}</td>
+                                <td class="limited-text">{{$comment->idUser}}</td>
+                                <td class="limited-text">{{$comment->idProduct}}</td>
                                 <td class="limited-text">{{$comment->content}}</td>
-                                <td class="limited-text">{{$comment->time}}</td>
+                                <td class="limited-text">{{$comment->created_at}}</td>
                                 <td>
                                    <center> <a href="{{url('del/'.$comment->id)}}"
                                         onclick="return confirm('Bạn muốn xóa bình luận ?')" title="Xoa"><button

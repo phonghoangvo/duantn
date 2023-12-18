@@ -33,7 +33,7 @@ Route::post('/send',[ContactController::class,'send'])->name('sendemail');
 Route::get('/cuahang', 'App\Http\Controllers\TinController@timkiem')->name('timkiem');
 Route::get('/cuahang/{id?}', [TinController::class, 'cuahang'])->name('cuahang');
 Route::get('/chitiet/{id}',[TinController::class,'chitiet'])->name('chitiet');
-
+Route::post('/comment/{idProduct}',[TinController::class,'post_comment'])->name('comment');
 //checkadmin
 // Route::group(['middleware' => 'auth','checkAdmin'], function () {
     Route::prefix('/')->middleware('checkAdmin')->group(function () {
@@ -61,7 +61,7 @@ Route::get('/chitiet/{id}',[TinController::class,'chitiet'])->name('chitiet');
         Route::put('update/{id}',[ProductController::class,'update']);
         Route::get('/del/{id}',[ProductController::class,'del']);
         Route::get('/admin/comment/list',[CommentController::class,'list']);
-
+        Route::get('/del/{id}',[CommentController::class,'del']);
         //contact
         Route::get('/lienhe',[ContactController::class,'lienhe']);
         Route::post('/send',[ContactController::class,'send'])->name('sendemail');
@@ -85,7 +85,6 @@ Route::get('/chitiet/{id}',[TinController::class,'chitiet'])->name('chitiet');
         Route::post('/adduser', [UserController::class,'store_'])->name ('register_store');
         Route::get('/user/update/{id}', [UserController::class, 'edit']);
         Route::post('/user/update/{id}', [UserController::class, 'update']);
-
         Route::get('/user/delete/{id}', [UserController::class, 'delete']);
 
   
