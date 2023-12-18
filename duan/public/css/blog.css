@@ -1,0 +1,105 @@
+.box{
+    /* border: 1px solid #ddd; */
+    padding: 6px;
+    /* background-color: rgba(137, 131, 131, 0.584); */
+}
+
+.box .box1-1{
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: rgba(149, 140, 140, 0.227);
+}
+
+.box .box1-2{
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.748);
+}
+
+.row .box1-3{
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: rgba(149, 140, 140, 0.227);
+    display: flex;
+    justify-content: space-between;
+}
+
+.row .box1-4{
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.748);
+    display: flex;
+    justify-content: space-between;
+}
+.row .box1-5{
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: rgba(149, 140, 140, 0.227);
+    display: flex;
+    justify-content: space-between;
+}
+
+.row .box1-6{
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.748);
+    display: flex;
+    justify-content: space-between;
+}
+
+.row .box1-6 ul{
+    margin-left: -30px;
+}
+
+.left-content {
+    flex: 1;
+    margin-right: 10px; /* Khoảng cách giữa ảnh và văn bản */
+}
+
+.left-content img {
+    flex: 1;
+    margin-right: 10px;
+    width: 100px; /* Khoảng cách giữa ảnh và văn bản */
+    margin-left: -10px;
+}
+
+.right-content {
+    flex: 2;
+}
+
+.image-container, .text-container, .additional-content {
+    margin-bottom: 10px; /* Khoảng cách giữa các phần tử dọc */
+}
+
+.row .boxright{
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.boxright .left-content img{
+    width: 400px;
+    height: 4   00px;
+}
+
+.boxright .right-content{
+    margin-left: 40px;
+    margin-right: 50px;
+}
+
+.boxright .right-content h5{
+    margin-left: 0px;
+    margin-right: -30px;
+}
+
+.boxright .right-content .xemthem{
+    margin-top: 115px;
+}
+
+.boxright .right-content .content{
+    margin-left: 0px;
+    margin-right: -35px;
+}
+
+

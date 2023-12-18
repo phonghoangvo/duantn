@@ -1,0 +1,249 @@
+.left{
+    position: relative;
+}
+.left img{
+    width: 630px;
+    height: 450px; 
+}   
+
+.left .img2{
+    position: absolute;
+    top: 400px;
+    left: 520px;
+    width: 250px;
+    height: 150px;
+}
+
+.left .text{
+    position: absolute;
+    top: 440px;
+    left: 610px;
+    width: 250px;
+    height: 150px;
+}
+
+.left .text2{
+    position: absolute;
+    top: 480px;
+    left: 570px;
+    width: 250px;
+    height: 150px;
+}
+
+.right .content1{
+    margin-top: 50px;
+}
+
+.right .content2{
+    margin-top: 50px;
+}
+
+.row .button{
+    margin-left: 100px;
+    margin-top: 50px;
+}
+
+button{
+    background-color: black;
+    color: white;   
+}
+    
+.bannericon{
+    background-image: url(../img/bannericon.jpg);
+}
+
+/* .orange img{
+    width: 250px;
+    height: 150px;
+    margin-right: 100px;
+} */
+
+/* .bannericon{
+    position: relative;
+}
+
+.bannericon .calendar{
+    position: absolute;
+    top: 40px;
+    left: 200px;
+    width: 200px;
+    height: 200px;
+}
+
+.calendar{
+    width: 100px;
+    color: white;
+}
+
+.bannericon .employee{
+    position: absolute;
+    top: 40px;
+    left: 600px;
+    width: 200px;
+    height: 200px;
+}
+
+.employee{  
+    width: 100px;
+    color: white;
+}
+
+.bannericon .madal{
+    position: absolute;
+    top: 40px;
+    left: 1000px;
+    width: 200px;
+    height: 200px;
+}
+
+.madal{  
+    width: 100px;
+    color: white;
+}
+
+.bannericon .texticon1{
+    position: absolute;
+    top: 160px;
+    left: 170px;
+    width: 500px;
+    height: 500px;
+}
+
+.texticon1{  
+    width: 100px;
+    color: white;
+}
+
+.bannericon .texticon2{
+    position: absolute;
+    top: 200px;
+    left: 100px;
+    width: 500px;
+    height: 500px;
+}
+
+.texticon2{  
+    width: 100px;
+    color: white;
+}
+
+.bannericon .texticon3{
+    position: absolute;
+    top: 160px;
+    left: 540px;
+    width: 500px;
+    height: 500px;
+}
+
+.texticon3{  
+    width: 100px;
+    color: white;
+}
+
+.bannericon .texticon4{
+    position: absolute;
+    top: 200px;
+    left: 550px;
+    width: 500px;
+    height: 500px;
+}
+
+.texticon4{  
+    width: 100px;
+    color: white;
+}
+
+.bannericon .texticon5{
+    position: absolute;
+    top: 160px;
+    left: 920px;
+    width: 500px;
+    height: 500px;
+}
+
+.texticon5{  
+    width: 100px;
+    color: white;
+}
+
+.bannericon .texticon6{
+    position: absolute;
+    top: 200px;
+    left: 940px;
+    width: 500px;
+    height: 500px;
+} */
+
+/* .texticon6{  
+    width: 100px;
+    color: white;
+} */
+
+/* .boxbig{
+    border: 1px solid #ddd;
+} */
+
+
+.row .box1-1{
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.748);
+    display: flex;
+    justify-content: space-between;
+}
+
+.row .box1-2{
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.748);
+    display: flex;
+    justify-content: space-between;
+}
+
+.row .box1-3{
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.748);
+    display: flex;
+    justify-content: space-between;
+}
+
+.row .box1-4{
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.748);
+    display: flex;
+    justify-content: space-between;
+    /* margin-left: 100px; */
+    margin-top: 30px;
+}
+
+.row .box1-5{
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.748);
+    display: flex;
+    justify-content: space-between;
+    /* margin-right: 100px; */
+    margin-top: 30px;
+}
+
+.left-content {
+    flex: 1;
+    margin-right: 10px; /* Khoảng cách giữa ảnh và văn bản */
+}
+
+.left-content img {
+    flex: 1;
+    margin-right: 10px;
+    width: 100px; /* Khoảng cách giữa ảnh và văn bản */
+    margin-left: -10px;
+}
+
+.right-content {
+    flex: 2;
+}
+
+.center{
+    margin-left: 150px;
+}
