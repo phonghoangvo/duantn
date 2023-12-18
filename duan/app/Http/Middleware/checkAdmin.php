@@ -18,6 +18,6 @@ class checkAdmin
         if (Auth::check() && Auth::user()->id_group == 1) {
             return $next($request);
         }
-        return redirect('login');
+        abort(403, 'Bạn không đủ quyền để truy cập!!');
     }
 }
