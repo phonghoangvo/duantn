@@ -66,6 +66,82 @@
           document.body.scrollTop = 0;
           document.documentElement.scrollTop = 0;
         }
+        $("#oderForm").submit(function(event) {
+        event.preventDefault();
+
+        $.ajax({
+            url: '{{ route("quatrinhtt") }}',
+            type: 'POST',
+            data: $(this).serialize(), // Sử dụng serialize() thay vì serializeArray()
+            dataType: 'json',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(response) {
+                console.log(response);
+                var errors = response.errors;
+                if (errors.hoTen) {
+                    $("#hoTen").addClass('is-invalid')
+                        .siblings("p")
+                        .addClass('invalid-feedback')
+                        .html(errors.hoTen);
+                } else {
+                    $("#hoTen").removeClass('is-invalid')
+                        .siblings("p")
+                        .removeClass('invalid-feedback')
+                        .html('');
+                }
+
+                if (errors.email) {
+                    $("#email").addClass('is-invalid')
+                        .siblings("p")
+                        .addClass('invalid-feedback')
+                        .html(errors.email);
+                } else {
+                    $("#email").removeClass('is-invalid')
+                        .siblings("p")
+                        .removeClass('invalid-feedback')
+                        .html('');
+                }
+                if (errors.soDienThoai) {
+                    $("#soDienThoai").addClass('is-invalid')
+                        .siblings("p")
+                        .addClass('invalid-feedback')
+                        .html(errors.soDienThoai);
+                } else {
+                    $("#soDienThoai").removeClass('is-invalid')
+                        .siblings("p")
+                        .removeClass('invalid-feedback')
+                        .html('');
+                }
+                if (errors.diaChi) {
+                    $("#diaChi").addClass('is-invalid')
+                        .siblings("p")
+                        .addClass('invalid-feedback')
+                        .html(errors.diaChi);
+                } else {
+                    $("#diaChi").removeClass('is-invalid')
+                        .siblings("p")
+                        .removeClass('invalid-feedback')
+                        .html('');
+                }
+            }
+        });
+    });
+
+
+
+    //phuongthucthanhtoan
+    $("#thanhtoan1").click(function(){
+            if($(this).is(":checked")==true){
+                $("#card-thanhtoan-form").addClass('d-none');
+            }
+        });
+        $("#thanhtoan2").click(function(){
+            if($(this).is(":checked")==true){
+                $("#card-thanhtoan-form").removeClass('d-none');
+            }
+        })
         </script>
 </body>
 </html>

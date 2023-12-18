@@ -78,6 +78,9 @@
                                 <span>{{number_format($sanpham->price)}} đ</span><br>
                                 <p><del>{{number_format($sanpham->priceSale)}} đ</del></p>
                             </div>
+                            <div class="col-3">
+                                <a href="{{ route('add_to_cart', $sanpham->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
+                            </div>
                             </a>
                         </div>
                     </div>
