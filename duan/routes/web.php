@@ -104,4 +104,9 @@ Route::delete('logout',[AccountController::class,'logout'])->name('logout');
 //  Route::get('404', function () {
 //     return view('404');
 // })->name('404');
-
+Route::get('/giohang',[CartController::class,'cart'])->name('giohang');
+Route::get('/thanhtoan',[CartController::class,'cartcheck']);
+Route::post('/quatrinh-thanhtoan',[CartController::class,'processCheckout'])->name('quatrinhtt');
+Route::get('add-to-cart/{id}', [CartController::class,'addToCart'])->name('add_to_cart');
+Route::put('update-cart', [CartController::class,'updateCart'])->name('update_cart');
+Route::delete('remove-from-cart', [CartController::class,'remove'])->name('remove_from_cart');

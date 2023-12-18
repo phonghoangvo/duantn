@@ -28,9 +28,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $giamgia[0]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -54,9 +52,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $giamgia[1]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -80,9 +76,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $giamgia[2]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -106,9 +100,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $giamgia[3]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -132,9 +124,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $giamgia[4]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -158,9 +148,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $giamgia[5]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -210,9 +198,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $hot[0]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -236,9 +222,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $hot[1]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -262,9 +246,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $hot[2]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -288,9 +270,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $hot[3]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -314,9 +294,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $hot[4]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -340,9 +318,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $hot[5]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -390,9 +366,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $vanphongpham[0]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -416,9 +390,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $vanphongpham[1]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -442,9 +414,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $vanphongpham[2]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -468,9 +438,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $vanphongpham[3]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -494,9 +462,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $vanphongpham[4]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -520,9 +486,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $vanphongpham[5]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -569,9 +533,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $lich[0]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -595,9 +557,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $lich[1]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -621,9 +581,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $lich[2]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -647,9 +605,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $lich[3]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -673,9 +629,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $lich[4]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -699,9 +653,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $lich[5]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -747,9 +699,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $tap[0]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -773,9 +723,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $tap[1]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -799,9 +747,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $tap[2]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -825,9 +771,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $tap[3]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -851,9 +795,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $tap[4]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>
@@ -877,9 +819,7 @@
                                 </p>
                             </div>
                             <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%;margin-top:10px;">
-                                    <i class="bi bi-bag-plus-fill"></i>
-                                </button>
+                                <a href="{{ route('add_to_cart', $tap[5]->id) }}" class="btn btn-primary float-end px-2" style="padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
                             </div>
                         </div>
                     </div>

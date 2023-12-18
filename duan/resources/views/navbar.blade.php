@@ -48,7 +48,7 @@
                             <a class="nav-link text-dark" href="/news">Tin tức</a>
                         </li>
                         <li class="nav-item d-flex">
-                            <a class="nav-link text-primary" href="giohang.html">
+                            <a class="nav-link text-primary" href="/giohang">
                                 <button class="btn">
                                     <i class="bi bi-cart-check-fill" style="font-size: 1.5em"></i>
                                     0
