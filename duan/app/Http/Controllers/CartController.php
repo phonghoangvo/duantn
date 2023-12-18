@@ -15,10 +15,9 @@ class CartController extends Controller
     }
     public function cartcheck(){
     
-        // if(Auth::check() == false){
-        //     return redirect()->route('login');
-        // }
-    
+        if(Auth::check() == false){
+            return redirect()->route('login');
+        }
       
         return view('cart_check');
     }

@@ -57,7 +57,7 @@ class AccountController extends Controller
 
             // Đặt ảnh đại diện mặc định
             $defaultAvatarPath = '/img/user.png'; // Đặt đúng đường dẫn của ảnh đại diện mặc định
-            $user->img = $defaultAvatarPath;
+            $user->avatar = $defaultAvatarPath;
 
             // Lưu thông tin người dùng
             $user->save();

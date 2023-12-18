@@ -213,7 +213,7 @@ Chi tiết sản phẩm
           </div>
           <div class="col-xl-2 col-sm-4 p-1 px-1">
             <div class="card border-1">
-              <img class="card-img-top" width="200px" height="200px" src="/uploads/{{$hot[1]->img}}"
+              <img class="card-img-top" width="200px" height="200px" src="{{$hot[1]->img}}"
                 alt="{{$hot[1]->img}}">
               <div class="middle">
                 <a href="#" class="btn btn-light zoom border-0">
@@ -241,7 +241,7 @@ Chi tiết sản phẩm
           </div>
           <div class="col-xl-2 col-sm-4 p-1 px-1">
             <div class="card border-1">
-              <img class="card-img-top" width="200px" height="200px" src="/uploads/{{$hot[2]->img}}"
+              <img class="card-img-top" width="200px" height="200px" src="{{$hot[2]->img}}"
                 alt="{{$hot[2]->img}}">
               <div class="middle">
                 <a href="#" class="btn btn-light zoom border-0">
@@ -269,7 +269,7 @@ Chi tiết sản phẩm
           </div>
           <div class="col-xl-2 col-sm-4 p-1 px-1">
             <div class="card border-1">
-              <img class="card-img-top" width="200px" height="200px" src="/uploads/{{$hot[3]->img}}"
+              <img class="card-img-top" width="200px" height="200px" src="{{$hot[3]->img}}"
                 alt="{{$hot[3]->img}}">
               <div class="middle">
                 <a href="#" class="btn btn-light zoom border-0">
@@ -297,7 +297,7 @@ Chi tiết sản phẩm
           </div>
           <div class="col-xl-2 col-sm-4 p-1 px-1">
             <div class="card border-1">
-              <img class="card-img-top" width="200px" height="200px" src="/uploads/{{$hot[4]->img}}"
+              <img class="card-img-top" width="200px" height="200px" src="{{$hot[4]->img}}"
                 alt="{{$hot[4]->img}}">
               <div class="middle">
                 <a href="#" class="btn btn-light zoom border-0">
@@ -325,7 +325,7 @@ Chi tiết sản phẩm
           </div>
           <div class="col-xl-2 col-sm-4 p-1 px-1">
             <div class="card border-1">
-              <img class="card-img-top" width="200px" height="200px" src="/uploads/{{$hot[5]->img}}"
+              <img class="card-img-top" width="200px" height="200px" src="{{$hot[5]->img}}"
                 alt="{{$hot[5]->img}}">
               <div class="middle">
                 <a href="#" class="btn btn-light zoom border-0">
