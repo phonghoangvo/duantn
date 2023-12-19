@@ -32,7 +32,7 @@ Dashboard - Quản Trị Website
             <table class="table table-striped mb-0 text-center">
               <thead>
                 <tr>
-                  <th scope="col" class="col-lg-1">ID</th>
+                  <th scope="col" class="col-lg-1">STT</th>
                   <th scope="col" class="col-lg-1">Tên sản phẩm</th>
                   <th scope="col" class="col-lg-1">Hình ảnh</th>
                   <th scope="col" class="col-lg-1">Giá sản phẩm</th>
@@ -49,7 +49,7 @@ Dashboard - Quản Trị Website
               <tbody>
                 @foreach ($data as $data)
                 <tr>
-                  <td class="limited-text">{{$data->id}}</td>
+                  <td class="limited-text">{{$loop->index+1}}</td>
                   <td class="limited-text">{{$data->name}}</td>
                   <td class="limited-text"><img src="{{$data->img}}" style="height:60px;width:50px"></td>
                   <td class="limited-text">{{$data->price}}</td>

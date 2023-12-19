@@ -46,15 +46,15 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>id</th>
+                            <th>STT</th>
                             <th>Ten</th>
                             {{-- <th>img</th> --}}
                             <th>email</th>
-                            <th>password</th>
-                            {{-- <th>Dia Chi</th>
-                            <th>phone</th>
-                            <th>Trạng Thái</th>                         
-                            <th>Vai tro</th> --}}
+                            {{-- <th>password</th> --}}
+                            <th>Địa Chỉ</th>
+                            <th>SĐT</th>
+                            {{-- <th>Trạng Thái</th>                          --}}
+                            {{-- <th>Vai tro</th>  --}}
                             <th>Hành động</th>
                         </tr>
                         
@@ -66,13 +66,13 @@
                     
                         @foreach ($listuser as $user)
                         <tr>
-                        <td>{{$user->id}}</td>
+                        <td>{{$loop->index +1}}</td>
                         <td>{{$user->name}}</td>
                         {{-- <td> {{$user ->img}}</td> --}}
                         <td>{{$user->email}}</td>
-                        <td>{{$user->password}}</td>
-                        {{-- <td>{{$user->address}}</td>      --}}
-                        {{-- <td>{{$user->phone}}</td> --}}
+                        {{-- <td>{{$user->password}}</td> --}}
+                        <td>{{$user->address}}</td>     
+                        <td>{{$user->phone}}</td>
                         {{-- <td>{{$user->status}}</td>
                         <td>{{$user->role}}</td> --}}
                         <td>

@@ -70,8 +70,8 @@ Route::post('/comment/{idProduct}',[TinController::class,'post_comment'])->name(
         Route::get('/admin/listcate',[CategoryController::class,'listcate']);
         Route::get('/admin/addcate',[CategoryController::class,'addcate']);
         Route::post('save_cate',[CategoryController::class,'save_cate'])->name('save_cate');
-        Route::get('/admin/editcate/{id}',[CategoryController::class,'editcate'])->name('edit');
-        Route::put('update/{id}',[CategoryController::class,'update']);
+        Route::get('/admin/editcate/{id}',[CategoryController::class,'editcate'])->name('editcate');
+        Route::put('updatecate/{id}',[CategoryController::class,'updatecate']);
         Route::get('/delcate/{id}',[CategoryController::class,'delcate']);
         //Cửahang
         // Route::get('/cuahang', 'App\Http\Controllers\TinController@timkiem')->name('timkiem');

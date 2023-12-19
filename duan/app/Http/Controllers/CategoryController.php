@@ -27,7 +27,7 @@ class CategoryController extends Controller
         return view('admin.danhmuc.edit',compact('cate'));
     }
 
-    public function update(Request $request,$id)
+    public function updatecate(Request $request,$id)
     {
         $cate = Category::find($id);
         $cate-> name = $request->input('name');

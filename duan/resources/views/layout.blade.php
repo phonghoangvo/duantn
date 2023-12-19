@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/assets/owlcarousel/assets/owl.theme.default.min.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
     @include('navbar')
