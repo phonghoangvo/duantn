@@ -7,7 +7,7 @@
    
 
 <div class="container px-0 pt-3 pb-3">
-    <a class="text-decoration-none text-dark" href="">
+    <a class="thanhphantrang text-decoration-none" href="">
         Trang chủ
     </a> /
     <small>Cửa hàng</small>
@@ -21,7 +21,7 @@
         <section class="col-lg-3 ">
             <div class=" boxloai bg-white">
                 <h3 class="p-2">Sản phẩm theo loại</h3>
-                <div class="">
+                <div class="danhmuc">
                     <?php
                     $danhmuc = DB::table('category')->select('id','name')
                     ->orderby('thutu','asc')

@@ -32,12 +32,14 @@
 </style>
 
 
-    <section class="main pt-3 pb-5">
-        <div class="container text-center banner">         
-                
-                <h2>BLOG</h2>
-        </div>
-    </section>
+<div class="container px-0 pt-3 pb-3">
+    <a class="thanhphantrang text-decoration-none" href="/">
+   Trang chủ
+ </a>
+ 
+     <small>/ Chi tiết tin</small>
+     <small>/ {{$chitietnew->title}}</small>
+ </div>
     <section>
         <div class="container">
             <div class="row">

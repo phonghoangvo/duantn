@@ -6,9 +6,9 @@
     @section('noidung')
     
     <div class="container px-0 pt-3 pb-3">
-        <a class="text-decoration-none text-dark" href="">
-            Trang chủ
-        </a> /
+       <a class="thanhphantrang text-decoration-none" href="/">
+      Trang chủ
+    </a>/
         <small>Giới thiệu</small>
     </div>
         <section class="introduce pb-5">

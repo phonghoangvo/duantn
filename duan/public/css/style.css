@@ -190,7 +190,8 @@ label{
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
-    background-color: #f5f5f5;
+    background-color: #f27024;
+    color: white;
 }
 
 .boxloai {
@@ -290,4 +291,15 @@ h3 a {
 }
 .nav-link:hover{
     color: #f27024;
+}
+.danhmuc a span:hover{
+    color: #f27024;
+}
+.thanhphantrang{
+    color: #333;
+    font-weight: 500;
+}
+.thanhphantrang:hover{
+    color: #f27024;
+    font-weight: 500;
 }

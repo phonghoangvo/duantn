@@ -9,7 +9,7 @@ Chi tiết sản phẩm
 <main>
   @foreach($products as $value)
   <div class="container px-0 pt-3 pb-3">
-    <a class="text-decoration-none text-dark" href="">
+    <a class="thanhphantrang text-decoration-none" href="">
       Trang chủ
     </a>
     <small>/ Chi tiết</small>

@@ -82,17 +82,17 @@
                 </div>
             </div>
                  @else
-                    <div class="col p-3 text-center">
+                    
                         <table>
                         </table>
                             <div class="col text-center">
                             <h2>Giỏ hàng của bạn đang trống!</h2>
                             <h5>Hãy thêm sản phẩm vào ngay!!</h5>
-                            <a href="{{ url("/cuahang") }}" class="btn btn-primary">Mua ngay</a>
+                            <a href="{{ url("/cuahang") }}" class="btn btn" style="background-color: #f27024; color:white;">Mua ngay</a>
                         </div>
                     
                     
-                    </div>
+                   
                 @endif
         </div>
     </div>
