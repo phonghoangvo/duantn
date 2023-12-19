@@ -13,7 +13,9 @@ class Comment extends Model
     protected $fillable =[
         'idUser',
         'idProduct',
-        'content'
+        'content',
+        'updated_at',
+        'created_at'
     ];
     public function users()
     {
