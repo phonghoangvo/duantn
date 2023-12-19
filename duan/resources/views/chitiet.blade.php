@@ -69,8 +69,10 @@ Chi tiết sản phẩm
           </div>
         </div>
         <div class="pt-3 pb-1">
-          <p><button class="btn btn-primary p-2 w-100">Mua ngay</button></p>
-          <p><button class="btn btn-danger p-2 w-100">Thêm vào giỏ hàng</button></p>
+          <a href="#" onclick="muaNgay({{ $value->id }})">
+            <p><button class="btn btn-primary p-2 w-100">Mua ngay</button></p>
+          </a>
+          <a href="{{ route('add_to_cart', $value->id) }}"> <p><button class="btn btn-danger p-2 w-100">Thêm vào giỏ hàng</button></p></a>
         </div>
         <div class="text-center">
           <i class="bi bi-facebook p-1"></i>

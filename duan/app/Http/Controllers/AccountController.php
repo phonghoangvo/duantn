@@ -93,4 +93,34 @@ class AccountController extends Controller
         Auth::logout();
         return redirect('/');
     }    
+    // Phương thức để hiển thị form sửa thông tin người dùng
+    public function edit()
+    {
+        $user = Auth::user(); // Lấy thông tin người dùng đã đăng nhập
+
+        return view('edit-profile', compact('user'));
+        // Thay 'edit-profile' bằng tên view của bạn để hiển thị form sửa thông tin người dùng
+    }
+
+    // Phương thức để cập nhật thông tin người dùng
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+
+        // Kiểm tra và xác nhận dữ liệu từ form
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email,' . $user->id,
+            'address' => 'nullable|string|max:255',
+            'phone' => 'nullable|string|max:20',
+            // Các trường thông tin khác có thể cần được kiểm tra và xác nhận tùy thuộc vào hệ thống của bạn
+        ]);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->address = $request->address;
+        $user->phone = $request->phone;
+        $user->save();
+
+        return redirect()->route('profile.edit')->with('success', 'Thông tin của bạn đã được cập nhật');
+    }
 }

@@ -98,7 +98,8 @@ Route::get('forgot-password1',[AccountController::class,'forgot_password'])->nam
 Route::post('forgot-password1',[AccountController::class,'forgot_password_'])->name('password.reset');
 Route::get('forgot-password',[AccountController::class,'reset_password'])->name('password.reset');
 Route::delete('logout',[AccountController::class,'logout'])->name('logout');  
-
+Route::get('/profile/edit', [AccountController::class, 'edit'])->name('profile.edit')->middleware('auth');
+Route::post('/profile/update', [AccountController::class, 'update'])->name('profile.update')->middleware('auth');
     
 //  Route::get('404', function () {
 //     return view('404');

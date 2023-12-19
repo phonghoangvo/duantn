@@ -21,7 +21,7 @@
                             <span style="color: rgb(48, 48, 48);">fightingtogether@gmail.com</span>
                         </p>
                     </div>
-                    <div class="col-lg-4 p-3">
+                    <div class="col-lg-4 pt-5">
                         <h5>Về Fighting Together</h5>
                         <div>
                             <p>
@@ -36,13 +36,9 @@
                             <p>
                                 <a class="text-decoration-none text-dark" href="#" title="About">Giới thiệu</a>
                             </p>
-                            <p>
-                                <a class="text-decoration-none text-dark" href="#">Chính sách</a>
-                            </p>
-                            
                         </div>
                     </div>
-                    <div class="col-lg-3 p-3">
+                    <div class="col-lg-3 pt-5">
                         <h5>Tổng đài hỗ trợ</h5>
                         <p>Gọi mua hàng: <b>0938.897.895</b> (7h30-17h00)</p>
                         <p>Gọi khiếu nại: <b>0938.897.895</b> (7h30-17h00)</p>
