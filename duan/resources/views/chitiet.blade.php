@@ -23,13 +23,13 @@ Chi tiết sản phẩm
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="{{URL::to($value->img)}}" class="d-block w-100" alt="...">
+              <img src="{{URL::to($value->img)}}" class="d-block w-100" width="300px" height="500px" alt="...">
             </div>
             <div class="carousel-item">
-              <img src="{{URL::to($value->img)}}" class="d-block w-100" alt="...">
+              <img src="{{URL::to($value->img)}}" class="d-block w-100" width="300px" height="500px" alt="...">
             </div>
             <div class="carousel-item">
-              <img src="{{URL::to($value->img)}}" class="d-block w-100" alt="...">
+              <img src="{{URL::to($value->img)}}" class="d-block w-100" width="300px" height="500px" alt="...">
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
@@ -186,31 +186,39 @@ Chi tiết sản phẩm
       <div class="container bg-light px-4 pt-2 pb-2" style="border-radius: 5px;">
         <h3 class="text-center pt-2">Sản phẩm tương tự</h3>
         <div class="row pt-2 pb-2">
-          <div class="col-xl-2 col-sm-4 p-1 px-1">
-            <div class="card border-1">
-              <img class="card-img-top" width="200px" height="200px" src="{{$hot[0]->img}}" alt="{{$hot[0]->img}}">
-              <div class="middle">
-                <a href="#" class="btn btn-light zoom border-0">
-                  <i class=" bi bi-zoom-in"></i>
-                </a>
-              </div>
-              <div class="card-body">
-                <a href="#" class="text-decoration-none " style="font-size: 13px; color: gray;">{{$hot[0]->name}}</a>
-                <div class="row d-flex">
-                  <div class="col-sm-10">
-                    <p>
-                      <span style="color: red;"><b>{{number_format($hot[0]->price)}}</b></span><br>
-                      <span><del>{{number_format($hot[0]->priceSale)}}</del></span>
-                    </p>
-                  </div>
-                  <div class="col-sm-2">
-                    <a href="{{ route('add_to_cart', $hot[0]->id) }}" class=" btn btn float-end px-2" style="background-color:#f27024;padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
+          @if($sanphamlienquan->count() > 0)
+          
+            @foreach ($sanphamlienquan as $key => $lienquan)
+            <div class="col-xl-2 col-sm-4 p-1 px-1">
+              <div class="card border-1">
+                <img class="card-img-top" width="200px" height="200px" src="{{$lienquan->img}}" alt="{{$lienquan->img}}">
+                <div class="middle">
+                  <a href="#" class="btn btn-light zoom border-0">
+                    <i class=" bi bi-zoom-in"></i>
+                  </a>
                 </div>
+                <div class="card-body">
+                  <a href="{{url('/chitiet/'.$lienquan->id)}}" class="text-decoration-none " style="font-size: 13px; color: gray;">{{$lienquan->name}}</a>
+                  <div class="row d-flex">
+                    <div class="col-sm-10">
+                      <p>
+                        <span style="color: red;"><b>{{number_format($lienquan->price)}}</b></span><br>
+                        <span><del>{{number_format($lienquan->priceSale)}}</del></span>
+                      </p>
+                    </div>
+                    <div class="col-sm-2">
+                      <a href="{{ route('add_to_cart', $lienquan->id) }}" class=" btn btn float-end px-2" style="background-color:#f27024;padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
+                  </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-xl-2 col-sm-4 p-1 px-1">
+            @endforeach
+          @else
+              <p>Không có sản phẩm liên quan.</p>
+          @endif
+          
+          {{-- <div class="col-xl-2 col-sm-4 p-1 px-1">
             <div class="card border-1">
               <img class="card-img-top" width="200px" height="200px" src="{{$hot[1]->img}}"
                 alt="{{$hot[1]->img}}">
@@ -334,7 +342,7 @@ Chi tiết sản phẩm
                 </div>
               </div>
             </div>
-          </div>
+          </div> --}}
         </div>
       </div>
     </section>

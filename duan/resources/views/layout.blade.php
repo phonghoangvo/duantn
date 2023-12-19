@@ -68,28 +68,29 @@
           document.body.scrollTop = 0;
           document.documentElement.scrollTop = 0;
         }
+
         
         function muaNgay(productId) {
-    axios.post("{{ route('thanhtoan') }}", {
-        product_id: productId
-    }, {
-        headers: {
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-        }
-    })
-    .then(response => {
-        // Hiển thị thông báo thành công
-        alert('Sản phẩm đã được thêm vào giỏ hàng.');
+            axios.post('{{ route('add_to_cart', ['id' => ':productId']) }}'.replace(':productId', productId), {
+                product_id: productId
+            }, {
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                }
+            })
+            .then(response => {
+                // Hiển thị thông báo thành công
+                alert('Sản phẩm đã được thêm vào giỏ hàng.');
 
-        // Chờ 1 giây trước khi chuyển hướng đến trang giỏ hàng
-        setTimeout(() => {
-            window.location.href = "{{ route('thanhtoan') }}";
-        }, 1000);
-    })
-    .catch(error => {
-        console.error('Lỗi khi thêm vào giỏ hàng: ', error);
-    });
-}
+                setTimeout(() => {
+                    window.location.href = "{{ route('thanhtoan') }}";
+                }, 1000);
+            })
+            .catch(error => {
+                console.error('Lỗi khi thêm vào giỏ hàng: ', error);
+            });
+        }
+
 
 
 

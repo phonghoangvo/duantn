@@ -176,8 +176,20 @@ public function timkiem(Request $request)
             ->get();
         $products = cuahang::where('id','=',$id)->get();
         $comment = Comment::where('idProduct',$products[0]->id)->orderBy('id','DESC')->get();
-        return view('chitiet',compact('products','hot','comment'));
+
+        foreach ($products as $key => $value) {
+            $idCategory = $value->idCategory;
+        }
+
+        $sanphamlienquan = DB::table('product')
+            ->where('idCategory',$idCategory)
+            ->limit(6)
+            ->get();
+
+        return view('chitiet',compact('products','hot','comment'))
+        ->with('sanphamlienquan',$sanphamlienquan);
     }
+    
     public function post_comment($proId){
         $data = request()->all('content');
         $data['idProduct'] = $proId;
