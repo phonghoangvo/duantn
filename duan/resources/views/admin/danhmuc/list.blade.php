@@ -53,7 +53,7 @@ Dashboard - Quản Trị Website
                     <a href="{{url('/admin/editcate/'.$cate->id)}}" title="Sua"><button type="button"
                         class="btn btn-info w-100 mb-2">Sửa</button></a>
                     <a href="{{url('delcate/'.$cate->id)}}" onclick="return confirm('Bạn muốn xóa danh mục?')"
-                      title="Xoa"><button type="button" class="btn btn-danger w-100 mb-2">Xóa</button></a>
+                        class="btn btn-danger w-100 mb-2">Xóa</button></a>
                   </td>
                 </tr>
                 @endforeach
