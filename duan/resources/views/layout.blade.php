@@ -16,6 +16,8 @@
     <!-- Owl Stylesheets -->
     <link rel="stylesheet" href="/assets/owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="/assets/owlcarousel/assets/owl.theme.default.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
     @include('navbar')
@@ -67,6 +69,30 @@
           document.documentElement.scrollTop = 0;
         }
         
+        function muaNgay(productId) {
+    axios.post("{{ route('giohang') }}", {
+        product_id: productId
+    }, {
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+        }
+    })
+    .then(response => {
+        // Hiển thị thông báo thành công
+        alert('Sản phẩm đã được thêm vào giỏ hàng.');
+
+        // Chờ 1 giây trước khi chuyển hướng đến trang giỏ hàng
+        setTimeout(() => {
+            window.location.href = "{{ route('giohang') }}";
+        }, 1000);
+    })
+    .catch(error => {
+        console.error('Lỗi khi thêm vào giỏ hàng: ', error);
+    });
+}
+
+
+
         $(".cart-update").change(function (e){
             e.preventDefault();
             var ele = $(this);

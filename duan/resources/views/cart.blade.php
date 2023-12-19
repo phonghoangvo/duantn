@@ -46,7 +46,7 @@
                                 @endphp
                                 <tr data-id="{{ $id }}">
                                     <td>{{ $stt++ }}</td>
-                                    <td><img src="/uploads/{{ $details['img'] }}" alt="" width="80px" height="80px"></td>
+                                    <td><img src="{{ $details['img'] }}" alt="" width="80px" height="80px"></td>
                                     <td>{{ $details['name'] }}</td>
 
                                     <td> 
