@@ -71,8 +71,8 @@ Route::post('/comment/{idProduct}',[TinController::class,'post_comment'])->name(
         Route::get('/admin/addcate',[CategoryController::class,'addcate']);
         Route::post('save_cate',[CategoryController::class,'save_cate'])->name('save_cate');
         Route::get('/admin/editcate/{id}',[CategoryController::class,'edit'])->name('edit');
-        // Route::put('update/{id}',[CategoryController::class,'update']);
-        Route::get('/delcate/{id}',[CategoryController::class,'del']);
+        Route::put('update/{id}',[CategoryController::class,'update']);
+        Route::get('/delcate/{id}',[CategoryController::class,'delcate']);
         //Cửahang
         // Route::get('/cuahang', 'App\Http\Controllers\TinController@timkiem')->name('timkiem');
         // Route::get('/cuahang/{id?}', [TinController::class, 'cuahang'])->name('cuahang');
