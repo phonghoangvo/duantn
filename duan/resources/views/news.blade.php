@@ -52,7 +52,7 @@
                          @if ($tintuc->hidden == 1)
                          <div class="col-md-6 pb-3 text-center">
                             <div class="card">
-                                <img src="{{$tintuc->img}}" class="card-img-top"  alt="{{$tintuc->title}}" style="max-width: 100%; height: 400px;">
+                                <img src="{{ $tintuc->img}}" class="card-img-top"  alt="{{$tintuc->title}}" style="max-width: 100%; height: 400px;">
                                 <div class="card-body">
                                     <h5 class="card-title">{{$tintuc->title}}</h5>
                                     <p class="card-text">{{$tintuc->summary}}</p>
