@@ -210,10 +210,12 @@ public function timkiem(Request $request)
     }
 
     function themtin_(Request $request) {
-        $imgPath = $request->file('img')->store('img', 'public');
+        $filename = $request->file('img')->getClientOriginalName();
+        // $path = $request->file('img')->storeAs('uploads',$filename,'public');
+        $imgPath = $request->file('img')->storeAs('img', $filename,'public');
         $t = new Tintuc;
         $t->title = $request->input('title');
-        $t->img = '/storage/' . $imgPath;
+        $t->img = '/tintuc/' . $imgPath;
         $t->summary = $request->input('summary');
         $t->content = $request->input('content');
         $t->hidden = $request->input('visibility',1);
@@ -238,10 +240,10 @@ public function timkiem(Request $request)
         $tintuc = Tintuc::find($id);
     
         // Kiểm tra xem người dùng đã tải lên ảnh mới hay chưa
-        if ($request->hasFile('img')) {
+        if ($request->hasFile('/tintuc')) {
             // Nếu có ảnh mới, lưu và cập nhật đường dẫn hình ảnh
-            $imgPath = $request->file('img')->store('img', 'public');
-            $tintuc->img = '/storage/' . $imgPath;
+            $imgPath = $request->file('/tintuc')->store('img', 'public');
+            $tintuc->img = '/tintuc/' . $imgPath;
         }
     
         // Cập nhật các trường khác
