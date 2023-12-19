@@ -59,7 +59,7 @@ Route::post('/comment/{idProduct}',[TinController::class,'post_comment'])->name(
         Route::post('save',[ProductController::class,'save_add'])->name('save_add');
         Route::get('/admin/edit/{id}',[ProductController::class,'edit'])->name('edit');
         Route::put('update/{id}',[ProductController::class,'update']);
-        Route::get('/del/{id}',[ProductController::class,'del']);
+        Route::get('/delproduct/{id}',[ProductController::class,'delproduct']);
         Route::get('/admin/comment/list',[CommentController::class,'list']);
         Route::get('/del/{id}',[CommentController::class,'del']);
         //contact
@@ -73,12 +73,6 @@ Route::post('/comment/{idProduct}',[TinController::class,'post_comment'])->name(
         Route::get('/admin/editcate/{id}',[CategoryController::class,'editcate'])->name('editcate');
         Route::put('updatecate/{id}',[CategoryController::class,'updatecate']);
         Route::get('/delcate/{id}',[CategoryController::class,'delcate']);
-        //Cửahang
-        // Route::get('/cuahang', 'App\Http\Controllers\TinController@timkiem')->name('timkiem');
-        // Route::get('/cuahang/{id?}', [TinController::class, 'cuahang'])->name('cuahang');
-
-        //chitiet
-        // Route::get('/chitiet/{id}',[TinController::class,'chitiet'])->name('chitiet');
 
         // adduser
         Route::get('/adduser', [UserController::class,'create']);

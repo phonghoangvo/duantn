@@ -14,7 +14,7 @@ class ProductController extends Controller
 {
     public function list()
     {
-        $page = Product::paginate(15);
+        $page = Product::orderBy('ngayDang', 'desc')->paginate(15);
         $data = $page->items();
         $category = Category::all();
         return view ('admin.sanpham.list',compact('data','page'));
@@ -86,7 +86,7 @@ class ProductController extends Controller
         return redirect()->back() -> with('success','Sản phẩm đã được cập nhật thành công');
 
     }
-    public function del($id){
+    public function delproduct($id){
         Product::where('id' , '=' , $id) ->delete();
         return redirect()->back() -> with('success','Sản phẩm đã được xóa thành công');
     }

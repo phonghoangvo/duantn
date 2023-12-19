@@ -91,6 +91,9 @@ Dashboard - Quản Trị Website
                           @endforeach
                       </tbody>
                   </table>
+                <div class="mt-2">
+                  {{ $listtintuc->links() }}
+                </div>
               </div>
             </div>
           </div>

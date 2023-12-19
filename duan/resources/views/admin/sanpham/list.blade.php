@@ -63,7 +63,7 @@ Dashboard - Quản Trị Website
                   <td>
                     <a href="{{url('admin/edit/'.$data->id)}}" title="Sua"><button type="button"
                         class="btn btn-info w-100 pt-2">Sửa</button></a>
-                    <a href="{{url('del/'.$data->id)}}" onclick="return confirm('Ban muon xoa san pham?')"
+                    <a href="{{url('delproduct/'.$data->id)}}" onclick="return confirm('Ban muon xoa san pham?')"
                       title="Xoa"><button type="button" class="btn btn-danger w-100 mb-2">Xóa</button></a>
                   </td>
                 </tr>

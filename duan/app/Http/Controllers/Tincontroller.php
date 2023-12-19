@@ -202,18 +202,26 @@ public function timkiem(Request $request)
 
     //Tintuc
     public function news()
-    {
-        $news = Tintuc::where('hidden', 1)->paginate(8);
-        return view('news', ['news' => $news]);
-    }
+        {
+            $news = Tintuc::where('hidden', 1)
+                        ->orderBy('ngayDang', 'desc') 
+                        ->paginate(8);
+
+            return view('news', ['news' => $news]);
+        }
+
     function chitietnew($id){
         $chitietnew = Tintuc::find($id);
         return view('chitietnew',['chitietnew'=>$chitietnew]);
     }
     public function listtintuc() {
-        $listtintuc = Tintuc::all();
+        $listtintuc = Tintuc::orderBy('created_at', 'desc')
+                            ->paginate(5);
+    
         return view('admin.listtintuc', compact('listtintuc'));
     }
+    
+    
 
    
 

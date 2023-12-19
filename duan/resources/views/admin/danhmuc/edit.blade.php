@@ -12,7 +12,7 @@ Dashboard - Quản Trị Website
                 {{Session::get('success')}}
             </div>
             @endif
-            <form action="{{url('update/'.$cate->id)}}" method="post" enctype="multipart/form-data">
+            <form action="{{url('updatecate/'.$cate->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="formbold-input-flex">
