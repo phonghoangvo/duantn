@@ -67,8 +67,6 @@
                             <div class="pagination">
                                 {{ $news->links() }}
                             </div>
-
-                                            
                     </section>
                     
                 </div>

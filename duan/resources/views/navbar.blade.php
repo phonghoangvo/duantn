@@ -71,7 +71,7 @@
                                 </form>
 
                                 <ul class="dropdown-menu" aria-labelledby="userDropdown">
-                                    <li><a class="dropdown-item" href="#">Chỉnh sửa thông tin</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Chỉnh sửa thông tin</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li>
                                         <!-- Thêm mục "Trang quản trị" nếu idGroup là 1 -->
