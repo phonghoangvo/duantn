@@ -40,7 +40,7 @@ class CategoryController extends Controller
         return redirect()->back() -> with('success','Danh mục đã được cập nhật thành công');
 
     }
-    public function del($id){
+    public function delcate($id){
         Category::where('id' , '=' , $id) ->delete();
         return redirect()->back() -> with('success','Danh mục đã được xóa thành công');
     }

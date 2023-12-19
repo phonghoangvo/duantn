@@ -219,7 +219,7 @@ public function timkiem(Request $request)
         $t->hidden = $request->input('visibility',1);
         $t->save();
     
-        return redirect()->route('listtintuc');
+        return redirect()->route('listtintuc')-> with('success','Tin tức đã được thêm thành công');
     }
     
 

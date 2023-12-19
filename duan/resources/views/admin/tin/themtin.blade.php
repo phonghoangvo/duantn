@@ -5,6 +5,7 @@ Dashboard - Quản Trị Website
 
 @section('noidung')
 <div class="container">
+    
     <form action="{{ route('themtin_') }}" method="POST" class="col-7 m-auto" enctype="multipart/form-data">
         @csrf
         <h2>Thêm Tin Tức</h2>

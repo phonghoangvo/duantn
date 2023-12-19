@@ -45,6 +45,11 @@ Dashboard - Quản Trị Website
                           </tr>
                       </thead>
                       <tbody>
+                        @if(Session::has('success'))
+              <div class="alert alert-success" role="alert">
+                {{Session::get('success')}}
+              </div>
+              @endif
                           @foreach ($listtintuc as $loadtin)
                               <tr>
                                 <th scope="row">{{ $loadtin->id }}</th>

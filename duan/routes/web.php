@@ -72,7 +72,7 @@ Route::post('/comment/{idProduct}',[TinController::class,'post_comment'])->name(
         Route::post('save_cate',[CategoryController::class,'save_cate'])->name('save_cate');
         Route::get('/admin/editcate/{id}',[CategoryController::class,'edit'])->name('edit');
         // Route::put('update/{id}',[CategoryController::class,'update']);
-        Route::get('/delcate/{id}',[CategoryController::class,'del']);
+        Route::get('/delcate/{id}',[CategoryController::class,'delcate']);
         //Cửahang
         // Route::get('/cuahang', 'App\Http\Controllers\TinController@timkiem')->name('timkiem');
         // Route::get('/cuahang/{id?}', [TinController::class, 'cuahang'])->name('cuahang');
@@ -98,8 +98,7 @@ Route::get('forgot-password1',[AccountController::class,'forgot_password'])->nam
 Route::post('forgot-password1',[AccountController::class,'forgot_password_'])->name('password.reset');
 Route::get('forgot-password',[AccountController::class,'reset_password'])->name('password.reset');
 Route::delete('logout',[AccountController::class,'logout'])->name('logout');  
-Route::get('/profile/edit', [AccountController::class, 'edit'])->name('profile.edit')->middleware('auth');
-Route::post('/profile/update', [AccountController::class, 'update'])->name('profile.update')->middleware('auth');
+
     
 //  Route::get('404', function () {
 //     return view('404');
