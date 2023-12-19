@@ -70,7 +70,7 @@
         }
         
         function muaNgay(productId) {
-    axios.post("{{ route('giohang') }}", {
+    axios.post("{{ route('thanhtoan') }}", {
         product_id: productId
     }, {
         headers: {
@@ -83,7 +83,7 @@
 
         // Chờ 1 giây trước khi chuyển hướng đến trang giỏ hàng
         setTimeout(() => {
-            window.location.href = "{{ route('giohang') }}";
+            window.location.href = "{{ route('thanhtoan') }}";
         }, 1000);
     })
     .catch(error => {

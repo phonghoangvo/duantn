@@ -87,27 +87,27 @@
                 <div class="row text-center">
                     <!-- Hiển thị 6 box trên màn hình lớn hơn small -->
                     <div class="col-lg-2 d-none d-lg-block">
-                        <img src="upload/bannergioithieu.jpg" alt="" class="img-fluid" width="200px" height="200px">
+                        <img src="/img/khoa.jpg" alt="" class="img-fluid" >
                         <p>Khải</p>
                     </div>
                     <div class="col-lg-2 d-none d-lg-block">
-                        <img src="upload/bannergioithieu.jpg" alt="" class="img-fluid" width="200px" height="200px">
+                        <img src="/img/khai.jpg" alt="" class="img-fluid" >
                         <p>Khải</p>
                     </div>
                     <div class="col-lg-2 d-none d-lg-block">
-                        <img src="upload/bannergioithieu.jpg" alt="" class="img-fluid" width="200px" height="200px">
+                        <img src="/img/kha.jpg" alt="" class="img-fluid" >
                         <p>Khải</p>
                     </div>
                     <div class="col-lg-2 d-none d-lg-block">
-                        <img src="upload/bannergioithieu.jpg" alt="" class="img-fluid" width="200px" height="200px">
+                        <img src="/img/phuc.jpg" alt="" class="img-fluid" >
                         <p>Khải</p>
                     </div>
                     <div class="col-lg-2 d-none d-lg-block">
-                        <img src="upload/bannergioithieu.jpg" alt="" class="img-fluid" width="200px" height="200px">
+                        <img src="/img/phong.jpg" alt="" class="img-fluid" >
                         <p>Khải</p>
                     </div>
                     <div class="col-lg-2 d-none d-lg-block">
-                        <img src="upload/bannergioithieu.jpg" alt="" class="img-fluid" width="200px" height="200px">
+                        <img src="/img/an.jpg" alt="" class="img-fluid" >
                         <p>Khải</p>
                     </div>
                 </div>

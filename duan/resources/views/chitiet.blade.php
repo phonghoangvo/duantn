@@ -204,11 +204,8 @@ Chi tiết sản phẩm
                     </p>
                   </div>
                   <div class="col-sm-2">
-                    <button type="button" style="background-color: " class="btn btn-primary float-end px-2"
-                      style="padding: 5px 10px;border-radius: 50%;">
-                      <i class="bi bi-bag-plus-fill"></i>
-                    </button>
-                  </div>
+                    <a href="{{ route('add_to_cart', $hot[0]->id) }}" class=" btn btn float-end px-2" style="background-color:#f27024;padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
+                </div>
                 </div>
               </div>
             </div>
@@ -218,9 +215,9 @@ Chi tiết sản phẩm
               <img class="card-img-top" width="200px" height="200px" src="{{$hot[1]->img}}"
                 alt="{{$hot[1]->img}}">
               <div class="middle">
-                <a href="#" class="btn btn-light zoom border-0">
-                  <i class=" bi bi-zoom-in"></i>
-                </a>
+                <div class="col-sm-2">
+                  <a href="{{ route('add_to_cart', $hot[1]->id) }}" class=" btn btn float-end px-2" style="background-color:#f27024;padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
+              </div>
               </div>
               <div class="card-body">
                 <a href="#" class="text-decoration-none " style="font-size: 13px; color: gray;">{{$hot[1]->name}}</a>
@@ -232,11 +229,8 @@ Chi tiết sản phẩm
                     </p>
                   </div>
                   <div class="col-sm-2">
-                    <button type="button" class="btn btn-primary float-end px-2"
-                      style="padding: 5px 10px;border-radius: 50%;">
-                      <i class="bi bi-bag-plus-fill"></i>
-                    </button>
-                  </div>
+                    <a href="{{ route('add_to_cart', $hot[1]->id) }}" class=" btn btn float-end px-2" style="background-color:#f27024;padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
+                </div>
                 </div>
               </div>
             </div>
@@ -260,11 +254,8 @@ Chi tiết sản phẩm
                     </p>
                   </div>
                   <div class="col-sm-2">
-                    <button type="button" class="btn btn-primary float-end px-2"
-                      style="padding: 5px 10px;border-radius: 50%;">
-                      <i class="bi bi-bag-plus-fill"></i>
-                    </button>
-                  </div>
+                    <a href="{{ route('add_to_cart', $hot[2]->id) }}" class=" btn btn float-end px-2" style="background-color:#f27024;padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
+                </div>
                 </div>
               </div>
             </div>
@@ -288,11 +279,8 @@ Chi tiết sản phẩm
                     </p>
                   </div>
                   <div class="col-sm-2">
-                    <button type="button" class="btn btn-primary float-end px-2"
-                      style="padding: 5px 10px;border-radius: 50%;">
-                      <i class="bi bi-bag-plus-fill"></i>
-                    </button>
-                  </div>
+                    <a href="{{ route('add_to_cart', $hot[3]->id) }}" class=" btn btn float-end px-2" style="background-color:#f27024;padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
+                </div>
                 </div>
               </div>
             </div>
@@ -316,11 +304,8 @@ Chi tiết sản phẩm
                     </p>
                   </div>
                   <div class="col-sm-2">
-                    <button type="button" class="btn btn-primary float-end px-2"
-                      style="padding: 5px 10px;border-radius: 50%;">
-                      <i class="bi bi-bag-plus-fill"></i>
-                    </button>
-                  </div>
+                    <a href="{{ route('add_to_cart', $hot[4]->id) }}" class=" btn btn float-end px-2" style="background-color:#f27024;padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
+                </div>
                 </div>
               </div>
             </div>
@@ -344,11 +329,8 @@ Chi tiết sản phẩm
                     </p>
                   </div>
                   <div class="col-sm-2">
-                    <button type="button" class="btn btn-primary float-end px-2"
-                      style="padding: 5px 10px;border-radius: 50%;">
-                      <i class="bi bi-bag-plus-fill"></i>
-                    </button>
-                  </div>
+                    <a href="{{ route('add_to_cart', $hot[5]->id) }}" class=" btn btn float-end px-2" style="background-color:#f27024;padding: 5px 10px;border-radius: 50%; color:white;"><i class="bi bi-bag-plus-fill"></i></a>
+                </div>
                 </div>
               </div>
             </div>

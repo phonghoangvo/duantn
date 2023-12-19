@@ -70,8 +70,8 @@ Route::post('/comment/{idProduct}',[TinController::class,'post_comment'])->name(
         Route::get('/admin/listcate',[CategoryController::class,'listcate']);
         Route::get('/admin/addcate',[CategoryController::class,'addcate']);
         Route::post('save_cate',[CategoryController::class,'save_cate'])->name('save_cate');
-        Route::get('/admin/editcate/{id}',[CategoryController::class,'edit'])->name('edit');
-        // Route::put('update/{id}',[CategoryController::class,'update']);
+        Route::get('/admin/editcate/{id}',[CategoryController::class,'editcate'])->name('edit');
+        Route::put('update/{id}',[CategoryController::class,'update']);
         Route::get('/delcate/{id}',[CategoryController::class,'delcate']);
         //Cửahang
         // Route::get('/cuahang', 'App\Http\Controllers\TinController@timkiem')->name('timkiem');
@@ -98,13 +98,15 @@ Route::get('forgot-password1',[AccountController::class,'forgot_password'])->nam
 Route::post('forgot-password1',[AccountController::class,'forgot_password_'])->name('password.reset');
 Route::get('forgot-password',[AccountController::class,'reset_password'])->name('password.reset');
 Route::delete('logout',[AccountController::class,'logout'])->name('logout');  
-
+Route::get('/profile/edit', [AccountController::class, 'edit'])->name('profile.edit')->middleware('auth');
+Route::post('/profile/update', [AccountController::class, 'update'])->name('profile.update')->middleware('auth');
     
 //  Route::get('404', function () {
 //     return view('404');
 // })->name('404');
 Route::get('/giohang',[CartController::class,'cart'])->name('giohang');
 Route::get('/thanhtoan',[CartController::class,'cartcheck']);
+Route::post('/thanhtoan',[CartController::class,'cartcheck'])->name('thanhtoan');
 Route::post('/quatrinh-thanhtoan',[CartController::class,'processCheckout'])->name('quatrinhtt');
 Route::get('add-to-cart/{id}', [CartController::class,'addToCart'])->name('add_to_cart');
 Route::put('update-cart', [CartController::class,'updateCart'])->name('update_cart');

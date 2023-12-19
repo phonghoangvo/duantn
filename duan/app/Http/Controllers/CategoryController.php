@@ -21,15 +21,12 @@ class CategoryController extends Controller
         Category::where('hidden',1)->get();
         return redirect()->back() -> with('success','Danh mục đã được thêm thành công');
     }
-    public function edit($id)
+    public function editcate($id)
     {
         $cate = Category::find($id);
         return view('admin.danhmuc.edit',compact('cate'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request,$id)
     {
         $cate = Category::find($id);

@@ -254,7 +254,7 @@ public function timkiem(Request $request)
         $tintuc->save();
     
         // Chuyển hướng về trang danh sách tin tức
-        return redirect()->route('listtintuc');
+        return redirect()->route('listtintuc')-> with('success','Tin tức đã được cập nhật thành công');
     }
     
     function lienhe() {
