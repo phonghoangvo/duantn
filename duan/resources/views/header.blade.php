@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <p class=" gap-1">
-                    <a class="btn bg-primary align-items-center justify-content-between shadow-none d-flex text-white w-100" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="border-radius: 0%;">
+                    <a class="btn  align-items-center justify-content-between shadow-none d-flex text-white w-100" style="background-color: #f27024" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="border-radius: 0%;">
                         DANH MỤC SẢN PHẨM
                         <i class="bi bi-list"></i>
                     </a>

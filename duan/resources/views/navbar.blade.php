@@ -28,7 +28,7 @@
                                     <input type="text" name="timkiem" class="form-control" placeholder="Tìm kiếm sản phẩm" aria-label="Tìm kiếm sản phẩm" aria-describedby="button-addon2">
                                     </div>
                                     <div class="col-md-2">
-                                    <button class="btn btn-primary border-0" type="submit" id="button-addon2"><i class="bi bi-search"></i></button>
+                                    <button class="btn btn border-0" style="background-color: #f27024" type="submit" id="button-addon2"><i class="bi bi-search" style="color: white"></i></button>
                                     </div>
                                 </div>
                             </form>

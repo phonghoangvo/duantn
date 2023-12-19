@@ -204,7 +204,7 @@ Chi tiết sản phẩm
                     </p>
                   </div>
                   <div class="col-sm-2">
-                    <button type="button" class="btn btn-primary float-end px-2"
+                    <button type="button" style="background-color: " class="btn btn-primary float-end px-2"
                       style="padding: 5px 10px;border-radius: 50%;">
                       <i class="bi bi-bag-plus-fill"></i>
                     </button>
@@ -353,14 +353,6 @@ Chi tiết sản phẩm
               </div>
             </div>
           </div>
-        </div>
-        <div class="text-center">
-          <a class="" href="{{ route('cuahang') }}">
-            <button class="btn btn-primary border-0" style="border-radius: 40px;">
-              Xem tất cả
-              <i class="bi bi-chevron-right"></i>
-            </button>
-          </a>
         </div>
       </div>
     </section>

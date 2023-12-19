@@ -17,13 +17,39 @@
                 <h5>Thông tin giao hàng</h5>
                 <form id="oderForm" name="oderForm" action="" method="POST">
                     @csrf
+                    @if(auth()->check())
+                    <!-- Hiển thị thông tin người dùng nếu đã đăng nhập -->
                     <div class="mb-3">
-                        <input type="text" class="form-control" name="hoTen" id="hoTen" placeholder="Họ và Tên" >
+                        <label for="">Họ Tên:</label>
+                        <input type="text" class="form-control" name="hoTen" id="hoTen" placeholder="Họ và Tên" value="{{ auth()->user()->name }}" >
                         <p></p>
                     </div>
                     <div class="row">
-                         <div class="col-lg-7 mb-3">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" >
+                        <div class="col-lg-7 mb-3">
+                            <label for="">Email: </label>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="{{ auth()->user()->email }}" >
+                            <p></p>
+                        </div>
+                        <div class="col-lg-5 mb-3">
+                            <label for="">Số điện thoại:</label>
+                            <input type="tel" class="form-control" name="soDienThoai" id="soDienThoai" placeholder="Số điện thoại" value="{{ auth()->user()->phone }}" >
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Địa chỉ:</label>
+                        <input type="text" class="form-control" name="diaChi" id="diaChi" placeholder="Địa chỉ" value="{{ auth()->user()->address }}" >
+                        <p></p>
+                    </div>
+                @else
+                    <!-- Hiển thị trường nhập liệu nếu chưa đăng nhập -->
+                    <div class="mb-3">
+                        <input type="text" class="form-control" name="hoTen" id="hoTen" placeholder="Họ và Tên">
+                        <p></p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-7 mb-3">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Email">
                             <p></p>
                         </div>
                         <div class="col-lg-5 mb-3">
@@ -32,9 +58,11 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <input type="text" class="form-control" name="diaChi" id="diaChi" placeholder="Địa chỉ" >
+                        <input type="text" class="form-control" name="diaChi" id="diaChi" placeholder="Địa chỉ">
                         <p></p>
                     </div>
+                @endif
+                
 
 
                     <div class="mb-3">
@@ -116,7 +144,7 @@
                                     <tr>
                                         <td>{{$stt++}}</td>
                                         <td>{{ $details['name'] }}</td>
-                                        <td class="col-2"><img src="/uploads/{{ $details['img'] }}" alt="" width="50px" height="50px"></td>
+                                        <td class="col-2"><img src="{{ $details['img'] }}" alt="" width="50px" height="50px"></td>
                                         <td> 
                                             <input type="number" value="{{ $details['quantity'] ?? 1 }}" class="form-control quantity cart-update" min="1" name="quantity[{{ $details['id'] }}]">
                                         </td>
