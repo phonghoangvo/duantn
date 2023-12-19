@@ -20,10 +20,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" class="form-control" id="password" name="password" value="{{ $user->password }}">
-                    </div>
-                    <div class="form-group">
                         <label for="address">Địa chỉ:</label>
                         <input type="text" class="form-control" id="address" name="address"value="{{ $user->address }}">
                     </div>

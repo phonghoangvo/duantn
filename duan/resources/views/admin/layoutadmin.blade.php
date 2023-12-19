@@ -49,7 +49,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/admin">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Bảng Điều Khiển</span></a>
             </li>
@@ -359,18 +359,12 @@
                             </form>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Hồ Sơ
+                                
+                                <a class="dropdown-item" href="/">
+                                    <i class="bi bi-browser-chrome"></i>
+                                    Trở lại trang chủ
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Cài Đặt
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Nhật Ký Hoạt Động
-                                </a>
+                                
                                 <div class="dropdown-divider"></div>
 
                                 <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Đăng xuất</a>
@@ -437,21 +431,21 @@
    
 
     <!-- Bootstrap core JavaScript-->
-    <script src="ad/vendor/jquery/jquery.min.js"></script>
-    <script src="ad/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/ad/vendor/jquery/jquery.min.js"></script>
+    <script src="/ad/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="ad/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/ad/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="ad/js/sb-admin-2.min.js"></script>
+    <script src="/ad/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="ad/vendor/chart.js/Chart.min.js"></script>
+    <script src="/ad/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="ad/js/demo/chart-area-demo.js"></script>
-    <script src="ad/js/demo/chart-pie-demo.js"></script>
+    <script src="/ad/js/demo/chart-area-demo.js"></script>
+    <script src="/ad/js/demo/chart-pie-demo.js"></script>
 
 </body>
 
