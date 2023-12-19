@@ -33,7 +33,7 @@ Dashboard - Quản Trị Website
             <table class="table table-striped mb-0 text-center">
               <thead>
                 <tr>
-                  <th scope="col" class="col-lg-1">ID</th>
+                  <th scope="col" class="col-lg-1">STT</th>
                   <th scope="col" class="col-lg-1">Tên danh mục</th>
                     <th scope=" col" class="col-lg-1">Ẩn - Hiện</th>
                   <th scope="col" class="col-lg-1">Thứ tự</th>
@@ -44,7 +44,7 @@ Dashboard - Quản Trị Website
               <tbody>
                 @foreach ($cate as $cate)
                 <tr>
-                  <td class="limited-text">{{$cate->id}}</td>
+                  <td class="limited-text">{{$loop->index +1}}</td>
                   <td class="limited-text">{{$cate->name}}</td>
                   <td class="limited-text">{{$cate->hidden}}</td>
                   <td class="limited-text">{{$cate->thutu}}</td>

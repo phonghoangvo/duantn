@@ -27,7 +27,7 @@ Dashboard - Quản Trị Website
                                     <table class="table table-striped mb-0 text-center">
                         <thead>
                             <tr>
-                                <th scope="col" class="col-lg-1">ID</th>
+                                <th scope="col" class="col-lg-1">STT</th>
                                 <th scope="col" class="col-lg-1">ID user</th>
                                 <th scope="col" class="col-lg-1">ID Product</th>
                                 <th scope="col" class="col-lg-1">Content</th>
@@ -38,7 +38,7 @@ Dashboard - Quản Trị Website
                         <tbody>
                             @foreach ($comment as $comment)
                             <tr>
-                                <td class="limited-text">{{$comment->id}}</td>
+                                <td class="limited-text">{{$loop->index +1}}</td>
                                 <td class="limited-text">{{$comment->idUser}}</td>
                                 <td class="limited-text">{{$comment->idProduct}}</td>
                                 <td class="limited-text">{{$comment->content}}</td>
