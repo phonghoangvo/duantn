@@ -110,7 +110,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <a class="text-decoration-none" href="{{ url('/gio-hang') }}">Giỏ Hàng</a>
+                            <a class="text-decoration-none" href="{{ url('/giohang') }}">Giỏ Hàng</a>
                         </div>
                         <div class="col-lg-6 text-end">
                             <button type="submit" class="btn btn-primary">Hoàn tất đơn hàng</button>
@@ -123,12 +123,12 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">STT</th>
-                                <th scope="col">Sản phẩm</th>
-                                <th scope="col">Hình ảnh</th>
-                                <th scope="col">Số lượng</th>
-                                <th scope="col">Giá</th>
-                                <th scope="col">Thành tiền</th>
+                                <th scope="col" style="width: 5%">STT</th>
+                                <th scope="col" style="width: 26%">Tên sản phẩm</th>
+                                <th scope="col" style="width: 15%">Hình ảnh</th>
+                                <th scope="col" style="width: 13%">Số lượng</th>
+                                <th scope="col" style="width: 10%">Giá</th>
+                                <th scope="col" style="width: 10%">Thành tiền</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -145,9 +145,7 @@
                                         <td>{{$stt++}}</td>
                                         <td>{{ $details['name'] }}</td>
                                         <td class="col-2"><img src="{{ $details['img'] }}" alt="" width="80px" height="80px"></td>
-                                        <td> 
-                                            <input type="number" value="{{ $details['quantity'] ?? 1 }}" class="form-control quantity cart-update" min="1" name="quantity[{{ $details['id'] }}]">
-                                        </td>
+                                        <td> {{ $details['quantity'] }} </td>
                                         <td>{{number_format( $details['price']) }}₫</td>
                                         <td class="col-2">{{number_format( $details['price'] * ($details['quantity'] ?? 1) )}}₫</td>
                                     </tr>

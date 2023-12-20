@@ -41,12 +41,12 @@ class CartController extends Controller
         return redirect()->back()->with("add-to-cart","Bạn đã thêm sản phẩm vào giỏ hàng");
     }
     
-    public function updateCart(Request $request){
-        if($request->id && $request->quanlity){
-            $cart = session()->get('cart');
-            $cart[$request->id]["quanlity"] = $request->quanlity;
+    public function updateCart(Request $request) {
+        if($request->id && $request->quantity) {
+            $cart = session() -> get('cart');
+            $cart[$request->id]["quantity"] = $request->quantity;
             session()->put('cart', $cart);
-            session()->flash('success','Gio hang da duoc cap nhat');
+            session()->flash('success','Giỏ hàng của bạn đã được cập nhật!');
 
         }
 
@@ -58,54 +58,100 @@ class CartController extends Controller
                 unset($cart[$request->id]);
                 session()->put('cart', $cart);
             }
-            session()->flash("success", "Bạn đã xóa sản phẩm khỏi giỏ hàng");
+            session()->flash('success', 'Bạn đã xóa sản phẩm khỏi giỏ hàng');
         }
     }
     
-    public function processCheckout(Request $request){
+    // public function processCheckout(Request $request){
 
 
-        //Validation
-        $validator = Validator::make($request->all(),[
-            'hoTen' => 'required|min:5',
-            'email' => 'required',
-            'soDienThoai' => 'required|min:10|max:11',
-            // 'diaChi' => 'required|min:30',
-            // 'diaChi' => 'required',
+    //     //Validation
+    //     $validator = Validator::make($request->all(),[
+    //         'hoTen' => 'required|min:5',
+    //         'email' => 'required',
+    //         'soDienThoai' => 'required|min:10|max:11',
+    //         // 'diaChi' => 'required|min:30',
+    //         // 'diaChi' => 'required',
+    //     ]);
+
+    //     if($validator->fails()){
+    //         return response()->json([
+    //             'message' => 'Hãy sửa những chố lỗi',
+    //             'status' => false,
+    //             'errors' => $validator->errors()
+    //         ]);
+    //     }
+    //     //saveuser
+    //     // $diachiuse
+    //     $user = auth()->user();
+
+    //     if ($user) {
+    //         DiachiKhachhang::updateOrCreate(
+    //             ['user' => $user->id],
+    //             [
+    //                 'hoTen' => $request->hoTen,
+    //                 'email' => $request->email,
+    //                 'soDienThoai' => $request->soDienThoai,
+    //                 'diaChi' => $request->diaChi,
+    //                 'phuongthucthanhtoan' => $request->phuongthucthanhtoan,
+    //             ]
+    //         );
+    //         return response()->json([
+    //             'message' => 'ok',
+    //             'status' => true,
+    //             'errors' => []
+    //         ]);
+    //     } else {
+    //         // Xử lý trường hợp khi người dùng không được xác thực
+    //     }
+    // }
+    public function checkout(Request $request) {
+        $productItems = [];
+ 
+        \Stripe\Stripe::setApiKey(config('stripe.sk'));
+ 
+        foreach (session('cart') as $id => $details) {
+ 
+            $product_name = $details['name'];
+            $total = $details['price'];
+            $quantity = $details['quantity'];
+ 
+            $two0 = "00";
+            $unit_amount = "$total$two0";
+ 
+            $productItems[] = [
+                'price_data' => [
+                    'product_data' => [
+                        'name' => $product_name,
+                    ],
+                    'currency'     => 'USD',
+                    'unit_amount'  => $unit_amount,
+                ],
+                'quantity' => $quantity
+            ];
+        }
+ 
+        $checkoutSession = \Stripe\Checkout\Session::create([
+            'line_items'            => [$productItems],
+            'mode'                  => 'payment',
+            'allow_promotion_codes' => true,
+            'metadata'              => [
+                'user_id' => "0001"
+            ],
+            'customer_email' => "khavodinh46@gmail.com", //$user->email,
+            'success_url' => route('success'),
+            'cancel_url'  => route('cancel'),
         ]);
-
-        if($validator->fails()){
-            return response()->json([
-                'message' => 'Hãy sửa những chố lỗi',
-                'status' => false,
-                'errors' => $validator->errors()
-            ]);
-        }
-        //saveuser
-        // $diachiuse
-        $user = auth()->user();
-
-        if ($user) {
-            DiachiKhachhang::updateOrCreate(
-                ['user' => $user->id],
-                [
-                    'hoTen' => $request->hoTen,
-                    'email' => $request->email,
-                    'soDienThoai' => $request->soDienThoai,
-                    'diaChi' => $request->diaChi,
-                    'phuongthucthanhtoan' => $request->phuongthucthanhtoan,
-                ]
-            );
-            return response()->json([
-                'message' => 'ok',
-                'status' => true,
-                'errors' => []
-            ]);
-        } else {
-            // Xử lý trường hợp khi người dùng không được xác thực
-        }
-
-
-                    
-            }
+     
+        return redirect()->away($checkoutSession->url);
+    }
+    public function success()
+    {
+        return view('check_out');
+    }
+ 
+    public function cancel()
+    {
+        return view('cancel');
+    }
 }

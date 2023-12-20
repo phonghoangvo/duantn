@@ -17,6 +17,11 @@
                     {{ session('success') }}
                 </div>
             @endif
+            @if (session('update-cart'))
+            <div class="alert alert-success">
+                {{ session('update-cart') }}
+            </div>
+        @endif
         </div>
         <div class="row">
             <div class=" p-3">
@@ -49,11 +54,11 @@
                                     <td><img src="{{ $details['img'] }}" alt="" width="80px" height="80px"></td>
                                     <td>{{ $details['name'] }}</td>
 
-                                    <td> 
-                                        <input type="number" value="{{ $quantity }}" class="form-control quantity cart-update" min="1">
+                                    <td data-th="Quantity"> 
+                                        <input type="number" value="{{ $quantity }}" class="form-control quantity cart_update" min="1"/>
                                     </td>
-                                    <td>{{ number_format($details['price']) }}₫</td>
-                                    <td>{{ number_format($details['price'] * $quantity) }}₫</td>
+                                    <td data-th="Price">{{ number_format($details['price']) }}₫</td>
+                                    <td data-th="Subtotal">{{ number_format($details['price'] * $details['quantity']) }}₫</td>
                                     <td><button class="btn btn-danger btn-sm cart-remove">Xóa</button></td>
                                 </tr>
                             @endforeach
@@ -74,11 +79,17 @@
                     </div>
                 </div>
                 <div class="p-2">
-                    <button class="btn btn-primary w-100">
+                    <form action="/checkout" method="POST">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <button class="btn btn-primary w-100" type="submit" id="check-out-button">
+                                Tiến hành thanh toán
+                        </button>
+                    </form>
+                    {{-- <button class="btn btn-primary w-100">
                         <a href="{{ url("/thanhtoan") }}" class="text-light text-decoration-none">
                             Tiến hành thanh toán
                         </a>
-                    </button>
+                    </button> --}}
                 </div>
             </div>
                  @else

@@ -92,25 +92,44 @@
             });
         }
 
-
-
-
-        $(".cart-update").change(function (e){
+        $(".cart_update").change(function (e) {
             e.preventDefault();
+
             var ele = $(this);
+
             $.ajax({
                 url: '{{ route('update_cart') }}',
-                method: "patch",
+                method: "PUT", // Sử dụng method PUT để phù hợp với route Laravel đã định nghĩa
                 data: {
                     _token: '{{ csrf_token() }}',
                     id: ele.parents("tr").attr("data-id"),
-                    quanlity: ele.parents("tr").find(".quanlity").val()
+                    quantity: ele.parents("tr").find(".quantity").val() // Sửa 'quanlity' thành 'quantity'
                 },
                 success: function(response){
                     window.location.reload();
                 }
             });
         });
+
+
+        // $(".cart_update").change(function (e) {
+        //     e.preventDefault();
+
+        //     var ele = $(this);
+
+        //     $.ajax({
+        //         url: '{{ route('update_cart') }}',
+        //         method: "put",
+        //         data: {
+        //             _token: '{{ csrf_token() }}',
+        //             id: ele.parents("tr").attr("data-id"),
+        //             quanlity: ele.parents("tr").find(".quantity").val()
+        //         },
+        //         success: function(response){
+        //             window.location.reload();
+        //         }
+        //     });
+        // });
 
         $(".cart-remove").click(function(e){
             e.preventDefault();

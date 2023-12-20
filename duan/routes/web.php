@@ -105,3 +105,7 @@ Route::post('/quatrinh-thanhtoan',[CartController::class,'processCheckout'])->na
 Route::any('add-to-cart/{id}', [CartController::class,'addToCart'])->name('add_to_cart');
 Route::put('update-cart', [CartController::class,'updateCart'])->name('update_cart');
 Route::delete('remove-from-cart', [CartController::class,'remove'])->name('remove_from_cart');
+
+Route::post('/checkout', [CartController::class, 'checkout'])->name('checkout');
+Route::get('/success', [CartController::class, 'success'])->name('success');
+Route::get('/cancel', [CartController::class, 'cancel'])->name('cancel');
