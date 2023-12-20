@@ -15,25 +15,33 @@
                 {{Session::get('success')}}
               </div>
               @endif
-                    <div class="form-group">
+                    <div class="form-group mx-2 pb-2">
                         <label for="name">Họ & Tên:</label>
                         <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mx-2 pb-2">
                         <label for="email">Email:</label>
                         <input type="email" class="form-control" id="email" name="email"value="{{ $user->email }}">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mx-2 pb-2">
+                        <label for="password">Nhập mật khẩu để xác thực:</label>
+                        <input type="password" id="password" class="form-control" name="password" required>
+                    </div>
+                    <div class="form-group mx-2 pb-2">
+                        <label for="new_password">Nhập mật khẩu mới (nếu cần):</label>
+                        <input type="password" id="new_password" class="form-control" name="new_password">
+                    </div>
+                    <div class="form-group mx-2 pb-2">
                         <label for="address">Địa chỉ:</label>
                         <input type="text" class="form-control" id="address" name="address"value="{{ $user->address }}">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mx-2 pb-2">
                         <label for="phone">Số Điện Thoại:</label>
                         <input type="number" class="form-control" id="phone" name="phone"value="{{ $user->phone }}">
                     </div>
                     
                     <div class="form-group pt-3 pb-3">
-                        <button type="submit" class="btn btn-primary float-end">Sửa</button>
+                        <button type="submit" class="btn btn-primary float-end">Cập nhật</button>
                     </div>
         
                 </form>
