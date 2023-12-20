@@ -132,6 +132,7 @@ class CartController extends Controller
         }
  
         $checkoutSession = \Stripe\Checkout\Session::create([
+            'payment_method_types' => ['card'], // Xác định loại phương thức thanh toán ở đây, ví dụ: chỉ chấp nhận thẻ
             'line_items'            => [$productItems],
             'mode'                  => 'payment',
             'allow_promotion_codes' => true,
