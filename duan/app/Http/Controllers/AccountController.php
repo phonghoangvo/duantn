@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Http\Requests\RuleRegister;
+use Illuminate\Support\Facades\Hash;
 
 class AccountController extends Controller
 {
@@ -102,25 +103,56 @@ class AccountController extends Controller
         // Thay 'edit-profile' bằng tên view của bạn để hiển thị form sửa thông tin người dùng
     }
 
-    // Phương thức để cập nhật thông tin người dùng
     public function update(Request $request)
-    {
-        $user = Auth::user();
+{
+    $validatedData = $request->validate([
+        'password' => 'required',
+        'new_password' => 'nullable|min:6',
+        'name' => 'required',
+        'email' => 'required|email',
+        'address' => 'required',
+        'phone' => 'required',
+    ]);
 
-        // Kiểm tra và xác nhận dữ liệu từ form
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:users,email,' . $user->id,
-            'address' => 'nullable|string|max:255',
-            'phone' => 'nullable|string|max:20',
-            // Các trường thông tin khác có thể cần được kiểm tra và xác nhận tùy thuộc vào hệ thống của bạn
-        ]);
+    $user = auth()->user();
+
+    if (Hash::check($request->password, $user->password)) {
+        if ($request->filled('new_password')) {
+            $user->password = Hash::make($request->new_password);
+        }
+
         $user->name = $request->name;
         $user->email = $request->email;
         $user->address = $request->address;
         $user->phone = $request->phone;
+
         $user->save();
 
-        return redirect()->route('profile.edit')->with('success', 'Thông tin của bạn đã được cập nhật');
+        return redirect()->back()->with('success', 'Thông tin cá nhân đã được cập nhật.');
+    } else {
+        return redirect()->back()->with('error', 'Mật khẩu không chính xác.');
     }
+}
+
+    // Phương thức để cập nhật thông tin người dùng
+    // public function update(Request $request)
+    // {
+    //     $user = Auth::user();
+
+    //     // Kiểm tra và xác nhận dữ liệu từ form
+    //     $validatedData = $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'email' => 'required|email|max:255|unique:users,email,' . $user->id,
+    //         'address' => 'nullable|string|max:255',
+    //         'phone' => 'nullable|string|max:20',
+    //         // Các trường thông tin khác có thể cần được kiểm tra và xác nhận tùy thuộc vào hệ thống của bạn
+    //     ]);
+    //     $user->name = $request->name;
+    //     $user->email = $request->email;
+    //     $user->address = $request->address;
+    //     $user->phone = $request->phone;
+    //     $user->save();
+
+    //     return redirect()->route('profile.edit')->with('success', 'Thông tin của bạn đã được cập nhật');
+    // }
 }
