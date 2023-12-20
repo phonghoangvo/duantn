@@ -204,7 +204,7 @@ public function timkiem(Request $request)
     public function news()
         {
             $news = Tintuc::where('hidden', 1)
-                        ->orderBy('ngayDang', 'desc') 
+                        ->orderBy('created_at', 'desc') 
                         ->paginate(8);
 
             return view('news', ['news' => $news]);

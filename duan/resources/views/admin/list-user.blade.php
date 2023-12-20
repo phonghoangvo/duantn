@@ -84,13 +84,13 @@
                                
                             </a>
                         </p>
-                            <p><a href="/user/update/{{$user->id}}" class="btn btn-info btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-edit" style="font-size: 14px"></i>
-                                </span>
-                                <span class="text" style="width:120px" >Cập nhật</span>
-                                {{-- <span class="text" style="width:120px"><a href="/user/delete/{{$user->id}}"></a>Delete</span> --}}
-                            </a></p>
+                                <p><a href="/user/update/{{$user->id}}" class="btn btn-info btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-edit" style="font-size: 14px"></i>
+                                    </span>
+                                    <span class="text" style="width:120px" >Cập nhật</span>
+                                    {{-- <span class="text" style="width:120px"><a href="/user/delete/{{$user->id}}"></a>Delete</span> --}}
+                                </a></p>
                             {{-- <a href="/user/update/{{ $user->id }}">Update</a> <br>
                             <a href="/user/delete/{{ $user->id }}">Delete</a> --}}
                         </td>
