@@ -20,19 +20,18 @@
                 <div class="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
                     <ul class="navbar-nav justify-content-center align-items-center flex-grow-1">
                         <div class="input-group w-50 mx-5">
-                                                     
-                            
-                            <form action="{{route('timkiem')}}" method="GET">
-                                <div class="row">
+                            <form action="{{route('timkiem')}}" method="GET" class="input-group">
+                                <input type="text" name="timkiem" class="form-control" placeholder="Tìm kiếm sản phẩm" aria-label="Tìm kiếm sản phẩm" aria-describedby="button-addon2">
+                                <button class="btn btn border-0" style="background-color: #f27024" type="submit" id="button-addon2"><i class="bi bi-search" style="color: white"></i></button>
+                                {{-- <div class="row">
                                     <div class="col-md-10">
                                     <input type="text" name="timkiem" class="form-control" placeholder="Tìm kiếm sản phẩm" aria-label="Tìm kiếm sản phẩm" aria-describedby="button-addon2">
                                     </div>
                                     <div class="col-md-2">
                                     <button class="btn btn border-0" style="background-color: #f27024" type="submit" id="button-addon2"><i class="bi bi-search" style="color: white"></i></button>
                                     </div>
-                                </div>
+                                </div> --}}
                             </form>
-                            
                         </div>
                         </li>
                         <li class="nav-item">
