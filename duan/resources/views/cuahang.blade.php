@@ -41,7 +41,7 @@
             </div>
 
             <p>
-                <label for="amount">Price range:</label>
+                <label for="amount">Khoảng giá:</label>
                 <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
               </p>
                
