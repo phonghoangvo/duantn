@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
 use App\Models\Tintuc;
+use App\Models\Yeuthich;
 use App\Models\Cuahang;
+use App\Models\Product;
 use App\Models\Comment;
 use App\Models\Category;
 Paginator::useBootstrap();
@@ -180,16 +182,31 @@ public function timkiem(Request $request)
         foreach ($products as $key => $value) {
             $idCategory = $value->idCategory;
         }
-
+        $yeuthich = Product::where('id', '=', $id)->get();
         $sanphamlienquan = DB::table('product')
             ->where('idCategory',$idCategory)
             ->limit(6)
             ->get();
 
-        return view('chitiet',compact('products','hot','comment'))
+        return view('chitiet',compact('products','hot','comment','yeuthich'))
         ->with('sanphamlienquan',$sanphamlienquan);
     }
-    
+    public function favorite($idProduct){
+        $data = [
+            'idProduct' =>  $idProduct,
+            'idUser' => auth()->id()
+        ];
+        $yeuthich = Yeuthich::where(['idProduct' => $idProduct,'idUser'=> auth()->id()])->first();
+        if($yeuthich){
+            
+            $yeuthich->delete();
+            return redirect()->back()->with('ok','Bạn đã bỏ yêu thích sản phẩm'); 
+             
+        }else{
+            Yeuthich::create($data);
+            return redirect()->back()->with('ok','Bạn đã yêu thích sản phẩm');  
+        }
+    }
     public function post_comment($proId){
         $data = request()->all('content');
         $data['idProduct'] = $proId;

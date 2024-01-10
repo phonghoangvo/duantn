@@ -72,6 +72,9 @@
                                 <ul class="dropdown-menu" aria-labelledby="userDropdown">
                                     <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Chỉnh sửa thông tin</a></li>
                                     <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="{{ route('favorite') }}">Danh sách yêu thích</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+
                                     <li>
                                         <!-- Thêm mục "Trang quản trị" nếu idGroup là 1 -->
                                         @if(Auth::user()->id_group == 1)

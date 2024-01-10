@@ -9,12 +9,14 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/lienhe.css">
     <link rel="stylesheet" href="/css/gioithieu.css">
+    <link rel="stylesheet" href="/css/yeuthich.css">
   
     <!-- Bootstrap 5 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Grey+Qo&display=swap">
     <!-- Owl Stylesheets -->
     <link rel="stylesheet" href="/assets/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/owlcarousel/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> <!-- Update version -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -44,6 +46,7 @@
     <script src="/assets/owlcarousel/owl.carousel.js"></script>
     <script src="/js/script.min.js"></script>
     <script src="/js/script.js"></script>
+    <script src="/js/chitiet.js"></script>
     
     <script>
         $(function() {

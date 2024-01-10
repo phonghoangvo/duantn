@@ -34,6 +34,7 @@ Route::get('/cuahang', 'App\Http\Controllers\TinController@timkiem')->name('timk
 Route::get('/cuahang/{id?}', [TinController::class, 'cuahang'])->name('cuahang');
 Route::get('/chitiet/{id}',[TinController::class,'chitiet'])->name('chitiet');
 Route::post('/comment/{idProduct}',[TinController::class,'post_comment'])->name('comment');
+Route::get('/favorite/{product}',[TinController::class,'favorite'])->name('chitiet.favorite');
 //checkadmin
 // Route::group(['middleware' => 'auth','checkAdmin'], function () {
     Route::prefix('/')->middleware('checkAdmin')->group(function () {
@@ -94,7 +95,7 @@ Route::get('forgot-password',[AccountController::class,'reset_password'])->name(
 Route::delete('logout',[AccountController::class,'logout'])->name('logout');  
 Route::get('/profile/edit', [AccountController::class, 'edit'])->name('profile.edit')->middleware('auth');
 Route::post('/profile/update', [AccountController::class, 'update'])->name('profile.update')->middleware('auth');
-    
+Route::get('/favorite',[AccountController::class,'favorite'])->name('favorite');
 //  Route::get('404', function () {
 //     return view('404');
 // })->name('404');
