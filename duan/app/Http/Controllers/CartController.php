@@ -116,15 +116,14 @@ class CartController extends Controller
             $total = $details['price'];
             $quantity = $details['quantity'];
  
-            $two0 = "00";
-            $unit_amount = "$total$two0";
+            $unit_amount = "$total";
  
             $productItems[] = [
                 'price_data' => [
                     'product_data' => [
                         'name' => $product_name,
                     ],
-                    'currency'     => 'USD',
+                    'currency'     => 'VND',
                     'unit_amount'  => $unit_amount,
                 ],
                 'quantity' => $quantity
