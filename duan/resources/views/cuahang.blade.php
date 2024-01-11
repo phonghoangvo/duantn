@@ -40,6 +40,13 @@
                 </div>
             </div>
 
+            <p>
+                <label for="amount">Khoảng giá:</label>
+                <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+              </p>
+               
+              <div id="slider-range"></div>
+
         </section>
         <section class="col-lg-9">
             <div class="thanhchucnang bg-white">
