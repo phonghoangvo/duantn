@@ -36,7 +36,6 @@ class Tincontroller extends Controller
         $danhmucsach = DB::table('category')
             ->select('id', 'name')
             ->orderby('thutu', 'asc')
-            ->where('name', 'LIKE', '%Sách%')
             ->where('hidden', '=', '1')
             ->get();
 
