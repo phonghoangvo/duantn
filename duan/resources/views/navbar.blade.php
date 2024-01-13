@@ -23,14 +23,6 @@
                             <form action="{{route('timkiem')}}" method="GET" class="input-group">
                                 <input type="text" name="timkiem" class="form-control" placeholder="Tìm kiếm sản phẩm" aria-label="Tìm kiếm sản phẩm" aria-describedby="button-addon2">
                                 <button class="btn btn border-0" style="background-color: #f27024" type="submit" id="button-addon2"><i class="bi bi-search" style="color: white"></i></button>
-                                {{-- <div class="row">
-                                    <div class="col-md-10">
-                                    <input type="text" name="timkiem" class="form-control" placeholder="Tìm kiếm sản phẩm" aria-label="Tìm kiếm sản phẩm" aria-describedby="button-addon2">
-                                    </div>
-                                    <div class="col-md-2">
-                                    <button class="btn btn border-0" style="background-color: #f27024" type="submit" id="button-addon2"><i class="bi bi-search" style="color: white"></i></button>
-                                    </div>
-                                </div> --}}
                             </form>
                         </div>
                         </li>
