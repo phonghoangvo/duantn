@@ -73,7 +73,7 @@
                     <div class="col-md-6 col-lg-4 col-xl-3 p-2 sanpham mb-2">
                         <div class="boxsanpham  p-2"><a href="{{url('/chitiet/'.$sanpham->id)}}">
                             <div class="img">
-                                <img src="{{$sanpham->img}}"
+                                <img src="/{{$sanpham->img}}"
                                     alt="{{$sanpham->name}}" width="200px" height="200px">
                             </div>
                             <div class="title">

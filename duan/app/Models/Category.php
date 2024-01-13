@@ -15,7 +15,6 @@ class Category extends Model
         'img',
         'hidden',
         'thutu',
-        'slug',
     ];
     public function product(){
         return $this->hasMany('App\Models\Cuahang');

@@ -21,11 +21,10 @@ class Cuahang extends Model
         'hidden',
         'tacgia',
         'nhaxuatban',
-        'idCategory',
         'tomTat',
         'ngayDang',
     ];
     public function category(){
-        return $this->belongsTo('App\Models\Category','idCategory');
+        return $this->belongsTo('App\Models\Category','id');
     }
 }
