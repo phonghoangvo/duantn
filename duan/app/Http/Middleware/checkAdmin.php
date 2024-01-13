@@ -5,7 +5,9 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Auth;
+
+// use function Laravel\Prompts\alert;
+
 class checkAdmin
 {
     /**
@@ -15,9 +17,14 @@ class checkAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->id_group == 1) {
+        // if (Auth::check() && Auth::user()->id_group == 0) {
+        //     return $next($request);
+        // }
+        if(auth()->user()->id_group == 1){
             return $next($request);
-        }
-        abort(403, 'Bạn không đủ quyền để truy cập!!');
+        }else return redirect('/');
+         
+            
+        // abort(403, 'Bạn không đủ quyền để truy cập!!');
     }
 }

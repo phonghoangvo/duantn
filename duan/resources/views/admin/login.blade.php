@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="/ad/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
 
 </head>
 

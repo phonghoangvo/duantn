@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Forgot Password</title>
+    <title>Quên Mật Khẩu</title>
 
     <!-- Custom fonts for this template-->
     <link href="/ad/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,7 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="/ad/css/sb-admin-2.min.css" rel="stylesheet">
-
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
 </head>
 <body class="bg-gradient-primary">
 
@@ -38,9 +38,9 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-2">Forgot Your Password?</h1>
-                                        <p class="mb-4">We get it, stuff happens. Just enter your email address below
-                                            and we'll send you a link to reset your password!</p>
+                                        <h1 class="h4 text-gray-900 mb-2">Bạn Quên Mật Khẩu?</h1>
+                                        <p class="mb-4">Đừng lo, chúng tôi sẽ gửi cho bạn liên kết đặt lại mật khẩu qua email
+                                            mà bạn đã đăng ký. Vui lòng nhập email của bạn vào bên dưới!</p>
                                     </div>
                                         @if (session('thongbao'))
                                             <div class="alert alert-success">
@@ -55,15 +55,15 @@
                                                 placeholder="Enter Email Address..." name="email">
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
-                                            Reset Password
+                                            Đặt Lại Mật Khẩu
                                         </button>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
+                                        <a class="small" href="/register">Đăng ký tài khoản mới!</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="login.html">Already have an account? Login!</a>
+                                        <a class="small" href="/login">Bạn đã có tài khoản rồi? Đăng nhập!</a>
                                     </div>
                                 </div>
                             </div>

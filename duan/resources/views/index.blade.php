@@ -8,11 +8,11 @@
  <!-- Product Hot Start -->
  <section>
     <div class="container bg-success-subtle px-4 pb-2" style="border-radius: 5px;">
-        <h3 class="text-center pt-2">SALE</h3>
+        <h3 class="text-center pt-2">SẢN PHẨM ĐANG GIẢM GIÁ</h3>
         <div class="row  pt-2 pb-2">
             <div class="col-xl-2 col-sm-4 p-1 px-1">
                 <div class="card border-0">
-                    <img class="card-img-top" src=" {{$giamgia[0]->img}}" alt="" width="100%" height="250px">
+                    <img class="card-img-top" src="{{($giamgia[0]->img)}}" alt="" width="100%" height="250px">
                     <div class="middle">
                         <a href="{{url('/chitiet',$giamgia[0]->id)}}" class="btn btn-light zoom border-0">
                             <i class=" bi bi-zoom-in"></i>
@@ -178,7 +178,7 @@
 </div>
 <section class="pt-2 pb-2">
     <div class="container bg-success-subtle px-4 pt-2 pb-2" style="border-radius: 5px;">
-        <h3 class="text-center pt-2">BOOK</h3>
+        <h3 class="text-center pt-2">SÁCH</h3>
         <div class="row  pt-2 pb-2">
             <div class="col-xl-2 col-sm-4 p-1 px-1">
                 <div class="card border-0">
@@ -206,7 +206,7 @@
             </div>
             <div class="col-xl-2 col-sm-4 p-1 px-1">
                 <div class="card border-0">
-                    <img class="card-img-top" src=" {{$hot[1]->img}}" alt="" width="100%" height="250px">
+                    <img class="card-img-top" src="{{$hot[1]->img}}" alt="" width="100%" height="250px">
                     <div class="middle">
                         <a href="{{url('/chitiet',$hot[1]->id)}}" class="btn btn-light zoom border-0">
                             <i class=" bi bi-zoom-in"></i>
@@ -344,7 +344,7 @@
         <img class="w-100" src="img/van-phong-pham.jpg" alt="">
     </a>
 </div>
-<section class="pt-2 pb-2">
+{{-- <section class="pt-2 pb-2">
     <div class="container bg-success-subtle px-4 pt-2 pb-2" style="border-radius: 5px;">
         <h3 class="text-center pt-2">VĂN PHÒNG PHẨM</h3>
         <div class="row  pt-2 pb-2">
@@ -503,7 +503,7 @@
             </a>
         </div>
     </div>
-</section>
+</section> --}}
 <!-- Product Văn phòng phẩm End -->
 <!-- Product Lịch Start -->
 <div class="container pt-2 pb-2 px-0">
@@ -511,7 +511,7 @@
         <img class="w-100" src="img/lich_banner.png" alt="">
     </a>
 </div>
-<section class="pt-2 pb-2">
+{{-- <section class="pt-2 pb-2">
     <div class="container bg-success-subtle px-4 pt-2 pb-2" style="border-radius: 5px;">
         <h3 class="text-center pt-2">LỊCH</h3>
         <div class="row  pt-2 pb-2">
@@ -669,7 +669,7 @@
             </a>
         </div>
     </div>
-</section>
+</section> --}}
 <!-- Product Lịch End -->
 <!-- Product Tập Start -->
 <div class="container pt-2 pb-2 px-0">
@@ -677,7 +677,7 @@
         <img class="w-100" src="img/tap-banner.png" alt="">
     </a>
 </div>
-<section class="pt-2 pb-2">
+{{-- <section class="pt-2 pb-2">
     <div class="container bg-success-subtle px-4 pt-2 pb-2" style="border-radius: 5px;">
         <h3 class="text-center pt-2">TẬP</h3>
         <div class="row pt-2 pb-2">
@@ -835,7 +835,7 @@
             </a>
         </div>
     </div>
-</section>
+</section> --}}
 <!-- Product Tập End -->
 
 

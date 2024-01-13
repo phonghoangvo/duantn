@@ -84,7 +84,7 @@
                 alert('Sản phẩm đã được thêm vào giỏ hàng.');
 
                 setTimeout(() => {
-                    window.location.href = "{{ route('thanhtoan') }}";
+                    window.location.href = "{{ route('checkout') }}";
                 }, 1000);
             })
             .catch(error => {

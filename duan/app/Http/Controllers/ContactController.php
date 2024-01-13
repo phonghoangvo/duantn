@@ -29,9 +29,9 @@ class ContactController extends Controller
                         ->from($mail_data['fromEmail'],$mail_data['fromName'])
                         ->subject($mail_data['chude']);
            });
-           return redirect()->back()->with('success','Gui mail thanh cong');
+           return redirect()->back()->with('success','Gửi mail thành công');
         }else{
-            return redirect()->back()->withInput()->with('error','Vui long kiem tra Internet');
+            return redirect()->back()->withInput()->with('error','Vui lòng kiểm tra kết nối Internet');
 
         }
     }
