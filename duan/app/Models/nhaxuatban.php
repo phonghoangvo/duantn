@@ -5,18 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class nhaxuatban extends Model
 {
     use HasFactory;
-    protected $table ='category';
+    protected $table ='nhaxuatban';
     protected $primaryKey='id';
     protected $fillable=[
         'name',
         'img',
-        'hidden',
-        'thutu',
     ];
-    public function product(){
-        return $this->hasMany('App\Models\Cuahang');
-    }
 }

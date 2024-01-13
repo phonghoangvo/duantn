@@ -27,24 +27,6 @@
                                 @endforeach
                             </ul>
                         </div>
-                        {{-- <div class="btn-group drop">
-                            @foreach ($danhmucvpp as $dmvpp)
-                            <button type="button"  class="btn align-items-center justify-content-between shadow-none d-flex w-100 border-bottom border-0 ">
-                                <a href="{{ route('cuahang', ['id' => $dmvpp->id]) }}"><span>{{$dmvpp->name}}</span></a>
-                            @endforeach
-                        </div> --}}
-                        {{-- <div class="btn-group drop">
-                            @foreach ($danhmuclich as $dml)
-                            <button type="button"  class="btn align-items-center justify-content-between shadow-none d-flex w-100 border-bottom border-0 ">
-                                <a href="{{ route('cuahang', ['id' => $dml->id]) }}"><span>{{$dml->name}}</span></a>
-                            @endforeach
-                        </div> --}}
-                        {{-- <div class="btn-group drop">
-                            @foreach ($danhmuctap as $dmt)
-                            <button type="button" class="btn align-items-center justify-content-between shadow-none d-flex w-100 border-bottom border-0 ">
-                                <a href="{{ route('cuahang', ['id' => $dmt->id]) }}"><span>{{$dmt->name}}</span></a>
-                            @endforeach
-                        </div> --}}
                     </div>
                 </div>
                 <div class="bg-sale">

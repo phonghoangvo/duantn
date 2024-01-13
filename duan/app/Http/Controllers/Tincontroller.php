@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
 use App\Models\Tintuc;
+use App\Models\Yeuthich;
 use App\Models\Cuahang;
+use App\Models\Product;
 use App\Models\Comment;
 use App\Models\Category;
+use App\Models\pro_cate;
 Paginator::useBootstrap();
 
 use Illuminate\Http\Request;
@@ -16,7 +19,7 @@ class Tincontroller extends Controller
     function index()
     {
         $giamgia = DB::table('product')
-            ->where('giamgia', 1)
+            // ->where('giamgia', 1)
             ->where('hidden', 1)
             ->orderBy('ngayDang', 'desc')
             ->limit(6)
@@ -29,67 +32,17 @@ class Tincontroller extends Controller
             ->limit(6)
             ->get();
 
-        $vanphongpham = DB::table('product')
-            ->where('idCategory', 28)
-            ->where('hidden', 1)
-            ->orderBy('ngayDang', 'desc')
-            ->limit(6)
-            ->get();
-
-        $lich = DB::table('product')
-            ->where('idCategory', 29)
-            ->where('hidden', 1)
-            ->orderBy('ngayDang', 'desc')
-            ->limit(6)
-            ->get();
-
-        $tap = DB::table('product')
-            ->where('idCategory', 30)
-            ->where('hidden', 1)
-            ->orderBy('ngayDang', 'desc')
-            ->limit(6)
-            ->get();
-
 
         $danhmucsach = DB::table('category')
-            ->select('id', 'name','slug')
-            ->orderby('thutu', 'asc')
-            ->where('name', 'LIKE', '%Sách%')
-            ->where('hidden', '=', '1')
-            ->get();
-
-
-            $danhmucvpp = DB::table('category')
             ->select('id', 'name')
             ->orderby('thutu', 'asc')
-            ->where('name', 'LIKE', '%Văn phòng phẩm%')
-            ->where('hidden', '=', '1')
-            ->get();
-
-        $danhmuclich = DB::table('category')
-            ->select('id', 'name')
-            ->orderby('thutu', 'asc')
-            ->where('name', 'LIKE', '%Lịch%')
-            ->where('hidden', '=', '1')
-            ->get();
-
-        $danhmuctap = DB::table('category')
-            ->select('id', 'name')
-            ->orderby('thutu', 'asc')
-            ->where('name', 'LIKE', '%Tập%')
             ->where('hidden', '=', '1')
             ->get();
 
         return view('index', [
             'giamgia' => $giamgia,
             'hot' => $hot,
-            'vanphongpham' => $vanphongpham,
-            'lich' => $lich,
-            'tap' => $tap,
             'danhmucsach' => $danhmucsach,
-            'danhmucvpp' => $danhmucvpp,
-            'danhmuclich' => $danhmuclich,
-            'danhmuctap' => $danhmuctap,
 
         ]);
     }
@@ -102,34 +55,34 @@ class Tincontroller extends Controller
     // Kiểm tra xem có $id được truyền vào hay không
     if ($id !== null) {
         // Nếu có $id được truyền vào, thực hiện tìm kiếm theo thể loại
-        $products = Cuahang::where('idCategory', $id)->paginate($perpage)->withQueryString();
+        $products = Cuahang::where('id', $id)->paginate($perpage)->withQueryString();
     } else {
         // Ngược lại, hiển thị tất cả sản phẩm
         $products = Cuahang::paginate($perpage)->withQueryString();
     }
 
     // Lấy danh mục sách từ tất cả sản phẩm (lấy một lần, không cần lặp)
-    $idCategories = $products->pluck('idCategory')->unique()->toArray();
+    $idCategories = $products->pluck('id')->unique()->toArray();
 
-    // Lọc và sắp xếp theo
-    $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'none';
+//     // Lọc và sắp xếp theo
+//     $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'none';
 
     switch ($sort_by) {
         case 'giagiamdan':
-            $products = Cuahang::with('category')->whereIn('idCategory', $idCategories)->orderBy('price', 'DESC')->paginate($perpage)->appends(request()->query());
+            $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('price', 'DESC')->paginate($perpage)->appends(request()->query());
             break;
         case 'giatangdan':
-            $products = Cuahang::with('category')->whereIn('idCategory', $idCategories)->orderBy('price', 'ASC')->paginate($perpage)->appends(request()->query());
+            $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('price', 'ASC')->paginate($perpage)->appends(request()->query());
             break;
         case 'tuadenz':
-            $products = Cuahang::with('category')->whereIn('idCategory', $idCategories)->orderBy('name', 'DESC')->paginate($perpage)->appends(request()->query());
+            $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('name', 'DESC')->paginate($perpage)->appends(request()->query());
             break;
         case 'tuzdena':
-            $products = Cuahang::with('category')->whereIn('idCategory', $idCategories)->orderBy('name', 'ASC')->paginate($perpage)->appends(request()->query());
+            $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('name', 'ASC')->paginate($perpage)->appends(request()->query());
             break;
         default:
             // Mặc định sắp xếp theo id giảm dần
-            $products = Cuahang::with('category')->whereIn('idCategory', $idCategories)->orderBy('id', 'DESC')->paginate($perpage)->appends(request()->query());
+            $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('id', 'DESC')->paginate($perpage)->appends(request()->query());
             break;
     }
 
@@ -176,20 +129,35 @@ public function timkiem(Request $request)
             ->get();
         $products = cuahang::where('id','=',$id)->get();
         $comment = Comment::where('idProduct',$products[0]->id)->orderBy('id','DESC')->get();
-
+        $tg = Product::where('id','=',$id)->get();
         foreach ($products as $key => $value) {
             $idCategory = $value->idCategory;
         }
-
-        $sanphamlienquan = DB::table('product')
+        $yeuthich = Product::where('id', '=', $id)->get();
+        $sanphamlienquan = DB::table('pro_cate')
             ->where('idCategory',$idCategory)
             ->limit(6)
             ->get();
 
-        return view('chitiet',compact('products','hot','comment'))
+        return view('chitiet',compact('products','hot','comment','yeuthich','tg'))
         ->with('sanphamlienquan',$sanphamlienquan);
     }
-    
+    public function favorite($idProduct){
+        $data = [
+            'idProduct' =>  $idProduct,
+            'idUser' => auth()->id()
+        ];
+        $yeuthich = Yeuthich::where(['idProduct' => $idProduct,'idUser'=> auth()->id()])->first();
+        if($yeuthich){
+            
+            $yeuthich->delete();
+            return redirect()->back()->with('ok','Bạn đã bỏ yêu thích sản phẩm'); 
+             
+        }else{
+            Yeuthich::create($data);
+            return redirect()->back()->with('ok','Bạn đã yêu thích sản phẩm');  
+        }
+    }
     public function post_comment($proId){
         $data = request()->all('content');
         $data['idProduct'] = $proId;

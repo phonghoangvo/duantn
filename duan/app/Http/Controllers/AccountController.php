@@ -37,6 +37,10 @@ class AccountController extends Controller
     public function register(){
         return view('admin.register');
     }
+    public function favorite(){
+        $yeuthich = auth()->user()->yeuthich;
+        return view('favorite',compact('yeuthich'));
+    }
     public function register_()
     {
         $user = new User();

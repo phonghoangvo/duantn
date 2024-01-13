@@ -5,18 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class tacgia extends Model
 {
     use HasFactory;
-    protected $table ='category';
+    protected $table ='tacgia';
     protected $primaryKey='id';
     protected $fillable=[
         'name',
         'img',
-        'hidden',
-        'thutu',
     ];
-    public function product(){
-        return $this->hasMany('App\Models\Cuahang');
+    
+    
+    public function protg()
+    {
+        return $this->belongsTo('App\Models\Product','idTacgia');
     }
 }
