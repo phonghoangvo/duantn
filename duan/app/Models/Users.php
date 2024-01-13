@@ -12,10 +12,10 @@ class Users extends Model
     protected $primaryKey = 'id';
     protected $fillable =[
         'name',
-        'email',
         'address',
+        'email',
         'phone',
-        'avatar',
-        'password'
+        'password',
+        'avatar'
     ];
 }

@@ -12,7 +12,7 @@
         <div class="row  pt-2 pb-2">
             <div class="col-xl-2 col-sm-4 p-1 px-1">
                 <div class="card border-0">
-                    <img class="card-img-top" src=" {{$giamgia[0]->img}}" alt="" width="100%" height="250px">
+                    <img class="card-img-top" src="{{$giamgia[0]->img}}" alt="" width="100%" height="250px">
                     <div class="middle">
                         <a href="{{url('/chitiet',$giamgia[0]->id)}}" class="btn btn-light zoom border-0">
                             <i class=" bi bi-zoom-in"></i>
@@ -23,8 +23,8 @@
                         <div class="row d-flex">
                             <div class="col-sm-10">
                                 <p>
-                                    <span style="color: red;"><b>{{number_format($giamgia[0]->priceSale)}}₫</b></span><br>
-                                    <span><del>{{number_format($giamgia[0]->price)}} ₫</del></span>
+                                    <span style="color: red;"><b>{{number_format($giamgia[0]->priceSale)}}.000₫</b></span><br>
+                                    <span><del>{{number_format($giamgia[0]->price)}}.000 ₫</del></span>
                                 </p>
                             </div>
                             <div class="col-sm-2">
@@ -47,8 +47,8 @@
                         <div class="row d-flex">
                             <div class="col-sm-10">
                                 <p>
-                                    <span style="color: red;"><b>{{number_format($giamgia[1]->priceSale)}}₫</b></span><br>
-                                    <span><del>{{number_format($giamgia[1]->price)}} ₫</del></span>
+                                    <span style="color: red;"><b>{{number_format($giamgia[1]->priceSale)}}.000₫</b></span><br>
+                                    <span><del>{{number_format($giamgia[1]->price)}}.000 ₫</del></span>
                                 </p>
                             </div>
                             <div class="col-sm-2">
@@ -71,8 +71,8 @@
                         <div class="row d-flex">
                             <div class="col-sm-10">
                                 <p>
-                                    <span style="color: red;"><b>{{number_format($giamgia[2]->priceSale)}}₫</b></span><br>
-                                    <span><del>{{number_format($giamgia[2]->price)}} ₫</del></span>
+                                    <span style="color: red;"><b>{{number_format($giamgia[2]->priceSale)}}.000₫</b></span><br>
+                                    <span><del>{{number_format($giamgia[2]->price)}}.000 ₫</del></span>
                                 </p>
                             </div>
                             <div class="col-sm-2">
@@ -95,8 +95,8 @@
                         <div class="row d-flex">
                             <div class="col-sm-10">
                                 <p>
-                                    <span style="color: red;"><b>{{number_format($giamgia[3]->priceSale)}}₫</b></span><br>
-                                    <span><del>{{number_format($giamgia[3]->price)}} ₫</del></span>
+                                    <span style="color: red;"><b>{{number_format($giamgia[3]->priceSale)}}.000₫</b></span><br>
+                                    <span><del>{{number_format($giamgia[3]->price)}}.000₫</del></span>
                                 </p>
                             </div>
                             <div class="col-sm-2">
@@ -119,8 +119,8 @@
                         <div class="row d-flex">
                             <div class="col-sm-10">
                                 <p>
-                                    <span style="color: red;"><b>{{number_format($giamgia[4]->priceSale)}}₫</b></span><br>
-                                    <span><del>{{number_format($giamgia[4]->price)}} ₫</del></span>
+                                    <span style="color: red;"><b>{{number_format($giamgia[4]->priceSale)}}.000₫</b></span><br>
+                                    <span><del>{{number_format($giamgia[4]->price)}}.000₫</del></span>
                                 </p>
                             </div>
                             <div class="col-sm-2">
@@ -143,8 +143,8 @@
                         <div class="row d-flex">
                             <div class="col-sm-10">
                                 <p>
-                                    <span style="color: red;"><b>{{number_format($giamgia[5]->priceSale)}}₫</b></span><br>
-                                    <span><del>{{number_format($giamgia[5]->price)}} ₫</del></span>
+                                    <span style="color: red;"><b>{{number_format($giamgia[5]->priceSale)}}.000₫</b></span><br>
+                                    <span><del>{{number_format($giamgia[5]->price)}}.000₫</del></span>
                                 </p>
                             </div>
                             <div class="col-sm-2">
@@ -171,7 +171,7 @@
 </section>
 <!-- Product Hot End -->
 <!-- Product Sách Start -->
-<div class="container pt-2 pb-2 px-0">
+{{-- <div class="container pt-2 pb-2 px-0">
     <a href="#">
         <img class="w-100" src="img/sach-banner.jpg" alt="">
     </a>
@@ -835,7 +835,7 @@
             </a>
         </div>
     </div>
-</section>
+</section> --}}
 <!-- Product Tập End -->
 
 

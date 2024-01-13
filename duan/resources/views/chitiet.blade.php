@@ -54,8 +54,13 @@ Chi tiết sản phẩm
             <div class="col-sm-7 p-4">
                 <div class="pb-1">
                     <h4 class="pb-1">{{$value->name}}</h4>
+<<<<<<< Updated upstream
                     <small>Thương hiệu: <b>{{$value->nhaxuatban}}</b></small><br>
                     <small>Mã sản phẩm: <a href="#">{{$value->id}}</a></small>
+=======
+                    <small>Luot xem: <b>{{$value->luotxem}}</b></small><br>
+                    <small>Yeu thich: <b>{{$value->yeuthich}}</b></small>
+>>>>>>> Stashed changes
                 </div>
                 <div class="col-md-0">
                     @if($value->quantity > 0)
@@ -64,8 +69,12 @@ Chi tiết sản phẩm
                     <label class="badge bg-danger">Hết Hàng</label>
                     @endif
                 </div>
+<<<<<<< Updated upstream
                 <div class="pt-3 pb-3" style="font-size: 25px;"><b class="text-danger">{{number_format($value->price)}}
                         đ</b>
+=======
+                <div class="pt-3 pb-3" style="font-size: 25px;"><b class="text-danger">{{number_format($value->price)}}.000đ</b>
+>>>>>>> Stashed changes
                 </div>
                 <div id="amount" class="d-flex align-items-center pt-3 pb-3">
                     <span>Số lượng:</span>
@@ -168,6 +177,7 @@ Chi tiết sản phẩm
                             <th>Tên sách:</th>
                             <td>{{$value->name}}</td>
                         </tr>
+<<<<<<< Updated upstream
                         <tr>
                             <th>Tác giả:</th>
                             <td>{{$value->tacgia}}</td>
@@ -193,6 +203,26 @@ Chi tiết sản phẩm
                             <td>19x 27 cm</td>
                         </tr>
                     </table>
+=======
+                        @foreach ($tg as $tnxb)
+                        <tr>
+                            <th>Tác giả:</th>
+                            <td>{{$tnxb->protg->name}}</td>
+                        </tr>
+                        <tr>
+                            <th>Nhà xuất bản:</th>
+                            <td> {{$tnxb->nhaxuatban->name}}</td>
+                        </tr>
+                            
+                        @endforeach
+                        <tr>
+                            <th>Năm xuất bản:</th>
+                            <td>{{$value->namsanxuat}}</td>
+                        </tr>
+                    </table>
+                    <b style="color: red">Mô tả:</b><br>
+                    <p>{{$value->moTa}}</p>
+>>>>>>> Stashed changes
                 </div>
             </div>
             <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
@@ -264,14 +294,23 @@ Chi tiết sản phẩm
                                 </a>
                             </div>
                             <div class="card-body">
+<<<<<<< Updated upstream
                                 <a href="{{url('/chitiet/'.$lienquan->id)}}" class="text-decoration-none "
+=======
+                                <a href="{{url('/chitiet'.$lienquan->id)}}" class="text-decoration-none "
+>>>>>>> Stashed changes
                                     style="font-size: 13px; color: gray;">{{$lienquan->name}}</a>
                                 <div class="row d-flex">
                                     <div class="col-sm-10">
                                         <p>
                                             <span
+<<<<<<< Updated upstream
                                                 style="color: red;"><b>{{number_format($lienquan->price)}}</b></span><br>
                                             <span><del>{{number_format($lienquan->priceSale)}}</del></span>
+=======
+                                                style="color: red;"><b>{{number_format($lienquan->price)}}.000</b></span><br>
+                                            <span><del>{{number_format($lienquan->priceSale)}}.000</del></span>
+>>>>>>> Stashed changes
                                         </p>
                                     </div>
                                     <div class="col-sm-2">
