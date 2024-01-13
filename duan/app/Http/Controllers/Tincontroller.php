@@ -19,7 +19,7 @@ class Tincontroller extends Controller
     function index()
     {
         $giamgia = DB::table('product')
-            ->where('giamgia', 1)
+            // ->where('giamgia', 1)
             ->where('hidden', 1)
             ->orderBy('ngayDang', 'desc')
             ->limit(6)
@@ -64,8 +64,8 @@ class Tincontroller extends Controller
     // Lấy danh mục sách từ tất cả sản phẩm (lấy một lần, không cần lặp)
     $idCategories = $products->pluck('id')->unique()->toArray();
 
-    // Lọc và sắp xếp theo
-    $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'none';
+//     // Lọc và sắp xếp theo
+//     $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'none';
 
     switch ($sort_by) {
         case 'giagiamdan':
@@ -129,7 +129,7 @@ public function timkiem(Request $request)
             ->get();
         $products = cuahang::where('id','=',$id)->get();
         $comment = Comment::where('idProduct',$products[0]->id)->orderBy('id','DESC')->get();
-
+        $tg = Product::where('id','=',$id)->get();
         foreach ($products as $key => $value) {
             $idCategory = $value->idCategory;
         }
@@ -139,7 +139,7 @@ public function timkiem(Request $request)
             ->limit(6)
             ->get();
 
-        return view('chitiet',compact('products','hot','comment','yeuthich'))
+        return view('chitiet',compact('products','hot','comment','yeuthich','tg'))
         ->with('sanphamlienquan',$sanphamlienquan);
     }
     public function favorite($idProduct){
