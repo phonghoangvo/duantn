@@ -8,7 +8,7 @@
                         <i class="bi bi-list"></i>
                     </a>
                 </p>
-                {{-- <div class="collapse pb-3" id="collapseExample">
+                <div class="collapse pb-3" id="collapseExample">
                     <div class="card card-body">
                         <!-- Default dropend button -->
                         <div class="btn-group drop">
@@ -28,7 +28,7 @@
                             </ul>
                         </div>
                     </div>
-                </div> --}}
+                </div>
                 <div class="bg-sale">
                     <img src="/img/bg-sale.jpg" alt="" class="w-100 p-3">
                 </div>

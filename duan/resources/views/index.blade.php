@@ -171,7 +171,7 @@
 </section>
 <!-- Product Hot End -->
 <!-- Product Sách Start -->
-{{-- <div class="container pt-2 pb-2 px-0">
+<div class="container pt-2 pb-2 px-0">
     <a href="#">
         <img class="w-100" src="img/sach-banner.jpg" alt="">
     </a>
@@ -337,31 +337,6 @@
     </div>
     
 </section>
-<!-- Product Sách End -->
-<!-- Product Văn phòng phẩm Start -->
-<div class="container pt-2 pb-2 px-0">
-    <a href="">
-        <img class="w-100" src="img/van-phong-pham.jpg" alt="">
-    </a>
-</div>
-
-<!-- Product Lịch Start -->
-<div class="container pt-2 pb-2 px-0">
-    <a href="">
-        <img class="w-100" src="img/lich_banner.png" alt="">
-    </a>
-</div>
-
-<!-- Product Lịch End -->
-<!-- Product Tập Start -->
-<div class="container pt-2 pb-2 px-0">
-    <a href="">
-        <img class="w-100" src="img/tap-banner.png" alt="">
-    </a>
-</div>
-<!-- Product Tập End -->
-
-
 
 
 
