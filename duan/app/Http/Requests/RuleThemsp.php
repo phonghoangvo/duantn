@@ -25,11 +25,15 @@ class RuleThemsp extends FormRequest
             'name' => ['required'],
             'price' => ['required'],
             'priceSale'=> ['required'],
-            'nhacungcap'=> ['required'],
-            'nhaxuatban'=> ['required'],
-            'tacgia'=> ['required'],
+            'luotxem'=> ['required'],
+            'namsanxuat'=> ['required'],
+            'idVoucher'=> ['required'],
+            'yeuthich'=> ['required'],
+            'quantity'=> ['required'],
+            'idTacgia'=> ['required'],
+            'idNhaxuatban'=> ['required'],
             'moTa'=> ['required'],
-            'idCategory'=> ['required'],
+            'tomTat'=> ['required'],
             'img'=> ['required']
         ];
     }
@@ -38,12 +42,17 @@ class RuleThemsp extends FormRequest
             'name.required' => 'Phải nhập tên sản phẩm',
             'price.required' => 'Phải nhập giá sản phẩm',
             'priceSale.required'=> 'Có thể nhập 0',
-            'nhacungcap.required'=> 'Phải nhập nhà cung cấp',
-            'nhaxuatban.required'=> 'Phải nhập nhà xuất bản',
-            'tacgia.required'=> 'Phải nhập tên tác giả',
+            'luotxem.required'=> 'Có thể nhập 0',
+            'namsanxuat.required'=> 'Nhập năm sản xuất',
+            'idVoucher.required'=> 'Nhập thêm voucher',
+            'quantity.required'=> 'Có thể nhập 0',
+            'yeuthich.required'=> 'Có thể nhập 0',
+            'idTacgia.required'=> 'Phải nhập tên tác giả',
+            'idNhaxuatban.required'=> 'Phải nhập nhà xuất bản',
             'ngayDang.required'=> 'Cần nhập ngày đăng ',
-            'moTa.required'=> 'Phải có mô tả',
-            'idCategory.required'=> 'Phải có danh mục sản phẩm',
+            'moTa.required'=> 'Phải có mô tả',  
+            'tomTat.required'=> 'Phải có tóm tắt',  
+            'tomTat.required'=> 'Có thể nhập 0',  
             'img.required'=> 'Phải có hình ảnh'
         ];
     }
