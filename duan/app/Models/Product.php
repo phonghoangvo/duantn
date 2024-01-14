@@ -33,8 +33,6 @@ class Product extends Model
     public function comment(){
         return $this->hasMany(comment::class);
     }
-<<<<<<< Updated upstream
-=======
     public function cate(){
         return $this->hasOne(Pro_cate::class,'id','idProduct');
     }
@@ -47,7 +45,6 @@ class Product extends Model
     public function nhaxuatban(){
         return $this->hasOne(nhaxuatban::class,'id','idNhaxuatban');
     }
->>>>>>> Stashed changes
     public function getyeuthichAttribute(){
         $yeuthich = Yeuthich::where(['idProduct' => $this->id,'idUser'=> auth()->id()])->first();
         return $yeuthich ? true : false;

@@ -10,6 +10,8 @@ use App\Models\Product;
 use App\Models\Comment;
 use App\Models\Category;
 use App\Models\pro_cate;
+use App\Models\nhaxuatban;
+use App\Models\tacgia;
 Paginator::useBootstrap();
 
 use Illuminate\Http\Request;
@@ -19,31 +21,49 @@ class Tincontroller extends Controller
     function index()
     {
         $giamgia = DB::table('product')
-            // ->where('giamgia', 1)
+            ->where('giamgia', 1)
             ->where('hidden', 1)
             ->orderBy('ngayDang', 'desc')
-            ->limit(6)
+            ->take(6)
             ->get();
 
         $hot = DB::table('product')
             ->where('hot', 1)
             ->where('hidden', 1)
             ->orderBy('ngayDang', 'desc')
-            ->limit(6)
+            ->take(6)
             ->get();
 
+        $danhchoban= DB::table('product')
+        ->where('hidden', 1)
+        ->orderBy(DB::raw('CAST(luotxem AS SIGNED)'), 'desc')
+        ->take(6)
+        ->get();
+
+        $yeuthich= DB::table('product')
+        ->where('hidden', 1)
+        ->orderBy(DB::raw('CAST(yeuthich AS SIGNED)'), 'desc')
+        ->take(6)
+        ->get();
 
         $danhmucsach = DB::table('category')
             ->select('id', 'name')
-            ->orderby('thutu', 'asc')
+            ->orderByRaw('CAST(thutu AS SIGNED) ASC')
             ->where('hidden', '=', '1')
+            ->get();
+
+
+        $nhaxuatban = DB::table('nhaxuatban')
+            ->select('name','img')
             ->get();
 
         return view('index', [
             'giamgia' => $giamgia,
             'hot' => $hot,
             'danhmucsach' => $danhmucsach,
-
+            'nhaxuatban' => $nhaxuatban,
+            'danhchoban' => $danhchoban,
+            'yeuthich' => $yeuthich,
         ]);
     }
 
@@ -65,7 +85,7 @@ class Tincontroller extends Controller
     $idCategories = $products->pluck('id')->unique()->toArray();
 
 //     // Lọc và sắp xếp theo
-//     $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'none';
+    $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'none';
 
     switch ($sort_by) {
         case 'giagiamdan':
@@ -119,6 +139,9 @@ public function timkiem(Request $request)
     return view('cuahang', ['products' => $products]);
 }
 
+    //tacgia
+    // 
+      
     //chitietsanpham
     public function chitiet($id){ 
         $hot = DB::table('product')

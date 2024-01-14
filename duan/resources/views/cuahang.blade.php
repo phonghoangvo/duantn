@@ -19,12 +19,12 @@
     
     <div class="row">
         <section class="col-lg-3 ">
-            <div class=" boxloai bg-white">
+            <div class=" boxloai mb-4 bg-white">
                 <h3 class="p-2">Sản phẩm theo loại</h3>
                 <div class="danhmuc">
                     <?php
                     $danhmuc = DB::table('category')->select('id','name')
-                    ->orderby('thutu','asc')
+                    ->orderByRaw('CAST(thutu AS SIGNED) ASC')
                     ->where('hidden','=','1')
                     ->get();
                     ?>
@@ -40,13 +40,53 @@
                 </div>
             </div>
 
-            <p>
+            <div class="boxloai mb-4 bg-white">
+                <h3 class="p-2">Tác giả</h3>
+                <?php
+                    $tacgia = DB::table('tacgia')
+                    ->select('id','name')
+                    ->get();
+                    ?>
+                <div class="danhmuc">
+                    @foreach ($tacgia as $tg)
+                        <label><input type="checkbox" name="tacgia" value="tacgia{{$tg->id}}"> {{$tg->name}}</label>
+
+                     @endforeach
+                </div>
+            </div>
+        
+            <div class="boxloai mb-4 bg-white">
+                <h3 class="p-2">Nhà xuất bản</h3>
+                <?php
+                $nhaxuatban = DB::table('nhaxuatban')
+                ->select('id','name')
+                ->get();
+                ?>
+                <div class="danhmuc">
+                    @foreach ($nhaxuatban as $nhaxuatban)
+                        <label>
+                            <input type="checkbox" name="nhaxuatban" value="{{ $nhaxuatban->id }}">
+                            {{ $nhaxuatban->name }}
+                        </label>
+                    @endforeach
+
+                
+                </div>
+            </div>
+            
+            <div class="boxloai mb-4 bg-white">
+                <h3 class="p-2">Lọc theo giá</h3>
+                <div class="locgia">
+                <p>
                 <label for="amount">Khoảng giá:</label>
                 <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-              </p>
+                </p>
+                <div id="slider-range"></div>
+                </div>
                
-              <div id="slider-range"></div>
+              
 
+            </div>
         </section>
         <section class="col-lg-9">
             <div class="thanhchucnang bg-white">
