@@ -23,14 +23,6 @@ Dashboard - Quản Trị Website
                         <label for="name" class="formbold-form-label"> Tên Danh Mục </label>
                     </div>
                 </div>
-
-                <div class="formbold-input-flex">
-                    <div>
-                        <input type="name" name="slug" id="slug" placeholder="Nhập Slug"
-                            class="formbold-form-input" value="{{$cate->slug}}" />
-                        <label for="slug" class="formbold-form-label"> Slug </label>
-                    </div>
-                </div>
                 <div class="formbold-input-flex">
                     <div>
                         <input type="text" style="width:550px" name="thutu" id="thutu"
@@ -46,7 +38,7 @@ Dashboard - Quản Trị Website
                 <div class="button">
                     <input type="submit" value="Cập Nhật" class="formbold-btn">
                     <button class="formbold-btn">
-                        <a style="text-decoration: none;color:white" href="{{url('/admin/listcate')}}">Danh sách sản phẩm </a>
+                        <a style="text-decoration: none;color:white" href="{{url('/admin/listcate')}}">Danh sách danh mục </a>
                     </button>
 
                 </div>

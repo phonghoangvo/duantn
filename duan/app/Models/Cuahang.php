@@ -12,19 +12,28 @@ class Cuahang extends Model
     protected $primaryKey='id';
     protected $dates=['ngayDang'];
     protected $fillable=[
-        'name',
-        'img',
-        'price',
-        'priceSale',
-        'moTa',
-        'hot',
-        'hidden',
-        'tacgia',
-        'nhaxuatban',
-        'tomTat',
-        'ngayDang',
+        'name',	
+        'img',	
+        'price',	
+        'priceSale',	
+        'luotxem',	
+        'tomTat',	
+        'moTa',	
+        'ngayDang',	
+        'namsanxuat',	
+        'idNhaxuatban',	
+        'idTacgia',	
+        'idVoucher',	
+        'yeuthich',	
+        'quantity',	
+        'giamgia',	
+        'hidden',	
+        'hot'
     ];
+    public function cate(){
+        return $this->hasOne(Pro_cate::class,'id','idProduct');
+    }
     public function category(){
-        return $this->belongsTo('App\Models\Category','id');
+        return $this->belongsTo(Category::class,'id');
     }
 }

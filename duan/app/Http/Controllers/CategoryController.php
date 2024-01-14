@@ -32,7 +32,6 @@ class CategoryController extends Controller
         $cate = Category::find($id);
         $cate-> name = $request->input('name');
         $cate-> thutu = $request->input('thutu');
-        $cate-> slug = $request->input('slug');
         $cate->update();
         return redirect()->back() -> with('success','Danh mục đã được cập nhật thành công');
 
