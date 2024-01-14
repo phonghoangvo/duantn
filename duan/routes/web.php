@@ -24,7 +24,7 @@ Use App\Http\Controllers\SessionsController;
 
 
 //giaodien
-Route::get('/', [ProductController::class, 'index']);
+Route::get('/', [TinController::class, 'index']);
 Route::get('/news', [TinController::class, 'news']);
 Route::get('/gioithieu', [TinController::class, 'gioithieu']);
 Route::get('/news/{id}', [TinController::class, 'chitietnew'])->name('chitietnew');
