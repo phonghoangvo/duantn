@@ -37,7 +37,6 @@ Dashboard - Quản Trị Website
                   <th scope="col" class="col-lg-1">Tên danh mục</th>
                     <th scope=" col" class="col-lg-1">Ẩn - Hiện</th>
                   <th scope="col" class="col-lg-1">Thứ tự</th>
-                  <th scope="col" class="col-lg-1">Slug</th>
                   <th scope="col" class="col-lg-1">Chức năng</th>
                 </tr>
               </thead>
@@ -48,7 +47,6 @@ Dashboard - Quản Trị Website
                   <td class="limited-text">{{$cate->name}}</td>
                   <td class="limited-text">{{$cate->hidden}}</td>
                   <td class="limited-text">{{$cate->thutu}}</td>
-                  <td class="limited-text">{{$cate->slug}}</td>
                   <td>
                     <a href="{{url('/admin/editcate/'.$cate->id)}}" title="Sua"><button type="button"
                         class="btn btn-info w-100 mb-2">Sửa</button></a>
