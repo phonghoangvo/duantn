@@ -44,23 +44,47 @@ Dashboard - Quản Trị Website
                                     value="{{$product->priceSale}}" />
                             </div>
 
-                            <div class="form-outline mb-4">
+                            {{-- <div class="form-outline mb-4">
                                 <label for="name" class="formbold-form-label"> Nhà cung cấp</label>
                                 <input type="text" name="nhacungcap" value="{{$product->nhacungcap}}" id="nhacungcap"
                                     placeholder="Nhập Nhà Cung Cấp" class="form-control" />
-                            </div>
+                            </div> --}}
 
-                            <div class="form-outline mb-4">
+                            {{-- <div class="form-outline mb-4">
                                 <label for="name" class="formbold-form-label"> Nhà xuất bản </label>
-                                <input type="text" name="nhaxuatban" id="nhaxuatban" value="{{$product->nhaxuatban}}"
+                                <input type="text" name="nhaxuatban" id="nhaxuatban" value="{{$product->nhaxuatban->name}}"
                                     placeholder="Nhập nhà xuất bản" class="form-control" />
+                            </div> --}}
+                            <div class="formbold-form-label">
+                                <label>Nhà xuất bản:</label><br>
+                                <select name="idNhaxuatban" required class="form-control">
+                                    <option value="">--Chọn--</option>
+                                    @foreach ($nxb as $nxb)
+                                    <option @if($nxb->id == $product->idNhaxuatban) selected @endif value="{{$nxb->id}}">
+                                        {{$nxb->name}}
+                                    </option>
+                                    {{-- <option value="{{$category->id}}">{{$category->name}}</option> --}}
+                                    @endforeach
+                                </select>
                             </div>
 
-                            <div class="form-outline mb-4">
+                            {{-- <div class="form-outline mb-4">
                                 <label for="name" class="formbold-form-label"> Tác giả</label>
                                 <input type="text" name="tacgia" id="tacgia" value="{{$product->tacgia}}"
                                     placeholder="Nhập Tên tác giả" class="form-control" />
-                            </div>
+                            </div> --}}
+                            <div class="formbold-form-label">
+                                <label>Tác giả:</label><br>
+                                <select name="idTacgia" required class="form-control">
+                                    <option value="">--Chọn--</option>
+                                    @foreach ($tg as $tg)
+                                    <option @if($tg->id == $product->idTacgia) selected @endif value="{{$tg->id}}">
+                                        {{$tg->name}}
+                                    </option>
+                                    {{-- <option value="{{$category->id}}">{{$category->name}}</option> --}}
+                                    @endforeach
+                                </select>
+                            </div><br>
                             <div class="form-outline mb-4">
                                 <label for="name" class="formbold-form-label"> Ngày đăng </label>
                                 <input type="date" name="ngayDang" id="ngayDang" value="{{$product->ngayDang}}"
@@ -79,14 +103,15 @@ Dashboard - Quản Trị Website
                                 <label>Danh mục:</label><br>
                                 <select name="idCategory" required class="form-control">
                                     <option value="1">--Danh Mục--</option>
-                                    @foreach ($category as $category)
-                                    <option @if($category->idCategory == $product->idCategory) selected @endif value="{{$category->id}}">
+                                    @foreach ($pro_cate as $category)
+                                    <option @if($category->pro_cate->id == $pro_cate->idCategory) selected @endif value="{{$category->id}}">
                                         {{$category->name}}
                                     </option>
+                                
                                     {{-- <option value="{{$category->id}}">{{$category->name}}</option> --}}
-                                    @endforeach
+                                     @endforeach
                                 </select>
-                            </div><br>
+                            </div><br> 
                             <label for="upload" class="formbold-input-label">
                                 Thêm Ảnh Sản Phẩm
 

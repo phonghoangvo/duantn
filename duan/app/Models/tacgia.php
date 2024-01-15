@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Product;
 
 class tacgia extends Model
 {
@@ -16,8 +17,7 @@ class tacgia extends Model
     ];
     
     
-    public function protg()
-    {
-        return $this->belongsTo('App\Models\Product','idTacgia');
+    public function Product(){
+        return $this->hasMany(Product::class, 'idTacgia','id');
     }
 }

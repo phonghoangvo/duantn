@@ -65,7 +65,7 @@ class Tincontroller extends Controller
     $idCategories = $products->pluck('id')->unique()->toArray();
 
 //     // Lọc và sắp xếp theo
-//     $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'none';
+    $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'none';
 
     switch ($sort_by) {
         case 'giagiamdan':
@@ -137,6 +137,7 @@ public function timkiem(Request $request)
         $sanphamlienquan = DB::table('pro_cate')
             ->where('idCategory',$idCategory)
             ->limit(6)
+            // ->join('product', 'pro_cate.idProduct', '=', 'product.id')
             ->get();
 
         return view('chitiet',compact('products','hot','comment','yeuthich','tg'))

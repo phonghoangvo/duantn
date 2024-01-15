@@ -37,7 +37,7 @@ Dashboard - Quản Trị Website
                   <th scope="col" class="col-lg-1">Hình ảnh</th>
                   <th scope="col" class="col-lg-1">Giá sản phẩm</th>
                   <th scope="col" class="col-lg-1">Giảm giá</th>
-                  <th scope="col" class="col-lg-1">Nhà cung cấp</th>
+                  {{-- <th scope="col" class="col-lg-1">Nhà cung cấp</th> --}}
                   <th scope="col" class="col-lg-1">Nhà xuất bản</th>
                   <th scope="col" class="col-lg-1">Tác giả</th>
                   <th scope="col" class="col-lg-1">Ngày đăng</th>
@@ -47,16 +47,17 @@ Dashboard - Quản Trị Website
                 </tr>
               </thead>
               <tbody>
-                @foreach ($data as $data)
+                @foreach ($page as $data)
                 <tr>
                   <td class="limited-text">{{$loop->index+1}}</td>
-                  <td class="limited-text">{{$data->name}}</td>
+                  <td class="limited-text">{{$data->name}}</td> 
+
                   <td class="limited-text"><img src="{{$data->img}}" style="height:60px;width:50px"></td>
                   <td class="limited-text">{{$data->price}}</td>
                   <td class="limited-text">{{$data->priceSale}}</td>
-                  <td class="limited-text">{{$data->nhacungcap}}</td>
-                  <td class="limited-text">{{$data->nhaxuatban}}</td>
-                  <td class="limited-text">{{$data->tacgia}}</td>
+                  {{-- <td class="limited-text">{{$data->nhacungcap}}</td> --}}
+                  <td class="limited-text">{{$data->idNhaxuatban}}</td>
+                  <td class="limited-text">{{$data->idTacgia}}</td>
                   <td class="limited-text">{{$data->ngayDang}}</td>
                   <td class="limited-text">{{$data->moTa}}</td>
                   <td class="limited-text">{{$data->idCategory}}</td>

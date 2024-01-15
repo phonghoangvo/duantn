@@ -20,9 +20,9 @@ class checkAdmin
         // if (Auth::check() && Auth::user()->id_group == 0) {
         //     return $next($request);
         // }
-        if(auth()->user()->id_group == 1){
+        if(auth()->user()->idgroup == 1){
             return $next($request);
-        }else return redirect('/');
+        }else return redirect('/index');
          
             
         // abort(403, 'Bạn không đủ quyền để truy cập!!');

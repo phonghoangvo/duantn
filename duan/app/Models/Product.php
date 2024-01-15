@@ -30,24 +30,22 @@ class Product extends Model
         'hidden',	
         'hot'
 ];
-    public function comment(){
-        return $this->hasMany(comment::class);
+    public function Comment(){
+        return $this->hasMany(Comment::class,'id','idProduct');
     }
-<<<<<<< Updated upstream
-=======
-    public function cate(){
-        return $this->hasOne(Pro_cate::class,'id','idProduct');
+    public function cate()
+    {
+        return $this->belongsTo(pro_cate::class, 'id', 'idProduct');
     }
     
     public function protg()
     {
-        return $this->belongsTo(tacgia::class,'idTacgia');
+        return $this->belongsTo(tacgia::class,'idTacgia','id');
     }
     
     public function nhaxuatban(){
-        return $this->hasOne(nhaxuatban::class,'id','idNhaxuatban');
+        return $this->belongsTo(nhaxuatban::class,'idNhaxuatban','id',);
     }
->>>>>>> Stashed changes
     public function getyeuthichAttribute(){
         $yeuthich = Yeuthich::where(['idProduct' => $this->id,'idUser'=> auth()->id()])->first();
         return $yeuthich ? true : false;

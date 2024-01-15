@@ -53,7 +53,77 @@ Dashboard - Quản Trị Website
                                                 </div>
                                                 @enderror
                                             </div>
-            
+                                            <div class="row">
+                                                <div class="col-12 col-md-6 mb-4">
+                                                    <div class="form-outline">
+                                                        <label for="name" class="formbold-form-label"> Lượt xem </label>
+                                                        <input type="text" name="luotxem" id="form6Example1"
+                                                            placeholder="Nhập lượt xem" class="form-control"
+                                                            value="{{old('luotxem')}}" />
+                                                    </div>
+                                                </div>
+                                                @error('luotxem')
+                                                <div class="alert alert-danger">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                                <div class="col-12 col-md-6 mb-4">
+                                                    <div class="form-outline">
+                                                        <label for="namsanxuat" class="formbold-form-label"> Năm sản xuất </label>
+                                                        <input type="number" name="namsanxuat" id="form6Example2"
+                                                            value="{{old('namsanxuat')}}" placeholder="Nhập năm sản xuất"
+                                                            class="form-control" />
+                                                    </div>
+                                                </div>
+                                                @error('namsanxuat')
+                                                <div class="alert alert-danger">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-md-6 mb-4">
+                                                    <div class="form-outline">
+                                                        <label for="yeuthich" class="formbold-form-label"> Yêu thích </label>
+                                                        <input type="number" name="yeuthich" id="form6Example2"
+                                                            value="{{old('yeuthich')}}" placeholder="Nhập yêu thích Sản Phẩm"
+                                                            class="form-control" />
+                                                    </div>
+                                                </div>
+                                                @error('yeuthich')
+                                                <div class="alert alert-danger">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                                <div class="col-12 col-md-6 mb-4">
+                                                    <div class="form-outline">
+                                                        <label for="quantity" class="formbold-form-label"> Số lượng </label>
+                                                        <input type="number" name="quantity" id="form6Example2"
+                                                            value="{{old('quantity')}}" placeholder="Nhập số lượng Sản Phẩm"
+                                                            class="form-control" />
+                                                    </div>
+                                                </div>
+                                                @error('quantity')
+                                                <div class="alert alert-danger">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+                                            <div class="form-outline mb-4"><div class="formbold-form-label">
+                                                <label> Voucher:</label><br>
+                                                <select name="idVoucher" value="{{old('idVoucher')}}" required
+                                                    class="form-control">
+                                                    <option value="1">-- Voucher --</option>
+                                                    @foreach ($voucher as $voucher)
+                                                    <option value="{{$voucher->id}}">{{$voucher->magiamgia}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div><br>
+                                            @error('idVoucher')
+                                            <div class="alert alert-danger">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
                                             <!-- Text input -->
                                             <div class="form-outline mb-4">
                                                 <label for="form6Example3" class="formbold-form-label"> Giảm giá </label>
@@ -65,34 +135,33 @@ Dashboard - Quản Trị Website
                                                 {{ $message }}
                                             </div>
                                             @enderror
-            
-                                            <div class="form-outline mb-4">
-                                                <label for="name" class="formbold-form-label"> Nhà cung cấp</label>
-                                                <input type="text" name="nhacungcap" id="nhacungcap" value="{{old('nhacungcap')}}"
-                                                    placeholder="Nhập Nhà Cung Cấp" class="form-control" />
-                                            </div>
-                                            @error('nhacungcap')
-                                            <div class="alert alert-danger">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                            <div class="form-outline mb-4">
-                                                <label for="name" class="formbold-form-label"> Nhà xuất bản </label>
-                                                <input type="text" name="nhaxuatban" id="nhaxuatban" value="{{old('nhaxuatban')}}"
-                                                    placeholder="Nhập nhà xuất bản" class="form-control" />
-                                            </div>
-                                            @error('nhaxuatban')
+                                            <div class="form-outline mb-4"><div class="formbold-form-label">
+                                                <label> Tác giả:</label><br>
+                                                <select name="idTacgia" value="{{old('idTacgia')}}" required
+                                                    class="form-control">
+                                                    <option value="1">-- Tác Giả --</option>
+                                                    @foreach ($tacgia as $tg)
+                                                    <option value="{{$tg->id}}">{{$tg->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div><br>
+                                            @error('idTacgia')
                                             <div class="alert alert-danger">
                                                 {{ $message }}
                                             </div>
                                             @enderror
             
-                                            <div class="form-outline mb-4">
-                                                <label for="name" class="formbold-form-label"> Tác giả</label>
-                                                <input type="text" name="tacgia" id="tacgia" value="{{old('tacgia')}}"
-                                                    placeholder="Nhập Tên tác giả" class="form-control" />
-                                            </div>
-                                            @error('tacgia')
+                                            <div class="form-outline mb-4"><div class="formbold-form-label">
+                                                <label> Nhà xuất bản :</label><br>
+                                                <select name="idNhaxuatban" value="{{old('idNhaxuatban')}}" required
+                                                    class="form-control">
+                                                    <option value="1">-- Nhà xuất bản --</option>
+                                                    @foreach ($nhaxuatban as $nxb)
+                                                    <option value="{{$nxb->id}}">{{$nxb->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div><br>
+                                            @error('idNhaxuatban')
                                             <div class="alert alert-danger">
                                                 {{ $message }}
                                             </div>
@@ -114,22 +183,17 @@ Dashboard - Quản Trị Website
                                                 {{ $message }}
                                             </div>
                                             @enderror
-            
-                                            <div class="formbold-form-label">
-                                                <label>Danh mục:</label><br>
-                                                <select name="idCategory" value="{{old('idCategory')}}" required
-                                                    class="form-control">
-                                                    <option value="1">--Danh Muc--</option>
-                                                    @foreach ($category as $category)
-                                                    <option value="{{$category->id}}">{{$category->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                                @error('idCategory')
-                                                <div class="alert alert-danger">
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div><br>
+                                            <div class="form-outline mb-4">
+                                                <label for="message" class="formbold-form-label">Tóm tắt sản phẩm </label>
+                                                <textarea rows="6" name="tomTat" id="tomTat" value="{{old('tomTat')}}"
+                                                    placeholder="Viết tóm tắt sản phẩm" class="form-control">
+                                            </textarea>
+                                            </div>
+                                            @error('tomTat')
+                                            <div class="alert alert-danger">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
                                             <label class="formbold-form-label">Hình ảnh sản phẩm</label><br>
                                             <input type="file" name="img" value="{{old('img')}}" id="img"><br>
                                             @error('img')

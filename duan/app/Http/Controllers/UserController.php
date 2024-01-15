@@ -5,6 +5,10 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RuleRegister;
+use App\Models\Users;
+use App\Models\Comment;
+
+
 class UserController extends Controller
 {
     // tao user
@@ -83,10 +87,18 @@ public function create()
 
         // delete user
         public function delete($id){
+            
             // Tìm đến đối tượng muốn xóa
-            $user = User::findOrFail($id);
-    
+            $user = Users::findOrFail($id);
+            // Xóa tất cả các nhận xét liên kết với người dùng
+            $comments = Comment::where('idUser', 'id')->get();
+            if($user->comments !== null){
+                foreach ($comments as $comment){
+                    $comment->delete();
+                }
+            }
             $user->delete();
+            
             return redirect()->to('/admin/list-user');
         }
 }

@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\pro_cate;
 use DB;
 use Illuminate\Pagination\Paginator;
 use App\Http\Requests\RuleThemsp;
+use App\Models\nhaxuatban;
+use App\Models\tacgia;
 use  Illuminate\Support\Facades\File;
 Paginator::useBootstrap();
 class ProductController extends Controller
@@ -15,8 +18,9 @@ class ProductController extends Controller
     public function list()
     {
         $page = Product::orderBy('ngayDang', 'desc')->paginate(15);
+
         $data = $page->items();
-        $category = Category::all();
+        // $category = Category::all();
         return view ('admin.sanpham.list',compact('data','page'));
     }
 
@@ -47,9 +51,13 @@ class ProductController extends Controller
     }
     public function edit($id)
     {
-        $category = Category::all();
+        // $category = Category::all();
+        $pro_cate = pro_cate::with('Category');
         $product = Product::find($id);
-        return view('admin.sanpham.edit',['product'=>$product,'category'=>$category]);
+        $nxb = nhaxuatban::all();
+        $tg = tacgia::all();
+
+        return view('admin.sanpham.edit',['product'=>$product,'pro_cate'=>$pro_cate,'nxb'=>$nxb,'tg'=>$tg]);
     }
 
     /**
@@ -61,12 +69,12 @@ class ProductController extends Controller
         $product-> name = $request->input('name');
         $product-> price = $request->input('price');
         $product-> priceSale = $request->input('priceSale');
-        $product-> nhacungcap = $request->input('nhacungcap');
-        $product-> nhaxuatban = $request->input('nhaxuatban');
-        $product-> tacgia = $request->input('tacgia');
+        // $product-> nhacungcap = $request->input('nhacungcap');
+        $product-> idNhaxuatban = $request->input('idNhaxuatban');
+        $product-> idTacgia = $request->input('idTacgia');
         $product-> ngayDang = $request->input('ngayDang');
         $product-> moTa = $request->input('moTa');
-        $product-> idCategory = $request->input('idCategory');
+        // $product-> cate = $request->input('idCategory');
 
 
         if($request->hasFile('img')){
@@ -81,7 +89,7 @@ class ProductController extends Controller
             $product->img = $filename;
         }
 
-        $category = Category::where('name','=','name');
+        // $category = Category::where('name','=','name');
         $product->update();
         return redirect()->back() -> with('success','Sản phẩm đã được cập nhật thành công');
 
@@ -93,6 +101,6 @@ class ProductController extends Controller
   
     public function destroy(string $id)
     {
-        //
+       
     }
 }
