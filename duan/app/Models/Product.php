@@ -40,12 +40,18 @@ public function categories()
 }
 public function proCates()
 {
-    return $this->belongsToMany(Product::class, 'pro_cate', 'idProduct', 'idCategory');
+    return $this->belongsToMany(Product::class, 'pro_cate', 'idProduct', 'idCategory')
+                ->withPivot('id'); // Nếu cần thì thêm các cột khác của bảng trung gian
 }
 
-public function pro_cate(){
-    return $this->belongsTo('App\pro_cate','idCategory');
+// Lưu ý: Tên mô hình 'pro_cate' nên theo quy ước về chữ hoa và chữ thường
+public function pro_cate()
+{
+    return $this->belongsToMany(Category::class, 'pro_cate', 'idCategory', 'idProduct')
+                ->withPivot('id'); // Nếu cần thì thêm các cột khác của bảng trung gian
 }
+
+
 public function tacgia()
 {
     return $this->belongsTo(Tacgia::class, 'idTacgia', 'id');

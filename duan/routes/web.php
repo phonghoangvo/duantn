@@ -38,6 +38,8 @@ Route::post('/cuahang', [TinController::class, 'filterProducts'])->name('filter.
 Route::get('/chitiet/{id}', [TinController::class, 'chitiet'])->name('chitiet');
 Route::post('/comment/{idProduct}', [TinController::class, 'post_comment'])->name('comment');
 Route::get('/favorite/{product}', [TinController::class, 'favorite'])->name('chitiet.favorite');
+Route::post('/cuahang/loctheogia', [TinController::class, 'filterProducts'])->name('filter.products');
+
 //checkadmin
 // Route::group(['middleware' => 'auth','checkAdmin'], function () {
 Route::controller(AdminController::class)->group(function () {

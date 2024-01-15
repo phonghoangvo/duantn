@@ -77,17 +77,19 @@
                 <h3 class="p-2">Lọc theo giá</h3>
                 <div class="locgia">
                     <p>
-                    <label for="amount">Khoảng giá:</label>
-                    <form action="">
-                    <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-                    <input type="hidden" name="star_price" id="star_price">
-                    <input type="hidden" name="end_price" id="end_price">
-                    </p>
-                    <div id="slider-range"></div>
-                    <br>
-                        <input type="submit" name="filter_price" value="Lọc giá" class="btn btn-default" >
-                    </form>
-                </div>
+                        <label for="amount">Khoảng giá:</label>
+                        <form id="filterForm" action="{{ route('filter.products') }}" method="POST">
+                            @csrf
+                            <input type="text" id="amount" readonly style="border: 0; color: #f6931f; font-weight: bold;">
+                            <input type="hidden" name="minPrice" id="minPrice">
+                            <input type="hidden" name="maxPrice" id="maxPrice">
+                        </p>
+                        <div id="slider-range"></div>
+                        <br>
+                        <input type="submit" name="filter_price" value="Lọc giá" class="btn btn-default">
+                        </form>
+                    </div>
+                
                
               
 

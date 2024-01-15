@@ -50,15 +50,7 @@
     
     <script>
         
-        $(document).ready(function () {
-        $('#sort').on('change', function () {
-            var url =$(this).val();
-            if(url){
-                window.location = url;
-            }
-            return false
-        });
-    });
+        
 
     $(function() {
     $("#slider-range").slider({
@@ -70,14 +62,47 @@
         slide: function(event, ui) {
             // Sử dụng hàm toLocaleString để định dạng số thành chuỗi tiền tệ
             $("#amount").val(ui.values[0].toLocaleString() + "đ - " + ui.values[1].toLocaleString() + "đ");
-            $("#star_price").val(ui.values[0]);
-            $("#end_price").val(ui.values[1]);
+            $("#minPrice").val(ui.values[0]);
+            $("#maxPrice").val(ui.values[1]);
         }
     });
 
-    // Định dạng giá trị mặc định
-    $("#amount").val($("#slider-range").slider("values", 0).toLocaleString() + "đ - " + $("#slider-range").slider("values", 1).toLocaleString() + "đ");
-});
+        // Định dạng giá trị mặc định
+        $("#amount").val($("#slider-range").slider("values", 0).toLocaleString() + "đ - " + $("#slider-range").slider("values", 1).toLocaleString() + "đ");
+
+        
+    });
+
+
+        function filterProducts(minPrice, maxPrice, sortType) {
+            $.ajax({
+                type: "POST",
+                url: "{{ route('filter.products') }}",
+                data: {
+                    minPrice: minPrice,
+                    maxPrice: maxPrice,
+                    sortType: sortType,
+                    "_token": "{{ csrf_token() }}"
+                },
+                success: function (response) {
+                    // Hiển thị kết quả lọc trong trang
+                    $("#products-container").html(response);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        }
+
+        $("#filterForm").submit(function (event) {
+            event.preventDefault();
+            var minPrice = $("#slider-range").slider("values", 0);
+            var maxPrice = $("#slider-range").slider("values", 1);
+            var sortType = $("#sort").val();
+
+            filterProducts(minPrice, maxPrice, sortType);
+        });
+    
 
 
 

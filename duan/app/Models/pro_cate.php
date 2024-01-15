@@ -17,9 +17,10 @@ class pro_cate extends Model
     ];
 
     public function products()
-    {
-        return $this->belongsToMany(Product::class, 'pro_cate', 'idCategory', 'idProduct', 'id');
-    }
+{
+    return $this->belongsToMany(Product::class, 'pro_cate', 'idCategory', 'idProduct');
+}
+
     public function product(){
         return $this->hasMany('App\Product');
     }
