@@ -33,9 +33,8 @@ class Product extends Model
     public function Comment(){
         return $this->hasMany(Comment::class,'id','idProduct');
     }
-    public function cate()
-    {
-        return $this->belongsTo(pro_cate::class, 'id', 'idProduct');
+    public function cate(){
+        return $this->hasOne(Pro_cate::class,'id','idProduct');
     }
     
     public function protg()

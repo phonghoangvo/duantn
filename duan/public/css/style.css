@@ -195,7 +195,8 @@ label{
 }
 
 .boxloai {
-    border: 1px solid #f5f5f5;
+    border: 1px solid #ddd; /* Đường viền xung quanh box */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
 }
 
 .boxloai a{
@@ -303,3 +304,24 @@ h3 a {
     color: #f27024;
     font-weight: 500;
 }
+.danhmuc label {
+    margin-left: 20px;
+    display: block; /* Hiển thị mỗi checkbox trên một dòng */
+    margin-bottom: 10px; /* Khoảng cách giữa các checkbox */
+    font-size: 15px; /* Tùy chỉnh kích thước chữ cho ô checkbox */
+}
+
+/* Tùy chỉnh ô checkbox để làm cho chúng lớn hơn */
+.danhmuc input[type="checkbox"] {
+    transform: scale(1.5); /* Tăng kích thước của ô checkbox */
+    margin-right: 5px; /* Khoảng cách giữa ô checkbox và văn bản bên cạnh */
+    opacity: 0.7;
+}
+.locgia{
+margin-left: 20px;
+margin-bottom: 20px;
+}
+#slider-range {
+    width: 250px;
+}
+

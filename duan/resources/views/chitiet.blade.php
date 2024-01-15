@@ -9,7 +9,7 @@ Chi tiết sản phẩm
 <main>
     @foreach($products as $value)
     <div class="container px-0 pt-3 pb-3">
-        <a class="thanhphantrang text-decoration-none" href="">
+        <a class="thanhphantrang text-decoration-none" href="/">
             Trang chủ
         </a>
         <small>/ Chi tiết</small>
@@ -54,8 +54,8 @@ Chi tiết sản phẩm
             <div class="col-sm-7 p-4">
                 <div class="pb-1">
                     <h4 class="pb-1">{{$value->name}}</h4>
-                    <small>Lượt xem: <b>{{$value->luotxem}}</b></small><br>
-                    <small>Yêu thích: <b>{{$value->yeuthich}}</b></small>
+                    <small>Luot xem: <b>{{$value->luotxem}}</b></small><br>
+                    <small>Yeu thich: <b>{{$value->yeuthich}}</b></small>
                 </div>
                 <div class="col-md-0">
                     @if($value->quantity > 0)
