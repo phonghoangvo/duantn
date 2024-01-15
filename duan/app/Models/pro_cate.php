@@ -20,7 +20,9 @@ class pro_cate extends Model
     {
         return $this->belongsToMany(Product::class, 'pro_cate', 'idCategory', 'idProduct', 'id');
     }
-    
+    public function product(){
+        return $this->hasMany('App\Product');
+    }
 
     public function category()
     {

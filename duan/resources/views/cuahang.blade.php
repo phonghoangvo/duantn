@@ -76,11 +76,17 @@
             <div class="boxloai mb-4 bg-white">
                 <h3 class="p-2">Lọc theo giá</h3>
                 <div class="locgia">
-                <p>
-                <label for="amount">Khoảng giá:</label>
-                <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-                </p>
-                <div id="slider-range"></div>
+                    <p>
+                    <label for="amount">Khoảng giá:</label>
+                    <form action="">
+                    <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                    <input type="hidden" name="star_price" id="star_price">
+                    <input type="hidden" name="end_price" id="end_price">
+                    </p>
+                    <div id="slider-range"></div>
+                    <br>
+                        <input type="submit" name="filter_price" value="Lọc giá" class="btn btn-default" >
+                    </form>
                 </div>
                
               
@@ -101,14 +107,14 @@
                 
                     <div class="col-sm-2 mt-2"> <label for="amount">Sắp xếp theo: </label></div>
                     <div class="col-sm-3">
-                        <form>
+                        <form action="">
                             @csrf
-                            <select name="sort" id="sort" class="form-control">
+                            <select name="sort" id="sort" class="form-control thanhsapxep" aria-label="Default select example">
                                 <option value="{{Request::url()}}?sort_by=none">--Lọc Theo--</option>
-                                <option value="giatangdan" {{ request('sort_by') == 'giatangdan' ? 'selected' : '' }}>Giá tăng dần</option>
-                                <option value="giagiamdan" {{ request('sort_by') == 'giagiamdan' ? 'selected' : '' }}>Giá giảm dần</option>
-                                <option value="tuadenz" {{ request('sort_by') == 'tuadenz' ? 'selected' : '' }}>Tên từ A đến Z</option>
-                                <option value="tuzdena" {{ request('sort_by') == 'tuzdena' ? 'selected' : '' }}>Tên từ Z đến A</option>
+                                <option value="{{Request::url()}}?sort_by=giatangdan">--Giá tăng dần--</option>
+                                <option value="{{Request::url()}}?sort_by=giagiamdan">--Giá giảm dần--</option>
+                                <option value="{{Request::url()}}?sort_by=tuadenz">Lọc theo tên từ A đến Z</option>
+                                <option value="{{Request::url()}}?sort_by=tuzdena">Lọc theo tên từ Z đến A</option>
                             </select>
                         </form>
                         

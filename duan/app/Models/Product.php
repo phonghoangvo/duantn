@@ -43,6 +43,9 @@ public function proCates()
     return $this->belongsToMany(Product::class, 'pro_cate', 'idProduct', 'idCategory');
 }
 
+public function pro_cate(){
+    return $this->belongsTo('App\pro_cate','idCategory');
+}
 public function tacgia()
 {
     return $this->belongsTo(Tacgia::class, 'idTacgia', 'id');

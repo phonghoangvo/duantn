@@ -50,19 +50,36 @@
     
     <script>
         
-        $(function() {
-            $("#slider-range").slider({
-                range: true,
-                min: 0,
-                max: 500,
-                values: [75, 300],
-                slide: function(event, ui) {
-                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-                }
-            });
-            $("#amount").val("$" + $("#slider-range").slider("values", 0) +
-                " - $" + $("#slider-range").slider("values", 1));
+        $(document).ready(function () {
+        $('#sort').on('change', function () {
+            var url =$(this).val();
+            if(url){
+                window.location = url;
+            }
+            return false
         });
+    });
+
+    $(function() {
+    $("#slider-range").slider({
+        range: true,
+        min: 0,
+        max: 500000,
+        step: 100,
+        values: [0, 100000],
+        slide: function(event, ui) {
+            // Sử dụng hàm toLocaleString để định dạng số thành chuỗi tiền tệ
+            $("#amount").val(ui.values[0].toLocaleString() + "đ - " + ui.values[1].toLocaleString() + "đ");
+            $("#star_price").val(ui.values[0]);
+            $("#end_price").val(ui.values[1]);
+        }
+    });
+
+    // Định dạng giá trị mặc định
+    $("#amount").val($("#slider-range").slider("values", 0).toLocaleString() + "đ - " + $("#slider-range").slider("values", 1).toLocaleString() + "đ");
+});
+
+
 
         let mybutton = document.getElementById("back-top");
         

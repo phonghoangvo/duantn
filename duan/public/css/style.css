@@ -324,4 +324,15 @@ margin-bottom: 20px;
 #slider-range {
     width: 250px;
 }
+.btn.btn-default {
+    font-weight: 600;
+    border: 1px solid #f27024;
+    color: #f27024;
+    transition: background-color 0.3s, color 0.3s;
+}
 
+/* Hiệu ứng hover */
+.btn.btn-default:hover {
+    background-color: #f27024;
+    color: #fff;
+}

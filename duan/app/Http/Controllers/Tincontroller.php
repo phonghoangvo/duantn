@@ -66,6 +66,8 @@ class Tincontroller extends Controller
             'yeuthich' => $yeuthich,
         ]);
     }
+
+
     public function cuahang($id = null)
 {
     $perpage = 24;
@@ -85,27 +87,46 @@ class Tincontroller extends Controller
         });
     }
 
-    // Lọc theo giá
-    $minPrice = request()->query('min_price');
-    $maxPrice = request()->query('max_price');
-    if ($minPrice !== null && $maxPrice !== null) {
-        $query->whereBetween('price', [$minPrice, $maxPrice]);
-    }
-
-    // Lọc theo tên
-    $productName = request()->query('product_name');
-    if ($productName !== null) {
-        $query->where('name', 'like', '%' . $productName . '%');
-    }
-
     // Sort the query based on the provided criteria
+    foreach ($query as $key => $idCategory) {
+        $idCategory = $query->idCategory;
+    }
+
     if(isset($_GET['sort_by'])){
         $sort_by = $_GET['sort_by'];
-
-        if($sort_by=='giam_dan'){
-            
+        if($sort_by=='giagiamdan'){
+            $products = Product::with('pro_cate')->whereIn('idCategory', $idCategory)->orderBy('price', 'DESC')->paginate($perpage)->appends(request()->query());
+        }elseif($sort_by=='giatangdan'){
+            $products = Product::with('pro_cate')->whereIn('idCategory', $idCategory)->orderBy('price', 'ASC')->paginate($perpage)->appends(request()->query());
+        }elseif($sort_by=='tuadenz'){
+            $products = Product::with('pro_cate')->whereIn('idCategory', $idCategory)->orderBy('name', 'DESC')->paginate($perpage)->appends(request()->query());
+        }elseif($sort_by=='tuzdena'){
+            $products = Product::with('pro_cate')->whereIn('idCategory', $idCategory)->orderBy('name', 'ASC')->paginate($perpage)->appends(request()->query());
         }
+    }else{
+        $products = Product::with('pro_cate')->whereIn('idCategory', $idCategory)->orderBy('id', 'DESC')->paginate($perpage)->appends(request()->query());
+            
     }
+    
+    if (isset($_GET['star_price']) && isset($_GET['end_price'])) {
+        $min_price = $_GET['star_price'];
+        $max_price = $_GET['end_price'];
+    
+        $products = Product::with('category')
+            ->whereBetween('priceSale', [$min_price, $max_price])
+            ->orderBy('priceSale', 'ASC')
+            ->paginate($perpage)
+            ->appends(request()->query());
+    
+        // In ra câu truy vấn SQL
+        dd($products->toSql());
+    
+        // In ra dữ liệu trả về
+        dd($products->get());
+    }
+    
+    
+   
 
     // Paginate the results
     $products = $query->paginate($perpage)->appends(request()->query());
@@ -113,11 +134,6 @@ class Tincontroller extends Controller
     // Trả về view 'cuahang.blade.php' với dữ liệu sản phẩm và $selectedCategory
     return view('cuahang', ['products' => $products, 'selectedCategory' => $selectedCategory]);
 }
-
-
-    
-
-
 
 
     
