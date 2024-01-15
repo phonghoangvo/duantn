@@ -58,31 +58,31 @@ Route::controller(TinController::class)->group(function () {
         return view('admin.admin');
     })->middleware(['auth', 'checkAdmin'])->name('admin');
     //quanlitintuc
-    Route::get('/admin/listtintuc', [TinController::class, 'listtintuc'])->name('listtintuc');
-    Route::get('/admin/themtin', [TinController::class, 'themtin'])->name('themtin');
+    Route::get('/admin/listtintuc', [TinController::class, 'listtintuc'])->middleware(['auth', 'checkAdmin'])->name('listtintuc');
+    Route::get('/admin/themtin', [TinController::class, 'themtin'])->middleware(['auth', 'checkAdmin'])->name('themtin');
     Route::post('/admin/themtin', [TinController::class, 'themtin_'])->name('themtin_');
     Route::get('xoa/{id}', [TinController::class, 'xoa']);
-    Route::get('/admin/suatin/{id}', [TinController::class, 'suatin'])->name('suatin');
+    Route::get('/admin/suatin/{id}', [TinController::class, 'suatin'])->middleware(['auth', 'checkAdmin'])->name('suatin');
     Route::put('/admin/capnhat/{id}', [TinController::class, 'capnhat'])->name('capnhat');
 
 
     // });
     //quanlisanpham
     Route::get('/admin/list', [ProductController::class, 'list'])->middleware(['auth', 'checkAdmin'])->name('admin');
-    Route::get('/admin/add', [ProductController::class, 'add']);
+    Route::get('/admin/add', [ProductController::class, 'add'])->middleware(['auth', 'checkAdmin'])->name('admin');
     Route::post('save', [ProductController::class, 'save_add'])->name('save_add');
     Route::get('/admin/edit/{id}', [ProductController::class, 'edit'])->name('edit');
     Route::put('update/{id}', [ProductController::class, 'update']);
     Route::get('/delproduct/{id}', [ProductController::class, 'delproduct']);
-    Route::get('/admin/comment/list', [ProductController::class, 'list']);
-    Route::get('/del/{id}', [ProductController::class, 'del']);
+    Route::get('/admin/comment/list', [CommentController::class, 'list']);
+    Route::get('/del/{id}', [CommentController::class, 'del']);
     //contact
     Route::get('/lienhe', [ContactController::class, 'lienhe']);
     Route::post('/send', [ContactController::class, 'send'])->name('sendemail');
     // Route::get('/',[TinController::class, 'index']);
     //Danhmuc
-    Route::get('/admin/listcate', [CategoryController::class, 'listcate']);
-    Route::get('/admin/addcate', [CategoryController::class, 'addcate']);
+    Route::get('/admin/listcate', [CategoryController::class, 'listcate'])->middleware(['auth', 'checkAdmin'])->name('admin');
+    Route::get('/admin/addcate', [CategoryController::class, 'addcate'])->middleware(['auth', 'checkAdmin'])->name('admin');
     Route::post('save_cate', [CategoryController::class, 'save_cate'])->name('save_cate');
     Route::get('/admin/editcate/{id}', [CategoryController::class, 'editcate'])->name('editcate');
     Route::put('updatecate/{id}', [CategoryController::class, 'updatecate']);

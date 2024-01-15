@@ -79,7 +79,7 @@
                     </div>
                 </div>
                 <div class="p-2">
-                    <form action="/cart_check" method="GET">
+                    <form action="/checkout" method="POST">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <button class="btn btn-primary w-100" type="submit" id="check-out-button">
                                 Tiến hành thanh toán
