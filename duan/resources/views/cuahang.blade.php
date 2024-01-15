@@ -99,18 +99,18 @@
                     @endif
                 @endif
                 
-                    <div class="col-sm-2 mt-2"> <label>Sắp xếp theo: </label></div>
+                    <div class="col-sm-2 mt-2"> <label for="amount">Sắp xếp theo: </label></div>
                     <div class="col-sm-3">
-                        {{-- <form action="{{ Request::url() }}" method="get">
+                        <form>
                             @csrf
-                            <select name="sort_by" id="sort_by" class="form-select thanhsapxep" aria-label="Default select example" onchange="this.form.submit()">
-                                <option value="none" {{ $sort_by == 'none' ? 'selected' : '' }}>--Lọc Theo--</option>
-                                <option value="giatangdan" {{ $sort_by == 'giatangdan' ? 'selected' : '' }}>--Giá tăng dần--</option>
-                                <option value="giagiamdan" {{ $sort_by == 'giagiamdan' ? 'selected' : '' }}>--Giá giảm dần--</option>
-                                <option value="tuadenz" {{ $sort_by == 'tuadenz' ? 'selected' : '' }}>Lọc theo tên từ A đến Z</option>
-                                <option value="tuzdena" {{ $sort_by == 'tuzdena' ? 'selected' : '' }}>Lọc theo tên từ Z đến A</option>
+                            <select name="sort" id="sort" class="form-control">
+                                <option value="{{Request::url()}}?sort_by=none">--Lọc Theo--</option>
+                                <option value="giatangdan" {{ request('sort_by') == 'giatangdan' ? 'selected' : '' }}>Giá tăng dần</option>
+                                <option value="giagiamdan" {{ request('sort_by') == 'giagiamdan' ? 'selected' : '' }}>Giá giảm dần</option>
+                                <option value="tuadenz" {{ request('sort_by') == 'tuadenz' ? 'selected' : '' }}>Tên từ A đến Z</option>
+                                <option value="tuzdena" {{ request('sort_by') == 'tuzdena' ? 'selected' : '' }}>Tên từ Z đến A</option>
                             </select>
-                        </form> --}}
+                        </form>
                         
                     </div>
                     

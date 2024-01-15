@@ -66,51 +66,55 @@ class Tincontroller extends Controller
             'yeuthich' => $yeuthich,
         ]);
     }
-    // public function cuahang($id = null)
-    // {
-    //     $perpage = 24;
-    
-    //     // Initialize the query builder
-    //     $query = Product::query();
-    
-    //     // Check if $id is provided, then filter by it
-    //     if ($id !== null) {
-    //         // Lọc sản phẩm theo danh mục trong bảng pro_cate
-    //         $query->whereHas('proCates', function ($q) use ($id) {
-    //             $q -> where('idCategory', $id); 
-    //         });
-            
-            
-    //     }
+    public function cuahang($id = null)
+{
+    $perpage = 24;
 
-    //     // Sort the query based on the provided criteria
-    //     $sort_by = request()->query('sort_by', 'none');
-    //     switch ($sort_by) {
-    //         case 'giagiamdan':
-    //             $query->orderBy('price', 'DESC');
-    //             break;
-    //         case 'giatangdan':
-    //             $query->orderBy('price', 'ASC');
-    //             break;
-    //         case 'tuadenz':
-    //             $query->orderBy('name', 'DESC');
-    //             break;
-    //         case 'tuzdena':
-    //             $query->orderBy('name', 'ASC');
-    //             break;
-    //         default:
-    //             // Mặc định sắp xếp theo id giảm dần
-    //             $query->orderBy('id', 'DESC');
-    //             break;
-    //     }
-    
-    //     // Paginate the results
-    //     $products = $query->paginate($perpage)->appends(request()->query());
-    
-    //     // Trả về view 'cuahang.blade.php' với dữ liệu sản phẩm
-    //     return view('cuahang', ['products' => $products]);
-        
-    // }
+    // Initialize the query builder
+    $query = Product::query();
+
+    // Initialize $selectedCategory
+    $selectedCategory = null;
+
+    // Check if $id is provided, then filter by it
+    if ($id !== null) {
+        // Lọc sản phẩm theo danh mục trong bảng pro_cate
+        $query->whereHas('proCates', function ($q) use ($id, &$selectedCategory) {
+            $q->where('idCategory', $id);
+            $selectedCategory = Category::find($id); // Gán giá trị cho $selectedCategory
+        });
+    }
+
+    // Lọc theo giá
+    $minPrice = request()->query('min_price');
+    $maxPrice = request()->query('max_price');
+    if ($minPrice !== null && $maxPrice !== null) {
+        $query->whereBetween('price', [$minPrice, $maxPrice]);
+    }
+
+    // Lọc theo tên
+    $productName = request()->query('product_name');
+    if ($productName !== null) {
+        $query->where('name', 'like', '%' . $productName . '%');
+    }
+
+    // Sort the query based on the provided criteria
+    if(isset($_GET['sort_by'])){
+        $sort_by = $_GET['sort_by'];
+
+        if($sort_by=='giam_dan'){
+            
+        }
+    }
+
+    // Paginate the results
+    $products = $query->paginate($perpage)->appends(request()->query());
+
+    // Trả về view 'cuahang.blade.php' với dữ liệu sản phẩm và $selectedCategory
+    return view('cuahang', ['products' => $products, 'selectedCategory' => $selectedCategory]);
+}
+
+
     
 
 
