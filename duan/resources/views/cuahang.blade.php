@@ -34,8 +34,6 @@
                             <a href="{{ route('cuahang', ['id' => $dm->id]) }}"><span>{{$dm->name}}</span></a>
                         </li>
                         @endforeach
-
-
                     </ul>
                 </div>
             </div>
@@ -62,16 +60,17 @@
                 ->select('id','name')
                 ->get();
                 ?>
-                <div class="danhmuc">
-                    @foreach ($nhaxuatban as $nhaxuatban)
-                        <label>
-                            <input type="checkbox" name="nhaxuatban" value="{{ $nhaxuatban->id }}">
-                            {{ $nhaxuatban->name }}
-                        </label>
-                    @endforeach
-
-                
-                </div>
+                 <form id="filterForm" action="{{ route('filter.products') }}" method="POST">
+                    @csrf
+                    <div class="danhmuc">
+                        @foreach ($nhaxuatban as $nxb)
+                            <label>
+                                <input type="checkbox" class="nhaxuatban-checkbox" name="nhaxuatban[]" value="{{ $nxb->id }}">
+                                {{ $nxb->name }}
+                            </label>
+                        @endforeach
+                    </div>
+                </form>
             </div>
             
             <div class="boxloai mb-4 bg-white">
@@ -91,19 +90,30 @@
         <section class="col-lg-9">
             <div class="thanhchucnang bg-white">
                 <div class="row p-3" >
-                    <div class="col-sm-3 mt-2"> <label>Sắp xếp theo: </label></div>
-                    <div class="col-sm-5">
-                        <form action="">
+                    @if(request()->is('cuahang'))
+                    <div class="col-sm-7 mt-2"><h4>Cửa hàng </h4></div>
+                @else
+                    @if($selectedCategory)
+                        <div class="col-sm-7 mt-2"><h4>{{ $selectedCategory->name }} </h4></div>
+                        
+                    @endif
+                @endif
+                
+                    <div class="col-sm-2 mt-2"> <label>Sắp xếp theo: </label></div>
+                    <div class="col-sm-3">
+                        {{-- <form action="{{ Request::url() }}" method="get">
                             @csrf
-                            <select name="sort" id="sort" class="form-select thanhsapxep" aria-label="Default select example">
-                                <option value="{{Request::url()}}?sort_by=none">--Lọc Theo--</option>
-                                <option value="{{Request::url()}}?sort_by=giatangdan">--Giá tăng dần--</option>
-                                <option value="{{Request::url()}}?sort_by=giagiamdan">--Giá giảm dần--</option>
-                                <option value="{{Request::url()}}?sort_by=tuadenz">Lọc theo tên từ A đến Z</option>
-                                <option value="{{Request::url()}}?sort_by=tuzdena">Lọc theo tên từ Z đến A</option>
+                            <select name="sort_by" id="sort_by" class="form-select thanhsapxep" aria-label="Default select example" onchange="this.form.submit()">
+                                <option value="none" {{ $sort_by == 'none' ? 'selected' : '' }}>--Lọc Theo--</option>
+                                <option value="giatangdan" {{ $sort_by == 'giatangdan' ? 'selected' : '' }}>--Giá tăng dần--</option>
+                                <option value="giagiamdan" {{ $sort_by == 'giagiamdan' ? 'selected' : '' }}>--Giá giảm dần--</option>
+                                <option value="tuadenz" {{ $sort_by == 'tuadenz' ? 'selected' : '' }}>Lọc theo tên từ A đến Z</option>
+                                <option value="tuzdena" {{ $sort_by == 'tuzdena' ? 'selected' : '' }}>Lọc theo tên từ Z đến A</option>
                             </select>
-                        </form>
+                        </form> --}}
+                        
                     </div>
+                    
                 </div>
                 <hr>
             </div>

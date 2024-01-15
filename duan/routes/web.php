@@ -33,7 +33,8 @@ Route::get('/news/{id}', [TinController::class, 'chitietnew'])->name('chitietnew
 Route::get('/lienhe', [ContactController::class, 'lienhe']);
 Route::post('/send', [ContactController::class, 'send'])->name('sendemail');
 Route::get('/cuahang', 'App\Http\Controllers\TinController@timkiem')->name('timkiem');
-Route::get('/cuahang/{id?}', [TinController::class, 'cuahang'])->name('cuahang');
+Route::get('/cuahang/{id}', [TinController::class, 'cuahang'])->name('cuahang');
+Route::post('/cuahang', [TinController::class, 'filterProducts'])->name('filter.products');
 Route::get('/chitiet/{id}', [TinController::class, 'chitiet'])->name('chitiet');
 Route::post('/comment/{idProduct}', [TinController::class, 'post_comment'])->name('comment');
 Route::get('/favorite/{product}', [TinController::class, 'favorite'])->name('chitiet.favorite');

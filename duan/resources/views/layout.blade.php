@@ -49,6 +49,7 @@
     <script src="/js/chitiet.js"></script>
     
     <script>
+        
         $(function() {
             $("#slider-range").slider({
                 range: true,
@@ -212,6 +213,28 @@
                 $("#card-thanhtoan-form").removeClass('d-none');
             }
         })
+
+
+    
+        $(document).ready(function () {
+        $('.nhaxuatban-checkbox').on('change', function () {
+            var formData = $('#filterForm').serialize();
+
+            $.ajax({
+                url: $('#filterForm').attr('action'),
+                type: 'POST',
+                data: formData,
+                success: function (data) {
+                    // Cập nhật sản phẩm trên trang
+                    console.log(data);
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+
     </script>
 </body>
 </html>

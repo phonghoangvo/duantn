@@ -30,23 +30,32 @@ class Product extends Model
         'hidden',	
         'hot'
 ];
-    public function Comment(){
-        return $this->hasMany(Comment::class,'id','idProduct');
-    }
-    public function cate(){
-        return $this->hasOne(Pro_cate::class,'id','idProduct');
-    }
-    
-    public function protg()
-    {
-        return $this->belongsTo(tacgia::class,'idTacgia','id');
-    }
-    
-    public function nhaxuatban(){
-        return $this->belongsTo(nhaxuatban::class,'idNhaxuatban','id',);
-    }
-    public function getyeuthichAttribute(){
-        $yeuthich = Yeuthich::where(['idProduct' => $this->id,'idUser'=> auth()->id()])->first();
-        return $yeuthich ? true : false;
-    }
+public function comments()
+{
+    return $this->hasMany(Comment::class, 'idProduct', 'id');
+}
+public function categories()
+{
+    return $this->belongsToMany(Category::class, 'pro_cate', 'idProduct', 'idCategory');
+}
+public function proCates()
+{
+    return $this->belongsToMany(Product::class, 'pro_cate', 'idProduct', 'idCategory');
+}
+
+public function tacgia()
+{
+    return $this->belongsTo(Tacgia::class, 'idTacgia', 'id');
+}
+
+public function nhaxuatban()
+{
+    return $this->belongsTo(Nhaxuatban::class, 'idNhaxuatban', 'id');
+}
+
+public function getyeuthichAttribute()
+{
+    $yeuthich = Yeuthich::where(['idProduct' => $this->id, 'idUser' => auth()->id()])->first();
+    return $yeuthich ? true : false;
+}
 }

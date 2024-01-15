@@ -66,49 +66,57 @@ class Tincontroller extends Controller
             'yeuthich' => $yeuthich,
         ]);
     }
+    // public function cuahang($id = null)
+    // {
+    //     $perpage = 24;
+    
+    //     // Initialize the query builder
+    //     $query = Product::query();
+    
+    //     // Check if $id is provided, then filter by it
+    //     if ($id !== null) {
+    //         // Lọc sản phẩm theo danh mục trong bảng pro_cate
+    //         $query->whereHas('proCates', function ($q) use ($id) {
+    //             $q -> where('idCategory', $id); 
+    //         });
+            
+            
+    //     }
 
-    public function cuahang($id = null)
-{
-    $perpage = 24;
-    $danhmucsach = null;
+    //     // Sort the query based on the provided criteria
+    //     $sort_by = request()->query('sort_by', 'none');
+    //     switch ($sort_by) {
+    //         case 'giagiamdan':
+    //             $query->orderBy('price', 'DESC');
+    //             break;
+    //         case 'giatangdan':
+    //             $query->orderBy('price', 'ASC');
+    //             break;
+    //         case 'tuadenz':
+    //             $query->orderBy('name', 'DESC');
+    //             break;
+    //         case 'tuzdena':
+    //             $query->orderBy('name', 'ASC');
+    //             break;
+    //         default:
+    //             // Mặc định sắp xếp theo id giảm dần
+    //             $query->orderBy('id', 'DESC');
+    //             break;
+    //     }
+    
+    //     // Paginate the results
+    //     $products = $query->paginate($perpage)->appends(request()->query());
+    
+    //     // Trả về view 'cuahang.blade.php' với dữ liệu sản phẩm
+    //     return view('cuahang', ['products' => $products]);
+        
+    // }
+    
 
-    // Kiểm tra xem có $id được truyền vào hay không
-    if ($id !== null) {
-        // Nếu có $id được truyền vào, thực hiện tìm kiếm theo thể loại
-        $products = Cuahang::where('id', $id)->paginate($perpage)->withQueryString();
-    } else {
-        // Ngược lại, hiển thị tất cả sản phẩm
-        $products = Cuahang::paginate($perpage)->withQueryString();
-    }
 
-    // Lấy danh mục sách từ tất cả sản phẩm (lấy một lần, không cần lặp)
-    $idCategories = $products->pluck('id')->unique()->toArray();
 
-//     // Lọc và sắp xếp theo
-    $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'none';
 
-    switch ($sort_by) {
-        case 'giagiamdan':
-            $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('price', 'DESC')->paginate($perpage)->appends(request()->query());
-            break;
-        case 'giatangdan':
-            $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('price', 'ASC')->paginate($perpage)->appends(request()->query());
-            break;
-        case 'tuadenz':
-            $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('name', 'DESC')->paginate($perpage)->appends(request()->query());
-            break;
-        case 'tuzdena':
-            $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('name', 'ASC')->paginate($perpage)->appends(request()->query());
-            break;
-        default:
-            // Mặc định sắp xếp theo id giảm dần
-            $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('id', 'DESC')->paginate($perpage)->appends(request()->query());
-            break;
-    }
-
-    // Trả về view 'cuahang.blade.php' với dữ liệu sản phẩm
-    return view('cuahang', ['products' => $products, 'danhmucsach' => $danhmucsach]);
-}
+    
 
     
 public function timkiem(Request $request)
@@ -116,32 +124,17 @@ public function timkiem(Request $request)
     $searchTerm = $request->input('timkiem');
     $page = 24;
 
-    // Thực hiện tìm kiếm dựa trên $searchTerm
-    $productsQuery = Cuahang::with('category')
-        ->where('name', 'like', '%' . $searchTerm . '%');
-
-    // Thực hiện tìm kiếm theo tên danh mục
-    $productsQuery->orWhereHas('category', function ($q) use ($searchTerm) {
-        $q->where('name', 'like', '%' . $searchTerm . '%');
-    });
-
-    // Lọc theo
-    if ($sortBy = $request->input('sort_by')) {
-        $validSortOptions = ['giagiamdan', 'giatangdan', 'tuadenz', 'tuzdena'];
-        if (in_array($sortBy, $validSortOptions)) {
-            $direction = $sortBy === 'giatangdan' ? 'ASC' : 'DESC';
-            $productsQuery->orderBy('name', $direction)->orderBy('price', $direction);
-        }
-    }
-
-    $products = $productsQuery->paginate($page)->appends(request()->query());
+    $products = Product::with('categories')
+        ->where('name', 'like', '%' . $searchTerm . '%')
+        ->orWhereHas('categories', function ($q) use ($searchTerm) {
+            $q->where('name', 'like', '%' . $searchTerm . '%');
+        })
+        ->paginate($page);
 
     return view('cuahang', ['products' => $products]);
 }
 
-    //tacgia
-    // 
-      
+   
     //chitietsanpham
     public function chitiet($id){ 
         $hot = DB::table('product')
@@ -150,7 +143,7 @@ public function timkiem(Request $request)
             ->orderBy('ngayDang', 'desc')
             ->limit(7)
             ->get();
-        $products = cuahang::where('id','=',$id)->get();
+        $products = Product::where('id','=',$id)->get();
         $comment = Comment::where('idProduct',$products[0]->id)->orderBy('id','DESC')->get();
         $tg = Product::where('id','=',$id)->get();
         foreach ($products as $key => $value) {

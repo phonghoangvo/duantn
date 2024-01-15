@@ -15,13 +15,17 @@ class pro_cate extends Model
         'idCategory',
         'idProduct',
     ];
-    public function Product()
-    {
-        return $this->hasMany(Product::class, 'idProduct', 'id');
-    }
 
-    public function Category()
+    public function products()
     {
-        return $this->hasOne(Category::class, 'id', 'idCategory');
+        return $this->belongsToMany(Product::class, 'pro_cate', 'idCategory', 'idProduct', 'id');
+    }
+    
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'idCategory', 'id');
     }
 }
+
+

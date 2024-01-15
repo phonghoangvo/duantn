@@ -16,8 +16,8 @@ class Category extends Model
         'hidden',
         'thutu',
     ];
-    public function pro_cate()
-    {
-        return $this->hasMany(pro_cate::class, 'idCategory', 'id');
-    }
+    public function products()
+{
+    return $this->belongsToMany(Product::class, 'pro_cate', 'idCategory', 'idProduct');
+}
 }
