@@ -19,7 +19,7 @@ class CategoryController extends Controller
         $cate = $request->all();
         Category::create($cate);
         Category::where('hidden',1)->get();
-        return redirect()->back() -> with('success','Danh mục đã được thêm thành công');
+        return redirect()->to('/admin/listcate')->with('success','Danh mục đã được thêm thành công');
     }
     public function editcate($id)
     {
@@ -32,9 +32,9 @@ class CategoryController extends Controller
         $cate = Category::find($id);
         $cate-> name = $request->input('name');
         $cate-> thutu = $request->input('thutu');
-        $cate-> slug = $request->input('slug');
+        // $cate-> slug = $request->input('slug');
         $cate->update();
-        return redirect()->back() -> with('success','Danh mục đã được cập nhật thành công');
+        return redirect()->to('/admin/listcate')-> with('success','Danh mục đã được cập nhật thành công');
 
     }
     public function delcate($id){

@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\pro_cate;
+use App\Models\Tacgia;
+use App\Models\Voucher;
+use App\Models\nhaxuatban;
 use DB;
 use Illuminate\Pagination\Paginator;
 use App\Http\Requests\RuleThemsp;
-use App\Models\nhaxuatban;
-use App\Models\tacgia;
 use  Illuminate\Support\Facades\File;
 Paginator::useBootstrap();
 class ProductController extends Controller
@@ -18,10 +18,12 @@ class ProductController extends Controller
     public function list()
     {
         $page = Product::orderBy('ngayDang', 'desc')->paginate(15);
-
         $data = $page->items();
-        // $category = Category::all();
-        return view ('admin.sanpham.list',compact('data','page'));
+        $tacgia = Tacgia::all();
+        $voucher = Voucher::all();
+        $nhaxuatban = nhaxuatban::all();
+        $nhaxuatban = nhaxuatban::all();
+        return view ('admin.sanpham.list',compact('data','page','tacgia','nhaxuatban','voucher'));
     }
 
     /**
@@ -29,8 +31,10 @@ class ProductController extends Controller
      */
     public function add()
     {
-        $category = Category::all();
-        return view('admin.sanpham.add',['category'=>$category]);
+        $tacgia = Tacgia::all();
+        $nhaxuatban = nhaxuatban::all();
+        $voucher = Voucher::all();
+        return view('admin.sanpham.add',['tacgia'=>$tacgia,'nhaxuatban'=>$nhaxuatban,'voucher'=>$voucher]);
     }
     /**
      * Store a newly created resource in storage.
@@ -40,24 +44,24 @@ class ProductController extends Controller
 
         $data = $request->all();
         
-        $category = Category::where('name','=','name');
+        $tacgia = Tacgia::where('name','=','name');
+        $voucher = Voucher::where('magiamgia','=','magiamgia');
+        $nhaxuatban = nhaxuatban::where('name','=','name');
         $filename = $request->file('img')->getClientOriginalName();
         $path = $request->file('img')->storeAs('uploads',$filename,'public');
         $data["img"] = '/'.$path;
         
         Product::create($data);
         
-        return redirect()->back() -> with('success','Sản phẩm đã được thêm thành công');
+        return redirect()->to('/admin/list')-> with('success','Sản phẩm đã được thêm thành công');
     }
     public function edit($id)
     {
-        // $category = Category::all();
-        $pro_cate = pro_cate::with('Category');
+        $tacgia = Tacgia::all();
+        $nhaxuatban = nhaxuatban::all();
+        $voucher = Voucher::all();
         $product = Product::find($id);
-        $nxb = nhaxuatban::all();
-        $tg = tacgia::all();
-
-        return view('admin.sanpham.edit',['product'=>$product,'pro_cate'=>$pro_cate,'nxb'=>$nxb,'tg'=>$tg]);
+        return view('admin.sanpham.edit',['product'=>$product,'nhaxuatban'=>$nhaxuatban,'tacgia'=>$tacgia,'voucher'=>$voucher]);
     }
 
     /**
@@ -69,12 +73,15 @@ class ProductController extends Controller
         $product-> name = $request->input('name');
         $product-> price = $request->input('price');
         $product-> priceSale = $request->input('priceSale');
-        // $product-> nhacungcap = $request->input('nhacungcap');
         $product-> idNhaxuatban = $request->input('idNhaxuatban');
         $product-> idTacgia = $request->input('idTacgia');
-        $product-> ngayDang = $request->input('ngayDang');
+        $product-> idVoucher = $request->input('idVoucher');
+        $product-> luotxem = $request->input('luotxem');
+        $product-> namsanxuat = $request->input('namsanxuat'); 
+        $product-> yeuthich = $request->input('yeuthich');  
+        $product-> quantity = $request->input('quantity');
         $product-> moTa = $request->input('moTa');
-        // $product-> cate = $request->input('idCategory');
+        $product-> tomTat = $request->input('tomTat');
 
 
         if($request->hasFile('img')){
@@ -89,9 +96,11 @@ class ProductController extends Controller
             $product->img = $filename;
         }
 
-        // $category = Category::where('name','=','name');
+        $tacgia = Tacgia::where('name','=','name');
+        $voucher = Voucher::where('magiamgia','=','magiamgia');
+        $nhaxuatban = nhaxuatban::where('name','=','name');
         $product->update();
-        return redirect()->back() -> with('success','Sản phẩm đã được cập nhật thành công');
+        return redirect()->to('/admin/list') -> with('success','Sản phẩm đã được cập nhật thành công');
 
     }
     public function delproduct($id){
@@ -101,6 +110,6 @@ class ProductController extends Controller
   
     public function destroy(string $id)
     {
-       
+        //
     }
 }

@@ -14,7 +14,7 @@
             
             <div class="col-xl-2 col-sm-4 p-1 px-1">
                 <div class="card border-0">
-                    <img class="card-img-top" src="/{{$danhchoban->img}}" alt="" width="100%" height="250px">
+                    <img class="card-img-top" src="{{$danhchoban->img}}" alt="" width="100%" height="250px">
                     <div class="middle">
                         <a href="{{url('/chitiet',$danhchoban->id)}}" class="btn btn-light zoom border-0">
                             <i class=" bi bi-zoom-in"></i>
@@ -65,7 +65,7 @@
             
             <div class="col-xl-2 col-sm-4 p-1 px-1">
                 <div class="card border-0">
-                    <img class="card-img-top" src="/{{$hot->img}}" alt="" width="100%" height="250px">
+                    <img class="card-img-top" src="{{$hot->img}}" alt="" width="100%" height="250px">
                     <div class="middle">
                         <a href="{{url('/chitiet',$hot->id)}}" class="btn btn-light zoom border-0">
                             <i class=" bi bi-zoom-in"></i>
@@ -114,7 +114,7 @@
             
             <div class="col-xl-2 col-sm-4 p-1 px-1">
                 <div class="card border-0">
-                    <img class="card-img-top" src="/{{$yeuthich->img}}" alt="" width="100%" height="250px">
+                    <img class="card-img-top" src="{{$yeuthich->img}}" alt="" width="100%" height="250px">
                     <div class="middle">
                         <a href="{{url('/chitiet',$yeuthich->id)}}" class="btn btn-light zoom border-0">
                             <i class=" bi bi-zoom-in"></i>
@@ -163,7 +163,7 @@
             
             <div class="col-xl-2 col-sm-4 p-1 px-1">
                 <div class="card border-0">
-                    <img class="card-img-top" src="/{{$giamgia->img}}" alt="" width="100%" height="250px">
+                    <img class="card-img-top" src="{{$giamgia->img}}" alt="" width="100%" height="250px">
                     <div class="middle">
                         <a href="{{url('/chitiet',$giamgia->id)}}" class="btn btn-light zoom border-0">
                             <i class=" bi bi-zoom-in"></i>
