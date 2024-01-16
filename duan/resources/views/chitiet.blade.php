@@ -168,15 +168,15 @@ Chi tiết sản phẩm
                             <td>{{$value->name}}</td>
                         </tr>
                         @foreach ($tg as $tnxb)
-                        <tr>
+                        {{-- <tr>
                             <th>Tác giả:</th>
                             <td>{{$tnxb->protg->name}}</td>
-                        </tr>
+                        </tr> --}}
                         <tr>
                             <th>Nhà xuất bản:</th>
                             <td> {{$tnxb->nhaxuatban->name}}</td>
                         </tr>
-                            
+
                         @endforeach
                         <tr>
                             <th>Năm xuất bản:</th>

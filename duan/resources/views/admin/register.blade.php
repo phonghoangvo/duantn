@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    
+
     <title>Đăng Ký</title>
 
 
@@ -49,6 +49,10 @@
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName"
                                             placeholder="Họ" name="name">
+                                            @error('name')
+                                            {{ $message }}
+                                         @enderror
+
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="exampleLastName"
