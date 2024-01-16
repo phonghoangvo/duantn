@@ -19,12 +19,12 @@
     
     <div class="row">
         <section class="col-lg-3 ">
-            <div class=" boxloai mb-4 bg-white">
+            <div class=" boxloai bg-white">
                 <h3 class="p-2">Sản phẩm theo loại</h3>
                 <div class="danhmuc">
                     <?php
                     $danhmuc = DB::table('category')->select('id','name')
-                    ->orderByRaw('CAST(thutu AS SIGNED) ASC')
+                    ->orderby('thutu','asc')
                     ->where('hidden','=','1')
                     ->get();
                     ?>
@@ -34,84 +34,28 @@
                             <a href="{{ route('cuahang', ['id' => $dm->id]) }}"><span>{{$dm->name}}</span></a>
                         </li>
                         @endforeach
+
+
                     </ul>
                 </div>
             </div>
 
-            <div class="boxloai mb-4 bg-white">
-                <h3 class="p-2">Tác giả</h3>
-                <?php
-                    $tacgia = DB::table('tacgia')
-                    ->select('id','name')
-                    ->get();
-                    ?>
-                <div class="danhmuc">
-                    @foreach ($tacgia as $tg)
-                        <label><input type="checkbox" name="tacgia" value="tacgia{{$tg->id}}"> {{$tg->name}}</label>
-
-                     @endforeach
-                </div>
-            </div>
-        
-            <div class="boxloai mb-4 bg-white">
-                <h3 class="p-2">Nhà xuất bản</h3>
-                <?php
-                $nhaxuatban = DB::table('nhaxuatban')
-                ->select('id','name')
-                ->get();
-                ?>
-                 <form id="filterForm" action="{{ route('filter.products') }}" method="POST">
-                    @csrf
-                    <div class="danhmuc">
-                        @foreach ($nhaxuatban as $nxb)
-                            <label>
-                                <input type="checkbox" class="nhaxuatban-checkbox" name="nhaxuatban[]" value="{{ $nxb->id }}">
-                                {{ $nxb->name }}
-                            </label>
-                        @endforeach
-                    </div>
-                </form>
-            </div>
-            
-            <div class="boxloai mb-4 bg-white">
-                <h3 class="p-2">Lọc theo giá</h3>
-                <div class="locgia">
-                    <p>
-                        <label for="amount">Khoảng giá:</label>
-                        <form id="filterForm" action="{{ route('filter.products') }}" method="POST">
-                            @csrf
-                            <input type="text" id="amount" readonly style="border: 0; color: #f6931f; font-weight: bold;">
-                            <input type="hidden" name="minPrice" id="minPrice">
-                            <input type="hidden" name="maxPrice" id="maxPrice">
-                        </p>
-                        <div id="slider-range"></div>
-                        <br>
-                        <input type="submit" name="filter_price" value="Lọc giá" class="btn btn-default">
-                        </form>
-                    </div>
-                
+            <p>
+                <label for="amount">Khoảng giá:</label>
+                <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+              </p>
                
-              
+              <div id="slider-range"></div>
 
-            </div>
         </section>
         <section class="col-lg-9">
             <div class="thanhchucnang bg-white">
                 <div class="row p-3" >
-                    @if(request()->is('cuahang'))
-                    <div class="col-sm-7 mt-2"><h4>Cửa hàng </h4></div>
-                @else
-                    @if($selectedCategory)
-                        <div class="col-sm-7 mt-2"><h4>{{ $selectedCategory->name }} </h4></div>
-                        
-                    @endif
-                @endif
-                
-                    <div class="col-sm-2 mt-2"> <label for="amount">Sắp xếp theo: </label></div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-3 mt-2"> <label>Sắp xếp theo: </label></div>
+                    <div class="col-sm-5">
                         <form action="">
                             @csrf
-                            <select name="sort" id="sort" class="form-control thanhsapxep" aria-label="Default select example">
+                            <select name="sort" id="sort" class="form-select thanhsapxep" aria-label="Default select example">
                                 <option value="{{Request::url()}}?sort_by=none">--Lọc Theo--</option>
                                 <option value="{{Request::url()}}?sort_by=giatangdan">--Giá tăng dần--</option>
                                 <option value="{{Request::url()}}?sort_by=giagiamdan">--Giá giảm dần--</option>
@@ -119,9 +63,7 @@
                                 <option value="{{Request::url()}}?sort_by=tuzdena">Lọc theo tên từ Z đến A</option>
                             </select>
                         </form>
-                        
                     </div>
-                    
                 </div>
                 <hr>
             </div>
@@ -131,7 +73,7 @@
                     <div class="col-md-6 col-lg-4 col-xl-3 p-2 sanpham mb-2">
                         <div class="boxsanpham  p-2"><a href="{{url('/chitiet/'.$sanpham->id)}}">
                             <div class="img">
-                                <img src="{{$sanpham->img}}"
+                                <img src="/{{$sanpham->img}}"
                                     alt="{{$sanpham->name}}" width="200px" height="200px">
                             </div>
                             <div class="title">

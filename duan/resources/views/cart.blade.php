@@ -99,23 +99,7 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
                 <div class="col-md-3"></div>
-=======
-                <div class="p-2">
-                    <form action="/checkout" method="POST">
-                        <input type="hidden" name="_token" value="{{csrf_token()}}">
-                        <button class="btn btn-primary w-100" type="submit" id="check-out-button">
-                                Tiến hành thanh toán
-                        </button>
-                    </form>
-                    {{-- <button class="btn btn-primary w-100">
-                        <a href="{{ url("/thanhtoan") }}" class="text-light text-decoration-none">
-                            Tiến hành thanh toán
-                        </a>
-                    </button> --}}
-                </div>
->>>>>>> fb200323ef340c1b8a28d5a0261ad8a3541440a2
             </div>
                  @else
                     <table>

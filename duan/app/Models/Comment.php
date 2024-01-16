@@ -17,12 +17,8 @@ class Comment extends Model
         'updated_at',
         'created_at'
     ];
-    public function Users()
+    public function users()
     {
         return $this->hasOne(Users::class,'id','idUser');
-    }
-    public function Product()
-    {
-        return $this->hasOne(Product::class,'id','idProduct');
     }
 }

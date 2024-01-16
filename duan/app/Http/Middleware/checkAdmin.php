@@ -17,13 +17,14 @@ class checkAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Kiểm tra xem người dùng đã đăng nhập và có idgroup == 1 hay không
-        if (auth()->check() && auth()->user()->idgroup == 1) {
+        // if (Auth::check() && Auth::user()->id_group == 0) {
+        //     return $next($request);
+        // }
+        if(auth()->user()->id_group == 1){
             return $next($request);
-        }
-    
-        // Nếu không có đăng nhập hoặc idgroup không phải 1, cho phép tiếp tục sử dụng trang web
-        return $next($request);
+        }else return redirect('/');
+         
+            
+        // abort(403, 'Bạn không đủ quyền để truy cập!!');
     }
-    
 }

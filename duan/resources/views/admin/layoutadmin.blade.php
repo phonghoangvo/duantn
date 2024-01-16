@@ -132,7 +132,7 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{url('/admin/list-user')}}">Quản lý user</a>
+                        <a class="collapse-item" href="{{route('listuser')}}">Quản lý user</a>
                     </div>
                 </div>
             </li>

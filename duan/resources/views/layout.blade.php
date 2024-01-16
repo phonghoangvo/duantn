@@ -49,62 +49,19 @@
     <script src="/js/chitiet.js"></script>
 
     <script>
-        
-        
-
-    $(function() {
-    $("#slider-range").slider({
-        range: true,
-        min: 0,
-        max: 500000,
-        step: 100,
-        values: [0, 100000],
-        slide: function(event, ui) {
-            // Sử dụng hàm toLocaleString để định dạng số thành chuỗi tiền tệ
-            $("#amount").val(ui.values[0].toLocaleString() + "đ - " + ui.values[1].toLocaleString() + "đ");
-            $("#minPrice").val(ui.values[0]);
-            $("#maxPrice").val(ui.values[1]);
-        }
-    });
-
-        // Định dạng giá trị mặc định
-        $("#amount").val($("#slider-range").slider("values", 0).toLocaleString() + "đ - " + $("#slider-range").slider("values", 1).toLocaleString() + "đ");
-
-        
-    });
-
-
-        function filterProducts(minPrice, maxPrice, sortType) {
-            $.ajax({
-                type: "POST",
-                url: "{{ route('filter.products') }}",
-                data: {
-                    minPrice: minPrice,
-                    maxPrice: maxPrice,
-                    sortType: sortType,
-                    "_token": "{{ csrf_token() }}"
-                },
-                success: function (response) {
-                    // Hiển thị kết quả lọc trong trang
-                    $("#products-container").html(response);
-                },
-                error: function (error) {
-                    console.log(error);
+        $(function() {
+            $("#slider-range").slider({
+                range: true,
+                min: 0,
+                max: 500,
+                values: [75, 300],
+                slide: function(event, ui) {
+                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
                 }
             });
-        }
-
-        $("#filterForm").submit(function (event) {
-            event.preventDefault();
-            var minPrice = $("#slider-range").slider("values", 0);
-            var maxPrice = $("#slider-range").slider("values", 1);
-            var sortType = $("#sort").val();
-
-            filterProducts(minPrice, maxPrice, sortType);
+            $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+                " - $" + $("#slider-range").slider("values", 1));
         });
-    
-
-
 
         let mybutton = document.getElementById("back-top");
 
@@ -255,28 +212,6 @@
                 $("#card-thanhtoan-form").removeClass('d-none');
             }
         })
-
-
-    
-        $(document).ready(function () {
-        $('.nhaxuatban-checkbox').on('change', function () {
-            var formData = $('#filterForm').serialize();
-
-            $.ajax({
-                url: $('#filterForm').attr('action'),
-                type: 'POST',
-                data: formData,
-                success: function (data) {
-                    // Cập nhật sản phẩm trên trang
-                    console.log(data);
-                },
-                error: function (xhr, status, error) {
-                    console.error(xhr.responseText);
-                }
-            });
-        });
-    });
-
     </script>
 </body>
 </html>

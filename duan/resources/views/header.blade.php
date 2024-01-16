@@ -42,13 +42,13 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="img/banner1.jpg" class="d-block w-100" alt="...">
+                            <img src="img/banner.jpg" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="img/banner1.jpg" class="d-block w-100" alt="...">
+                            <img src="img/banner.jpg" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="img/banner1.jpg" class="d-block w-100" alt="...">
+                            <img src="img/banner.jpg" class="d-block w-100" alt="...">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -69,14 +69,10 @@
         <div class="row">
             <div class="col">
                 <div class="owl-carousel owl-theme">
-                    @foreach($nhaxuatban as $nxb)
                     <div class="vendor-item border bg-white p-4">
-                        <img src="/img/{{$nxb->img}}" alt="">
+                        <img src="img/thuonghieu-1.jpg" alt="">
                     </div>
-                    @endforeach
-
-                   
-                    {{-- <div class="vendor-item border bg-white p-4">
+                    <div class="vendor-item border bg-white p-4">
                         <img src="img/thuonghieu-2.jpg" alt="">
                     </div>
                     <div class="vendor-item border bg-white p-4">
@@ -114,7 +110,7 @@
                     </div>
                     <div class="vendor-item border bg-white p-4">
                         <img src="img/thuonghieu-14.png" alt="">
-                    </div> --}}
+                    </div>
                 </div>
             </div>
         </div>

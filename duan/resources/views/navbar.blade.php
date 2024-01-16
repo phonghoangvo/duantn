@@ -69,7 +69,7 @@
 
                                     <li>
                                         <!-- Thêm mục "Trang quản trị" nếu idGroup là 1 -->
-                                        @if(Auth::user()->idgroup == 0)
+                                        @if(Auth::user()->id_group == 1)
                                             <a class="dropdown-item" href="{{ route('admin') }}">Trang quản trị</a>
                                             <li><hr class="dropdown-divider"></li>
                                         @endif
