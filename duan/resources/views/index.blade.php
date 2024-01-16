@@ -103,7 +103,7 @@
 </section>
  <div class="container pt-2 pb-2 px-0">
     <a href="#">
-        <img class="w-100" src="img/banner2.jpg" alt="" height="400px">
+        <img class="w-100" src="img/yt.jpg" alt="" height="400px">
     </a>
 </div>
 <section class="pt-2 pb-2">
@@ -125,8 +125,8 @@
                         <div class="row d-flex">
                             <div class="col-sm-10">
                                 <p>
-                                    <span style="color: red;"><b>{{number_format($yeuthich->priceSale)}}.000₫</b></span><br>
-                                    <span><del>{{number_format($yeuthich->price)}}.000 ₫</del></span>
+                                    <span style="color: red;"><b>{{number_format($yeuthich->priceSale)}} ₫</b></span><br>
+                                    <span><del>{{number_format($yeuthich->price)}} ₫</del></span>
                                 </p>
                             </div>
                             <div class="col-sm-2">

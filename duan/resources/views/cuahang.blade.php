@@ -127,6 +127,7 @@
             </div>
             <div class="box  bg-white">
                 <div class="row p-3 ">
+                    @if(count($products) > 0)
                     @foreach ($products as $sanpham)
                     <div class="col-md-6 col-lg-4 col-xl-3 p-2 sanpham mb-2">
                         <div class="boxsanpham  p-2"><a href="{{url('/chitiet/'.$sanpham->id)}}">
@@ -152,6 +153,11 @@
                         </div>
                     </div>
                     @endforeach
+                    @else
+                    <div class="col-12 text-center mt-3">
+                        <p>Danh mục hiện không có sản phẩm</p>
+                    </div>
+                @endif
                     
                     {{ $products->links() }}
         </section>
