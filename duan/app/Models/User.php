@@ -25,7 +25,7 @@ class User extends Authenticatable
         'address',
         'phone',
         'status',
-        'idgroup',
+        'id_group',
     ];
 
     /**
@@ -53,7 +53,4 @@ class User extends Authenticatable
     public function yeuthich(){
         return $this->hasMany(yeuthich::class,'idUser','id');
     }
-    // public function comment(){
-    //     return $this->hasMany(Comment::class,'idUser','id');
-    // }
 }

@@ -9,7 +9,7 @@ Chi tiết sản phẩm
 <main>
     @foreach($products as $value)
     <div class="container px-0 pt-3 pb-3">
-        <a class="thanhphantrang text-decoration-none" href="/">
+        <a class="thanhphantrang text-decoration-none" href="">
             Trang chủ
         </a>
         <small>/ Chi tiết</small>
@@ -54,8 +54,13 @@ Chi tiết sản phẩm
             <div class="col-sm-7 p-4">
                 <div class="pb-1">
                     <h4 class="pb-1">{{$value->name}}</h4>
+<<<<<<< Updated upstream
+                    <small>Thương hiệu: <b>{{$value->nhaxuatban}}</b></small><br>
+                    <small>Mã sản phẩm: <a href="#">{{$value->id}}</a></small>
+=======
                     <small>Luot xem: <b>{{$value->luotxem}}</b></small><br>
                     <small>Yeu thich: <b>{{$value->yeuthich}}</b></small>
+>>>>>>> Stashed changes
                 </div>
                 <div class="col-md-0">
                     @if($value->quantity > 0)
@@ -64,7 +69,12 @@ Chi tiết sản phẩm
                     <label class="badge bg-danger">Hết Hàng</label>
                     @endif
                 </div>
+<<<<<<< Updated upstream
+                <div class="pt-3 pb-3" style="font-size: 25px;"><b class="text-danger">{{number_format($value->price)}}
+                        đ</b>
+=======
                 <div class="pt-3 pb-3" style="font-size: 25px;"><b class="text-danger">{{number_format($value->price)}}.000đ</b>
+>>>>>>> Stashed changes
                 </div>
                 <div id="amount" class="d-flex align-items-center pt-3 pb-3">
                     <span>Số lượng:</span>
@@ -167,6 +177,33 @@ Chi tiết sản phẩm
                             <th>Tên sách:</th>
                             <td>{{$value->name}}</td>
                         </tr>
+<<<<<<< Updated upstream
+                        <tr>
+                            <th>Tác giả:</th>
+                            <td>{{$value->tacgia}}</td>
+                        </tr>
+                        <tr>
+                            <th>Nhà xuất bản:</th>
+                            <td> {{$value->nhaxuatban}}</td>
+                        </tr>
+                        <tr>
+                            <th>Nhà phát hành:</th>
+                            <td>{{$value->idCategory}}</td>
+                        </tr>
+                        <tr>
+                            <th>Năm xuất bản:</th>
+                            <td>2021</td>
+                        </tr>
+                        <tr>
+                            <th>Số trang:</th>
+                            <td>112 trang</td>
+                        </tr>
+                        <tr>
+                            <th>Kích thước:</th>
+                            <td>19x 27 cm</td>
+                        </tr>
+                    </table>
+=======
                         @foreach ($tg as $tnxb)
                         <tr>
                             <th>Tác giả:</th>
@@ -185,6 +222,7 @@ Chi tiết sản phẩm
                     </table>
                     <b style="color: red">Mô tả:</b><br>
                     <p>{{$value->moTa}}</p>
+>>>>>>> Stashed changes
                 </div>
             </div>
             <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
@@ -241,7 +279,7 @@ Chi tiết sản phẩm
         @endforeach
         <section class="pt-2 pb-2">
             <div class="container bg-light px-4 pt-2 pb-2" style="border-radius: 5px;">
-                <h3 class="text-center pt-2">Sản Phẩm Tương Tự</h3>
+                <h3 class="text-center pt-2">Sản phẩm tương tự</h3>
                 <div class="row pt-2 pb-2">
                     @if($sanphamlienquan->count() > 0)
 
@@ -256,14 +294,23 @@ Chi tiết sản phẩm
                                 </a>
                             </div>
                             <div class="card-body">
+<<<<<<< Updated upstream
+                                <a href="{{url('/chitiet/'.$lienquan->id)}}" class="text-decoration-none "
+=======
                                 <a href="{{url('/chitiet'.$lienquan->id)}}" class="text-decoration-none "
+>>>>>>> Stashed changes
                                     style="font-size: 13px; color: gray;">{{$lienquan->name}}</a>
                                 <div class="row d-flex">
                                     <div class="col-sm-10">
                                         <p>
                                             <span
+<<<<<<< Updated upstream
+                                                style="color: red;"><b>{{number_format($lienquan->price)}}</b></span><br>
+                                            <span><del>{{number_format($lienquan->priceSale)}}</del></span>
+=======
                                                 style="color: red;"><b>{{number_format($lienquan->price)}}.000</b></span><br>
                                             <span><del>{{number_format($lienquan->priceSale)}}.000</del></span>
+>>>>>>> Stashed changes
                                         </p>
                                     </div>
                                     <div class="col-sm-2">

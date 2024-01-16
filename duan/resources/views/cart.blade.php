@@ -54,7 +54,7 @@
                                     <td><img src="{{ $details['img'] }}" alt="" width="80px" height="80px"></td>
                                     <td>{{ $details['name'] }}</td>
 
-                                    <td data-th="Quantity"> 
+                                    <td data-th="Quantity">
                                         <input type="number" value="{{ $quantity }}" class="form-control quantity cart_update" min="1"/>
                                     </td>
                                     <td data-th="Price">{{ number_format($details['price']) }}₫</td>
@@ -63,49 +63,54 @@
                                 </tr>
                             @endforeach
                         @endif
-                    </tbody> 
+                    </tbody>
                 </table>
             </div>
-            <div class="col-lg-3 p-3 hg">
-               
-                <div class="p-2">
-                    <div class="row">
-                        <div class="col-6">
-                            <h5>Tổng cộng:</h5>
+            <div class="row p-3 hg">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="p-2">
+                        <div class="row">
+                            <div class="col-6">
+                                <h5>Tổng cộng:</h5>
+                            </div>
+                            <div class="col-6">
+                                <h5 class="text-end text-danger">{{number_format($total) }}₫</h5>
+                            </div>
                         </div>
-                        <div class="col-6">
-                            <h5 class="text-end text-danger">{{number_format($total) }}₫</h5>
+                    </div>
+                    <div class="text-center">Vui lòng chọn phương thức thang toán</div>
+                    <div class="row p-2">
+                        <div class="col-sm-6">
+                            <form action="/cart_check" method="GET">
+                                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                <button class="btn btn-primary w-100" type="submit" id="check-out-button">
+                                        Thanh toán khi nhận hàng
+                                </button>
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <form action="/checkout" method="POST">
+                                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                <button class="btn btn-warning w-100" type="submit" id="check-out-button">
+                                        Thanh toán ngân hàng
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <div class="p-2">
-                    <form action="/checkout" method="POST">
-                        <input type="hidden" name="_token" value="{{csrf_token()}}">
-                        <button class="btn btn-primary w-100" type="submit" id="check-out-button">
-                                Tiến hành thanh toán
-                        </button>
-                    </form>
-                    {{-- <button class="btn btn-primary w-100">
-                        <a href="{{ url("/thanhtoan") }}" class="text-light text-decoration-none">
-                            Tiến hành thanh toán
-                        </a>
-                    </button> --}}
-                </div>
+                <div class="col-md-3"></div>
             </div>
                  @else
-                    
-                        <table>
-                        </table>
-                            <div class="col text-center">
-                            <h2>Giỏ hàng của bạn đang trống!</h2>
-                            <h5>Hãy thêm sản phẩm vào ngay!!</h5>
-                            <a href="{{ url("/cuahang") }}" class="btn btn" style="background-color: #f27024; color:white;">Mua ngay</a>
-                        </div>
-                    
-                    
-                   
+                    <table>
+                    </table>
+                        <div class="col text-center">
+                        <h2>Giỏ hàng của bạn đang trống!</h2>
+                        <h5>Hãy thêm sản phẩm vào ngay!!</h5>
+                        <a href="{{ url("/cuahang") }}" class="btn btn" style="background-color: #f27024; color:white;">Mua ngay</a>
+                    </div>
                 @endif
         </div>
     </div>
-    
+
 @endsection

@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-lg-5 p-5 left">
                 <h5>Thông tin giao hàng</h5>
-                <form id="oderForm" name="oderForm" action="" method="POST">
+                <form action="{{ route('order.store') }}" method="POST">
                     @csrf
                     @if(auth()->check())
                     <!-- Hiển thị thông tin người dùng nếu đã đăng nhập -->
@@ -62,30 +62,16 @@
                         <p></p>
                     </div>
                 @endif
-                
 
 
-                    <div class="mb-3">
-                        <label for="" class="form-label">Phương thức giao hàng:</label>
+
+                    {{-- <div class="mb-3">
+                        <label for="" class="form-label">Phương thức:</label>
                         <div class="form-control">
-                            <input type="radio" checked>
-                                    <span> Giao hàng tận nơi</span>
-                                    <span class="text-end">30.000 Đ</span>
+                            <input type="radio" value="thanhtoankhinhanhang" name="phuongthucthanhtoan" checked>
+                            <label for="" class="form-check-label">Thanh toán khi nhận hàng</label>
                         </div>
                     </div>
-                
-                    <div class="mb-3">
-                        <label for="phuongThucThanhToan" class="form-label">Phương Thức Thanh Toán:</label>
-                        <div class="">
-                            <input type="radio" name="phuongthucthanhtoan" value="tructiep" id="thanhtoan1" checked>
-                            <label for="thanhtoan1" class="form-check-label">Trực tiếp</label>
-                        </div>
-                        <div class="">
-                            <input type="radio" name="phuongthucthanhtoan" value="thetindung" id="thanhtoan2">
-                            <label for="thanhtoan2" class="form-check-label">Thẻ tín dụng</label>
-                        </div>
-                    </div>
-                
                     <div class="form-row d-none" id="card-thanhtoan-form">
                         <div class="form-group col mb-3">
                             <label for="inputCardNumber">Số thẻ:</label>
@@ -101,25 +87,30 @@
                                 <input type="text" class="form-control" id="inputExpiration" placeholder="MM/YYYY">
                             </div>
                         </div>
-                    </div>
-                    
-                                                   
+                    </div> --}}
+
+
                     <div class="mb-3">
                         <label for="ghiChu" class="form-label">Ghi Chú:</label>
                         <textarea class="form-control" name="ghiChu" id="ghiChu" rows="3"></textarea>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <a class="text-decoration-none" href="{{ url('/giohang') }}">Giỏ Hàng</a>
+                            <button class="btn btn-light w-100" id="check-out-button">
+                                <a class="text-decoration-none" href="{{ url('/giohang') }}">Quay lại giỏ Hàng</a>
+                            </button>
                         </div>
                         <div class="col-lg-6 text-end">
-                            <button type="submit" class="btn btn-primary">Hoàn tất đơn hàng</button>
+                            <form action="{{ route('order.store') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Hoàn tất đơn hàng</button>
+                            </form>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="col-lg-7 p-5">
-                <div>
+                <div class="pt-5">
                     <table class="table">
                         <thead>
                             <tr>
@@ -154,11 +145,11 @@
                         </tbody>
                     </table>
                 </div>
-                <hr>
+                {{-- <hr>
                 <div class="input-group d-flex">
                     <input type="text" name="" id="" class="form-control" placeholder="Mã giảm giá">
                     <button type="button" class="btn btn-secondary">Sử dụng</button>
-                </div>
+                </div> --}}
                 <hr>
                 <div class="mb-3">
                     <div class="row">
@@ -192,6 +183,6 @@
             </div>
         </div>
     </div>
-   
+
 @endsection
 

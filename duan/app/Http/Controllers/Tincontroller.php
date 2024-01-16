@@ -11,9 +11,6 @@ use App\Models\Product;
 use App\Models\Comment;
 use App\Models\Category;
 use App\Models\pro_cate;
-use App\Models\nhaxuatban;
-use App\Models\tacgia;
-
 Paginator::useBootstrap();
 
 use Illuminate\Http\Request;
@@ -23,49 +20,31 @@ class Tincontroller extends Controller
     function index()
     {
         $giamgia = DB::table('product')
-            ->where('giamgia', 1)
+            // ->where('giamgia', 1)
             ->where('hidden', 1)
             ->orderBy('ngayDang', 'desc')
-            ->take(6)
+            ->limit(6)
             ->get();
 
         $hot = DB::table('product')
             ->where('hot', 1)
             ->where('hidden', 1)
             ->orderBy('ngayDang', 'desc')
-            ->take(6)
+            ->limit(6)
             ->get();
 
-        $danhchoban = DB::table('product')
-            ->where('hidden', 1)
-            ->orderBy(DB::raw('CAST(luotxem AS SIGNED)'), 'desc')
-            ->take(6)
-            ->get();
-
-        $yeuthich = DB::table('product')
-            ->where('hidden', 1)
-            ->orderBy(DB::raw('CAST(yeuthich AS SIGNED)'), 'desc')
-            ->take(6)
-            ->get();
 
         $danhmucsach = DB::table('category')
             ->select('id', 'name')
-            ->orderByRaw('CAST(thutu AS SIGNED) ASC')
+            ->orderby('thutu', 'asc')
             ->where('hidden', '=', '1')
-            ->get();
-
-
-        $nhaxuatban = DB::table('nhaxuatban')
-            ->select('name', 'img')
             ->get();
 
         return view('index', [
             'giamgia' => $giamgia,
             'hot' => $hot,
             'danhmucsach' => $danhmucsach,
-            'nhaxuatban' => $nhaxuatban,
-            'danhchoban' => $danhchoban,
-            'yeuthich' => $yeuthich,
+
         ]);
     }
 
@@ -81,6 +60,58 @@ class Tincontroller extends Controller
         } else {
             // Ngược lại, hiển thị tất cả sản phẩm
             $products = Cuahang::paginate($perpage)->withQueryString();
+        }
+
+        // Lấy danh mục sách từ tất cả sản phẩm (lấy một lần, không cần lặp)
+        $idCategories = $products->pluck('id')->unique()->toArray();
+
+    //     // Lọc và sắp xếp theo
+    //     $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'none';
+
+        switch ($sort_by) {
+            case 'giagiamdan':
+                $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('price', 'DESC')->paginate($perpage)->appends(request()->query());
+                break;
+            case 'giatangdan':
+                $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('price', 'ASC')->paginate($perpage)->appends(request()->query());
+                break;
+            case 'tuadenz':
+                $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('name', 'DESC')->paginate($perpage)->appends(request()->query());
+                break;
+            case 'tuzdena':
+                $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('name', 'ASC')->paginate($perpage)->appends(request()->query());
+                break;
+            default:
+                // Mặc định sắp xếp theo id giảm dần
+                $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('id', 'DESC')->paginate($perpage)->appends(request()->query());
+                break;
+    }
+
+    // Trả về view 'cuahang.blade.php' với dữ liệu sản phẩm
+    return view('cuahang', ['products' => $products, 'danhmucsach' => $danhmucsach]);
+}
+
+
+public function timkiem(Request $request)
+{
+    $searchTerm = $request->input('timkiem');
+    $page = 24;
+
+    // Thực hiện tìm kiếm dựa trên $searchTerm
+    $productsQuery = Cuahang::with('category')
+        ->where('name', 'like', '%' . $searchTerm . '%');
+
+    // Thực hiện tìm kiếm theo tên danh mục
+    $productsQuery->orWhereHas('category', function ($q) use ($searchTerm) {
+        $q->where('name', 'like', '%' . $searchTerm . '%');
+    });
+
+    // Lọc theo
+    if ($sortBy = $request->input('sort_by')) {
+        $validSortOptions = ['giagiamdan', 'giatangdan', 'tuadenz', 'tuzdena'];
+        if (in_array($sortBy, $validSortOptions)) {
+            $direction = $sortBy === 'giatangdan' ? 'ASC' : 'DESC';
+            $productsQuery->orderBy('name', $direction)->orderBy('price', $direction);
         }
 
         // Lấy danh mục sách từ tất cả sản phẩm (lấy một lần, không cần lặp)
@@ -141,12 +172,8 @@ class Tincontroller extends Controller
         return view('cuahang', ['products' => $products]);
     }
 
-    //tacgia
-    // 
-
     //chitietsanpham
-    public function chitiet($id)
-    {
+    public function chitiet($id){
         $hot = DB::table('product')
             ->where('hot', 1)
             ->where('hidden', 1)
@@ -163,7 +190,6 @@ class Tincontroller extends Controller
         $sanphamlienquan = DB::table('pro_cate')
             ->where('idCategory', $idCategory)
             ->limit(6)
-            // ->join('product', 'pro_cate.idProduct', '=', 'product.id')
             ->get();
 
         return view('chitiet', compact('products', 'hot', 'comment', 'yeuthich', 'tg'))
@@ -175,14 +201,15 @@ class Tincontroller extends Controller
             'idProduct' =>  $idProduct,
             'idUser' => auth()->id()
         ];
-        $yeuthich = Yeuthich::where(['idProduct' => $idProduct, 'idUser' => auth()->id()])->first();
-        if ($yeuthich) {
+        $yeuthich = Yeuthich::where(['idProduct' => $idProduct,'idUser'=> auth()->id()])->first();
+        if($yeuthich){
 
             $yeuthich->delete();
-            return redirect()->back()->with('ok', 'Bạn đã bỏ yêu thích sản phẩm');
-        } else {
+            return redirect()->back()->with('ok','Bạn đã bỏ yêu thích sản phẩm');
+
+        }else{
             Yeuthich::create($data);
-            return redirect()->back()->with('ok', 'Bạn đã yêu thích sản phẩm');
+            return redirect()->back()->with('ok','Bạn đã yêu thích sản phẩm');
         }
     }
     public function post_comment($proId)
@@ -214,14 +241,10 @@ class Tincontroller extends Controller
     public function listtintuc()
     {
         $listtintuc = Tintuc::orderBy('created_at', 'desc')
-            ->paginate(5);
+                            ->paginate(5);
 
         return view('admin.listtintuc', compact('listtintuc'));
     }
-
-
-
-
 
     function themtin()
     {
@@ -238,6 +261,10 @@ class Tincontroller extends Controller
         $t->content = $request->input('content');
         $t->hidden = $request->input('visibility', 1);
         $t->save();
+
+        return redirect()->route('listtintuc')-> with('success','Tin tức đã được thêm thành công');
+    }
+
 
         return redirect()->route('listtintuc')->with('success', 'Tin tức đã được thêm thành công');
     }
@@ -280,8 +307,7 @@ class Tincontroller extends Controller
         return redirect()->route('listtintuc')->with('success', 'Tin tức đã được cập nhật thành công');
     }
 
-    function lienhe()
-    {
+    function lienhe() {
         return view('lienhe');
     }
 
