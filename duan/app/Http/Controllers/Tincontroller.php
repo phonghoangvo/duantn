@@ -92,57 +92,6 @@ class Tincontroller extends Controller
 }
 
 
-public function timkiem(Request $request)
-{
-    $searchTerm = $request->input('timkiem');
-    $page = 24;
-
-    // Thực hiện tìm kiếm dựa trên $searchTerm
-    $productsQuery = Cuahang::with('category')
-        ->where('name', 'like', '%' . $searchTerm . '%');
-
-    // Thực hiện tìm kiếm theo tên danh mục
-    $productsQuery->orWhereHas('category', function ($q) use ($searchTerm) {
-        $q->where('name', 'like', '%' . $searchTerm . '%');
-    });
-
-    // Lọc theo
-    if ($sortBy = $request->input('sort_by')) {
-        $validSortOptions = ['giagiamdan', 'giatangdan', 'tuadenz', 'tuzdena'];
-        if (in_array($sortBy, $validSortOptions)) {
-            $direction = $sortBy === 'giatangdan' ? 'ASC' : 'DESC';
-            $productsQuery->orderBy('name', $direction)->orderBy('price', $direction);
-        }
-
-        // Lấy danh mục sách từ tất cả sản phẩm (lấy một lần, không cần lặp)
-        $idCategories = $products->pluck('id')->unique()->toArray();
-
-        //     // Lọc và sắp xếp theo
-        $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'none';
-
-        switch ($sort_by) {
-            case 'giagiamdan':
-                $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('price', 'DESC')->paginate($perpage)->appends(request()->query());
-                break;
-            case 'giatangdan':
-                $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('price', 'ASC')->paginate($perpage)->appends(request()->query());
-                break;
-            case 'tuadenz':
-                $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('name', 'DESC')->paginate($perpage)->appends(request()->query());
-                break;
-            case 'tuzdena':
-                $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('name', 'ASC')->paginate($perpage)->appends(request()->query());
-                break;
-            default:
-                // Mặc định sắp xếp theo id giảm dần
-                $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('id', 'DESC')->paginate($perpage)->appends(request()->query());
-                break;
-        }
-
-        // Trả về view 'cuahang.blade.php' với dữ liệu sản phẩm
-        return view('cuahang', ['products' => $products, 'danhmucsach' => $danhmucsach]);
-    }
-
 
     public function timkiem(Request $request)
     {
