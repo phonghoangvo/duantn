@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\OderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\TinController;
@@ -65,6 +66,10 @@ Route::controller(TinController::class)->group(function () {
     Route::get('/admin/suatin/{id}', [TinController::class, 'suatin'])->name('suatin');
     Route::put('/admin/capnhat/{id}', [TinController::class, 'capnhat'])->name('capnhat');
 
+    //QuanliDonhang
+    Route::get('/admin/listoder',[OderController::class,'listoder'])->name('listoder');
+    Route::get('/deleteorder/{id}', [OderController::class, 'deleteorder']);
+    Route::post('save_status', [OderController::class, 'save_status'])->name('save_status');
 
     // });
     //quanlisanpham
