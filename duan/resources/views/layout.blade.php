@@ -8,9 +8,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/lienhe.css">
-    <link rel="stylesheet" href="/css/gioithieu.css">
-    <link rel="stylesheet" href="/css/yeuthich.css">
-  
+    <link rel="stylesheet" href="/css/gioithieu.css">  
     <!-- Bootstrap 5 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Grey+Qo&display=swap">
