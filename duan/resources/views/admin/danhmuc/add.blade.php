@@ -28,22 +28,11 @@ Dashboard - Quản Trị Website
                   <div class="col-12 col-md-6 mb-4">
                     <div class="form-outline">
                       <label for="name" class="formbold-form-label"> Tên Danh Mục </label>
-                      <input type="text" name="name" id="name" placeholder="Nhập Tên Sản Phẩm"
+                      <input type="text" style="width:550px" name="name" id="name" placeholder="Nhập Tên Danh Mục"
                         class="form-control" value="{{old('name')}}" />
                     </div>
                   </div>
                   @error('name')
-                  <div class="alert alert-danger">
-                    {{ $message }}
-                  </div>
-                  @enderror
-                  <div class="col-12 col-md-6 mb-4">
-                    <div class="form-outline">
-                      <label for="slug" class="formbold-form-label">Slug</label>
-                      <input type="name" name="slug" id="slug" value="{{old('slug')}}" class="form-control" />
-                    </div>
-                  </div>
-                  @error('slug')
                   <div class="alert alert-danger">
                     {{ $message }}
                   </div>
@@ -64,7 +53,7 @@ Dashboard - Quản Trị Website
                 <!-- Submit button -->
                 <input type="submit" value="Save" class="formbold-btn">
                 <button class="formbold-btn">
-                  <a style="text-decoration: none;color:white" href="{{url('admin/listcate')}}">Danh sách sản phẩm </a>
+                  <a style="text-decoration: none;color:white" href="{{url('admin/listcate')}}">Danh sách danh mục</a>
                 </button>
               </form>
 

@@ -36,6 +36,38 @@ Dashboard - Quản Trị Website
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-12 col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label for="luotxem" class="formbold-form-label"> Lượt xem </label>
+                                        <input type="number" name="luotxem" id="luotxem" placeholder="Nhập lượt xem"
+                                            class="form-control" value="{{$product->luotxem}}" />
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label for="name" class="formbold-form-label"> Năm sản xuất </label>
+                                        <input type="text" name="namsanxuat" id="namsanxuat" placeholder="Nhập Năm Sản Phẩm"
+                                            class="form-control" value="{{$product->namsanxuat}}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label for="yeuthich" class="formbold-form-label"> Yêu thích </label>
+                                        <input type="number" name="yeuthich" id="yeuthich" placeholder="Nhập Yêu thích Sản Phẩm"
+                                            class="form-control" value="{{$product->yeuthich}}" />
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <label for="quantity" class="formbold-form-label"> Số lượng </label>
+                                        <input type="number" name="quantity" id="quantity" placeholder="Nhập số lượng Sản Phẩm"
+                                            class="form-control" value="{{$product->quantity}}" />
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="form-outline mb-4">
                                 <label for="phone" class="formbold-form-label"> Giảm giá </label>
@@ -43,24 +75,42 @@ Dashboard - Quản Trị Website
                                     placeholder="Nhập Giảm giá (nếu có)" class="form-control"
                                     value="{{$product->priceSale}}" />
                             </div>
-
-                            <div class="form-outline mb-4">
-                                <label for="name" class="formbold-form-label"> Nhà cung cấp</label>
-                                <input type="text" name="nhacungcap" value="{{$product->nhacungcap}}" id="nhacungcap"
-                                    placeholder="Nhập Nhà Cung Cấp" class="form-control" />
-                            </div>
-
-                            <div class="form-outline mb-4">
-                                <label for="name" class="formbold-form-label"> Nhà xuất bản </label>
-                                <input type="text" name="nhaxuatban" id="nhaxuatban" value="{{$product->nhaxuatban}}"
-                                    placeholder="Nhập nhà xuất bản" class="form-control" />
-                            </div>
-
-                            <div class="form-outline mb-4">
-                                <label for="name" class="formbold-form-label"> Tác giả</label>
-                                <input type="text" name="tacgia" id="tacgia" value="{{$product->tacgia}}"
-                                    placeholder="Nhập Tên tác giả" class="form-control" />
-                            </div>
+                            <div class="form-outline mb-4"><div class="formbold-form-label">
+                                <label> Voucher:</label><br>
+                                <select name="idVoucher" value="{{old('idVoucher')}}" required
+                                    class="form-control">
+                                    <option value="1">-- Voucher --</option>
+                                    @foreach ($voucher as $voucher)
+                                    <option @if($voucher->idVoucher == $product->idVoucher) selected @endif value="{{$voucher->id}}">
+                                        {{$voucher->magiamgia}}
+                                    </option>
+                                        @endforeach
+                                </select>
+                            </div><br>
+                            <div class="form-outline mb-4"><div class="formbold-form-label">
+                                <label> Tác giả:</label><br>
+                                <select name="idTacgia" value="{{old('idTacgia')}}" required
+                                    class="form-control">
+                                    <option value="1">-- Tác giả --</option>
+                                    @foreach ($tacgia as $tacgia)
+                                    <option @if($tacgia->idTacgia == $product->idTacgia) selected @endif value="{{$tacgia->id}}">
+                                        {{$tacgia->name}}
+                                    </option>
+                                        @endforeach
+                                </select>
+                            </div><br>
+                            <div class="form-outline mb-4"><div class="formbold-form-label">
+                                <label> Nhà xuất bản:</label><br>
+                                <select name="idNhaxuatban" value="{{old('idNhaxuatban')}}" required
+                                    class="form-control">
+                                    <option value="1">-- Nhà xuất bản --</option>
+                                    @foreach ($nhaxuatban as $nhaxuatban)
+                                    <option @if($nhaxuatban->idNhaxuatban == $product->idNhaxuatban) selected @endif value="{{$nhaxuatban->id}}">
+                                        {{$nhaxuatban->name}}
+                                    </option>
+                                        @endforeach
+                                </select>
+                            </div><br>
                             <div class="form-outline mb-4">
                                 <label for="name" class="formbold-form-label"> Ngày đăng </label>
                                 <input type="date" name="ngayDang" id="ngayDang" value="{{$product->ngayDang}}"
@@ -72,21 +122,16 @@ Dashboard - Quản Trị Website
                                 <label for="message" class="formbold-form-label"> Mô tả sản phẩm </label>
                                 <textarea rows="6" name="moTa" id="moTa" placeholder="Viết mô tả sản phẩm"
                                     class="form-control">
-                    {{$product->moTa}}
-                </textarea>
+                                {{$product->moTa}}
+                            </textarea>
                             </div>
-                            <div class="formbold-form-label">
-                                <label>Danh mục:</label><br>
-                                <select name="idCategory" required class="form-control">
-                                    <option value="1">--Danh Mục--</option>
-                                    @foreach ($category as $category)
-                                    <option @if($category->idCategory == $product->idCategory) selected @endif value="{{$category->id}}">
-                                        {{$category->name}}
-                                    </option>
-                                    {{-- <option value="{{$category->id}}">{{$category->name}}</option> --}}
-                                    @endforeach
-                                </select>
-                            </div><br>
+                            <div class="form-outline mb-4">
+                                <label for="message" class="formbold-form-label">Tóm tắt sản phẩm </label>
+                                <textarea rows="6" name="tomTat" id="tomTat" placeholder="Viết tóm tắt sản phẩm"
+                                    class="form-control">
+                                {{$product->tomTat}}
+                            </textarea>
+                            </div>
                             <label for="upload" class="formbold-input-label">
                                 Thêm Ảnh Sản Phẩm
 
@@ -94,7 +139,7 @@ Dashboard - Quản Trị Website
                                     id="customFile" />
                             </label>
                             @if($product->img)
-                            <img src="/uploads/{{$product->img}}">
+                            <img style="width:200px;height:200px" src="{{$product->img}}">
                             @endif
                             <div class="button">
                             <input type="submit" value="Cập Nhật" class="formbold-btn">

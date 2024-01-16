@@ -18,4 +18,8 @@ class Users extends Model
         'password',
         'avatar'
     ];
+    public function Comment(){
+        return $this->hasMany(Comment::class,'idUser','id');
+    }
+    
 }

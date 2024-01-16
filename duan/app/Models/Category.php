@@ -16,7 +16,8 @@ class Category extends Model
         'hidden',
         'thutu',
     ];
-    public function product(){
-        return $this->hasMany('App\Models\Cuahang');
-    }
+    public function products()
+{
+    return $this->belongsToMany(Product::class, 'pro_cate', 'idCategory', 'idProduct');
+}
 }

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/css/lienhe.css">
     <link rel="stylesheet" href="/css/gioithieu.css">
     <link rel="stylesheet" href="/css/yeuthich.css">
-  
+
     <!-- Bootstrap 5 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Grey+Qo&display=swap">
@@ -24,7 +24,7 @@
 </head>
 <body>
     @include('navbar')
-   
+
     <main>
        @yield('noidung')
     </main>
@@ -40,35 +40,78 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> <!-- Update version -->
-    
+
     <!-- Các script khác -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/assets/owlcarousel/owl.carousel.js"></script>
     <script src="/js/script.min.js"></script>
     <script src="/js/script.js"></script>
     <script src="/js/chitiet.js"></script>
-    
+
     <script>
-        $(function() {
-            $("#slider-range").slider({
-                range: true,
-                min: 0,
-                max: 500,
-                values: [75, 300],
-                slide: function(event, ui) {
-                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+        
+        
+
+    $(function() {
+    $("#slider-range").slider({
+        range: true,
+        min: 0,
+        max: 500000,
+        step: 100,
+        values: [0, 100000],
+        slide: function(event, ui) {
+            // Sử dụng hàm toLocaleString để định dạng số thành chuỗi tiền tệ
+            $("#amount").val(ui.values[0].toLocaleString() + "đ - " + ui.values[1].toLocaleString() + "đ");
+            $("#minPrice").val(ui.values[0]);
+            $("#maxPrice").val(ui.values[1]);
+        }
+    });
+
+        // Định dạng giá trị mặc định
+        $("#amount").val($("#slider-range").slider("values", 0).toLocaleString() + "đ - " + $("#slider-range").slider("values", 1).toLocaleString() + "đ");
+
+        
+    });
+
+
+        function filterProducts(minPrice, maxPrice, sortType) {
+            $.ajax({
+                type: "POST",
+                url: "{{ route('filter.products') }}",
+                data: {
+                    minPrice: minPrice,
+                    maxPrice: maxPrice,
+                    sortType: sortType,
+                    "_token": "{{ csrf_token() }}"
+                },
+                success: function (response) {
+                    // Hiển thị kết quả lọc trong trang
+                    $("#products-container").html(response);
+                },
+                error: function (error) {
+                    console.log(error);
                 }
             });
-            $("#amount").val("$" + $("#slider-range").slider("values", 0) +
-                " - $" + $("#slider-range").slider("values", 1));
+        }
+
+        $("#filterForm").submit(function (event) {
+            event.preventDefault();
+            var minPrice = $("#slider-range").slider("values", 0);
+            var maxPrice = $("#slider-range").slider("values", 1);
+            var sortType = $("#sort").val();
+
+            filterProducts(minPrice, maxPrice, sortType);
         });
+    
+
+
 
         let mybutton = document.getElementById("back-top");
-        
+
         window.onscroll = function() {
             scrollFunction()
         };
-        
+
         function scrollFunction() {
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
                 mybutton.style.display = "block";
@@ -76,30 +119,30 @@
                 mybutton.style.display = "none";
             }
         }
-        
+
         function topFunction() {
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
         }
-        
-        function muaNgay(productId) {
-            axios.post('{{ route('add_to_cart', ['id' => ':productId']) }}'.replace(':productId', productId), {
-                    product_id: productId
-                }, {
-                    headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                    }
-                })
-                .then(response => {
-                    alert('Sản phẩm đã được thêm vào giỏ hàng.');
-                    setTimeout(() => {
-                        window.location.href = "{{ route('thanhtoan') }}";
-                    }, 1000);
-                })
-                .catch(error => {
-                    console.error('Lỗi khi thêm vào giỏ hàng: ', error);
-                });
-        }
+
+        // function muaNgay(productId) {
+        //     axios.post('{{ route('add_to_cart', ['id' => ':productId']) }}'.replace(':productId', productId), {
+        //             product_id: productId
+        //         }, {
+        //             headers: {
+        //                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+        //             }
+        //         })
+        //         .then(response => {
+        //             alert('Sản phẩm đã được thêm vào giỏ hàng.');
+        //             setTimeout(() => {
+        //                 window.location.href = "{{ route('thanhtoan') }}";
+        //             }, 1000);
+        //         })
+        //         .catch(error => {
+        //             console.error('Lỗi khi thêm vào giỏ hàng: ', error);
+        //         });
+        // }
 
         $(".cart_update").change(function(e) {
             e.preventDefault();
@@ -212,6 +255,28 @@
                 $("#card-thanhtoan-form").removeClass('d-none');
             }
         })
+
+
+    
+        $(document).ready(function () {
+        $('.nhaxuatban-checkbox').on('change', function () {
+            var formData = $('#filterForm').serialize();
+
+            $.ajax({
+                url: $('#filterForm').attr('action'),
+                type: 'POST',
+                data: formData,
+                success: function (data) {
+                    // Cập nhật sản phẩm trên trang
+                    console.log(data);
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+
     </script>
 </body>
 </html>
