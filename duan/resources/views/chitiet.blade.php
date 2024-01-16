@@ -55,7 +55,9 @@ Chi tiết sản phẩm
                 <div class="pb-1">
                     <h4 class="pb-1">{{$value->name}}</h4>
                     <small>Luot xem: <b>{{$value->luotxem}}</b></small><br>
-                    <small>Yeu thich: <b>{{$value->yeuthich}}</b></small>
+                    @foreach ($theloai as $theloai)
+                    <small>Thể loại: <b> {{$theloai->category->name}}</b></small>
+                    @endforeach
                 </div>
                 <div class="col-md-0">
                     @if($value->quantity > 0)
@@ -64,7 +66,7 @@ Chi tiết sản phẩm
                     <label class="badge bg-danger">Hết Hàng</label>
                     @endif
                 </div>
-                <div class="pt-3 pb-3" style="font-size: 25px;"><b class="text-danger">{{number_format($value->price)}}.000đ</b>
+                <div class="pt-3 pb-3" style="font-size: 25px;"><b class="text-danger">{{number_format($value->price)}} đ</b>
                 </div>
                 <div id="amount" class="d-flex align-items-center pt-3 pb-3">
                     <span>Số lượng:</span>
@@ -170,7 +172,7 @@ Chi tiết sản phẩm
                         @foreach ($tg as $tnxb)
                         <tr>
                             <th>Tác giả:</th>
-                            <td>{{$tnxb->protg->name}}</td>
+                            <td>{{$tnxb->tacgia->name}}</td>
                         </tr>
                         <tr>
                             <th>Nhà xuất bản:</th>
@@ -241,7 +243,7 @@ Chi tiết sản phẩm
         @endforeach
         <section class="pt-2 pb-2">
             <div class="container bg-light px-4 pt-2 pb-2" style="border-radius: 5px;">
-                <h3 class="text-center pt-2">Sản Phẩm Tương Tự</h3>
+                <h3 class="text-center pt-2">Sản Phẩm Liên Quan</h3>
                 <div class="row pt-2 pb-2">
                     @if($sanphamlienquan->count() > 0)
 
@@ -256,14 +258,14 @@ Chi tiết sản phẩm
                                 </a>
                             </div>
                             <div class="card-body">
-                                <a href="{{url('/chitiet'.$lienquan->id)}}" class="text-decoration-none "
+                                <a href="{{url('/chitiet/'.$lienquan->id)}}" class="text-decoration-none "
                                     style="font-size: 13px; color: gray;">{{$lienquan->name}}</a>
                                 <div class="row d-flex">
                                     <div class="col-sm-10">
                                         <p>
                                             <span
-                                                style="color: red;"><b>{{number_format($lienquan->price)}}.000</b></span><br>
-                                            <span><del>{{number_format($lienquan->priceSale)}}.000</del></span>
+                                                style="color: red;"><b>{{number_format($lienquan->price)}} đ</b></span><br>
+                                            <span><del>{{number_format($lienquan->priceSale)}} đ</del></span>
                                         </p>
                                     </div>
                                     <div class="col-sm-2">

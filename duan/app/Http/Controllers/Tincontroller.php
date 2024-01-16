@@ -162,14 +162,19 @@ public function timkiem(Request $request)
             $idCategory = $value->idCategory;
         }
         $yeuthich = Product::where('id', '=', $id)->get();
+        $theloai = pro_cate::where('id','=',$id)->get();
         $sanphamlienquan = DB::table('pro_cate')
-            ->where('idCategory',$idCategory)
-            ->limit(6)
-            // ->join('product', 'pro_cate.idProduct', '=', 'product.id')
+            ->join('Product', 'pro_cate.idProduct', '=', 'Product.id')
+            ->join('category', 'pro_cate.idCategory', '=', 'category.id') // Thêm join với bảng 'category'
+            ->where('idCategory', $id) // Thay thế 'idCategory' bằng 'pro_cate.idCategory'
+            ->select('product.id', 'product.img as img', 'product.name as name','product.price as price','product.priceSale as priceSale')
+            ->take(6)
             ->get();
 
-        return view('chitiet',compact('products','hot','comment','yeuthich','tg'))
-        ->with('sanphamlienquan',$sanphamlienquan);
+    
+    return view('chitiet', compact('products', 'hot', 'comment', 'yeuthich', 'tg','theloai'))
+        ->with('sanphamlienquan', $sanphamlienquan);
+    
     }
     public function favorite($idProduct){
         $data = [
