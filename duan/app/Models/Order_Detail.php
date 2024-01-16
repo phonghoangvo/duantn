@@ -20,4 +20,12 @@ class Order_Detail extends Model
     public function product(){
         return $this->hasOne(Product::class,'id','id_product');
     }
+    public function Products()
+    {
+        return $this->belongsTo(Product::class,'id_product');
+    }
+    
+    public function Order(){
+        return $this->belongsTo(Oder::class,'order_id');
+    }
 }

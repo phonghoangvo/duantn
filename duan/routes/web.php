@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 Use App\Http\Controllers\AdminController;
 Use App\Http\Controllers\UserController;
 Use App\Http\Controllers\AccountController;
+use App\Http\Controllers\OderController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CommentController;
@@ -90,6 +91,10 @@ Route::get('/favorite/{product}',[TinController::class,'favorite'])->name('chiti
         Route::get('/user/update/{id}', [UserController::class, 'edit']);
         Route::post('/user/update/{id}', [UserController::class, 'update']);
         Route::get('/user/delete/{id}', [UserController::class, 'delete']);
+   //QuanliDonhang
+   Route::get('/admin/listoder',[OderController::class,'listoder'])->name('listoder');
+   Route::get('/deleteorder/{id}', [OderController::class, 'deleteorder']);
+   Route::post('save_status', [OderController::class, 'save_status'])->name('save_status');
 
 
     });
