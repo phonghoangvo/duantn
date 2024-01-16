@@ -7,23 +7,23 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RuleRegister;
 use App\Models\Users;
 use App\Models\Comment;
-
+use SebastianBergmann\Type\TrueType;
 
 class UserController extends Controller
 {
     // tao user
 public function create()
 {
-    return view('user.create'); 
+    return view('user.create');
 
-    
+
 }
  //validation register
 
-//  public function store_(RuleRegister $request){  
-        
-          
-//  }   
+//  public function store_(RuleRegister $request){
+
+
+//  }
 
 
 // public function store()
@@ -38,11 +38,11 @@ public function create()
 //         // 'status',
 //         // 'role',
 //     ]);
-    
+
 //     $user = User::create(request(['name', 'email', 'password',]));
-    
+
 //     auth()->login($user);
-    
+
 //     return redirect()->to('/');
 //  }
 
@@ -73,13 +73,13 @@ public function create()
         public function update(Request $request, $id){
             // Tìm đến đối tượng muốn update
             $user = User::findOrFail($id);
-    
+
             // gán dữ liệu gửi lên vào biến data
             $data = $request->all();
             // dd($data);
             // mã hóa password trước khi đẩy lên DB
             $data['password'] = Hash::make($request->password);
-    
+
             // Update user
             User::find($id)->update($data);
             echo"success update user";
@@ -87,7 +87,7 @@ public function create()
 
         // delete user
         public function delete($id){
-            
+
             // Tìm đến đối tượng muốn xóa
             $user = Users::findOrFail($id);
             // Xóa tất cả các nhận xét liên kết với người dùng
@@ -98,7 +98,7 @@ public function create()
                 }
             }
             $user->delete();
-            
+
             return redirect()->to('/admin/list-user');
         }
 }
