@@ -123,7 +123,21 @@
                     </div>
                 </div>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsedonhang"
+                    aria-expanded="true" aria-controls="collapsedonhang">
+                    <i class="fas fa-file-contract"></i>
+                    <span>Đơn Hàng</span>
+                </a>
+                <div id="collapsedonhang" class="collapse" aria-labelledby=""
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Quản Lý Đơn Hàng:</h6>
+                        <a class="collapse-item" href="{{url('admin/listoder')}}">Tất Cả Đơn Hàng</a>
+                        
+                    </div>
+                </div>
+            </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">

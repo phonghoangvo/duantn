@@ -172,13 +172,13 @@ Chi tiết sản phẩm
                         @foreach ($tg as $tnxb)
                         <tr>
                             <th>Tác giả:</th>
-                            <td>{{$tnxb->tacgia->name}}</td>
+                            <td>{{$tnxb->protg->name}}</td>
                         </tr>
                         <tr>
                             <th>Nhà xuất bản:</th>
                             <td> {{$tnxb->nhaxuatban->name}}</td>
                         </tr>
-                            
+
                         @endforeach
                         <tr>
                             <th>Năm xuất bản:</th>

@@ -86,19 +86,26 @@ public function create()
         }
 
         // delete user
-        public function delete($id){
+        public function delete($id) {
+            try {
+                // Tìm đối tượng muốn xóa
+                $user = Users::findOrFail($id);
 
-            // Tìm đến đối tượng muốn xóa
-            $user = Users::findOrFail($id);
-            // Xóa tất cả các nhận xét liên kết với người dùng
-            $comments = Comment::where('idUser', 'id')->get();
-            if($user->comments !== null){
-                foreach ($comments as $comment){
-                    $comment->delete();
+                // Xóa tất cả các nhận xét liên kết với người dùng
+                $comments = Comment::where('idUser', $id)->get();
+
+                if($comments->isNotEmpty()) {
+                    foreach ($comments as $comment) {
+                        $comment->delete();
+                    }
                 }
-            }
-            $user->delete();
 
-            return redirect()->to('/admin/list-user');
+                // Xóa người dùng
+                $user->delete();
+
+                return redirect()->to('/admin/list-user')->with('success', 'Xóa người dùng thành công');
+            } catch (\Exception $e) {
+                return redirect()->to('/admin/list-user')->with('error', 'Đã xảy ra lỗi khi xóa người dùng');
+            }
         }
 }
