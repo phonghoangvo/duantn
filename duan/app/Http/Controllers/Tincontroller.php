@@ -21,30 +21,50 @@ class Tincontroller extends Controller
     {
         $giamgia = DB::table('product')
             // ->where('giamgia', 1)
+            ->where('giamgia', 1)
             ->where('hidden', 1)
             ->orderBy('ngayDang', 'desc')
-            ->limit(6)
+            ->take(6)
             ->get();
 
         $hot = DB::table('product')
             ->where('hot', 1)
             ->where('hidden', 1)
             ->orderBy('ngayDang', 'desc')
-            ->limit(6)
+            ->take(6)
             ->get();
 
+        $danhchoban= DB::table('product')
+        ->where('hidden', 1)
+        ->orderBy(DB::raw('CAST(luotxem AS SIGNED)'), 'desc')
+        ->take(6)
+        ->get();
+
+        $yeuthich= DB::table('product')
+        ->where('hidden', 1)
+        ->orderBy(DB::raw('CAST(yeuthich AS SIGNED)'), 'desc')
+        ->take(6)
+        ->get();
 
         $danhmucsach = DB::table('category')
             ->select('id', 'name')
             ->orderby('thutu', 'asc')
+            ->orderByRaw('CAST(thutu AS SIGNED) ASC')
             ->where('hidden', '=', '1')
+            ->get();
+
+
+        $nhaxuatban = DB::table('nhaxuatban')
+            ->select('name','img')
             ->get();
 
         return view('index', [
             'giamgia' => $giamgia,
             'hot' => $hot,
             'danhmucsach' => $danhmucsach,
-
+            'nhaxuatban' => $nhaxuatban,
+            'danhchoban' => $danhchoban,
+            'yeuthich' => $yeuthich,
         ]);
     }
 
@@ -68,24 +88,24 @@ class Tincontroller extends Controller
     //     // Lọc và sắp xếp theo
     //     $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'none';
 
-        switch ($sort_by) {
-            case 'giagiamdan':
-                $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('price', 'DESC')->paginate($perpage)->appends(request()->query());
-                break;
-            case 'giatangdan':
-                $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('price', 'ASC')->paginate($perpage)->appends(request()->query());
-                break;
-            case 'tuadenz':
-                $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('name', 'DESC')->paginate($perpage)->appends(request()->query());
-                break;
-            case 'tuzdena':
-                $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('name', 'ASC')->paginate($perpage)->appends(request()->query());
-                break;
-            default:
-                // Mặc định sắp xếp theo id giảm dần
-                $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('id', 'DESC')->paginate($perpage)->appends(request()->query());
-                break;
-    }
+    //     switch ($sort_by) {
+    //         case 'giagiamdan':
+    //             $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('price', 'DESC')->paginate($perpage)->appends(request()->query());
+    //             break;
+    //         case 'giatangdan':
+    //             $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('price', 'ASC')->paginate($perpage)->appends(request()->query());
+    //             break;
+    //         case 'tuadenz':
+    //             $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('name', 'DESC')->paginate($perpage)->appends(request()->query());
+    //             break;
+    //         case 'tuzdena':
+    //             $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('name', 'ASC')->paginate($perpage)->appends(request()->query());
+    //             break;
+    //         default:
+    //             // Mặc định sắp xếp theo id giảm dần
+    //             $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('id', 'DESC')->paginate($perpage)->appends(request()->query());
+    //             break;
+    // }
 
     // Trả về view 'cuahang.blade.php' với dữ liệu sản phẩm
     return view('cuahang', ['products' => $products, 'danhmucsach' => $danhmucsach]);
@@ -214,10 +234,7 @@ class Tincontroller extends Controller
         return redirect()->route('listtintuc')-> with('success','Tin tức đã được thêm thành công');
     }
 
-
-        return redirect()->route('listtintuc')->with('success', 'Tin tức đã được thêm thành công');
-    }
-
+    
 
     function xoa($id)
     {
@@ -232,7 +249,7 @@ class Tincontroller extends Controller
         return view("admin.tin.suatin", compact('tintuc'));
     }
 
-    public function capnhat(Request $request, $id)
+     function capnhat(Request $request, $id)
     {
         $tintuc = Tintuc::find($id);
 
@@ -264,4 +281,5 @@ class Tincontroller extends Controller
     {
         return view('gioithieu');
     }
+
 }
