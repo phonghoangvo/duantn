@@ -1,4 +1,5 @@
 @component('mail::message')
+<img src="{{ $logoUrl }}" alt="Logo">
 # Xác nhận đơn hàng
 
 Cảm ơn bạn đã đặt hàng tại chúng tôi. Chi tiết đơn hàng của bạn đã được lưu vào hệ thống.
@@ -41,5 +42,6 @@ Xem đơn hàng
 @endcomponent
 
 Trân trọng,<br>
-{{ config('app.name') }}
+{{-- {{ config('app.name') }} --}}
+FPoly Book Store
 @endcomponent

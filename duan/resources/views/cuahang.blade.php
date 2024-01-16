@@ -4,19 +4,19 @@
 @endsection
 @section('noidung')
 
-   
+
 
 <div class="container px-0 pt-3 pb-3">
     <a class="thanhphantrang text-decoration-none" href="">
         Trang chủ
     </a> /
     <small>Cửa hàng</small>
-    
-    
+
+
 </div>
 <div class="container pt-3 pb-3 px-0">
 
-    
+
     <div class="row">
         <section class="col-lg-3 ">
             <div class=" boxloai mb-4 bg-white">
@@ -38,41 +38,7 @@
                 </div>
             </div>
 
-            <div class="boxloai mb-4 bg-white">
-                <h3 class="p-2">Tác giả</h3>
-                <?php
-                    $tacgia = DB::table('tacgia')
-                    ->select('id','name')
-                    ->get();
-                    ?>
-                <div class="danhmuc">
-                    @foreach ($tacgia as $tg)
-                        <label><input type="checkbox" name="tacgia" value="tacgia{{$tg->id}}"> {{$tg->name}}</label>
 
-                     @endforeach
-                </div>
-            </div>
-        
-            <div class="boxloai mb-4 bg-white">
-                <h3 class="p-2">Nhà xuất bản</h3>
-                <?php
-                $nhaxuatban = DB::table('nhaxuatban')
-                ->select('id','name')
-                ->get();
-                ?>
-                 <form id="filterForm" action="{{ route('filter.products') }}" method="POST">
-                    @csrf
-                    <div class="danhmuc">
-                        @foreach ($nhaxuatban as $nxb)
-                            <label>
-                                <input type="checkbox" class="nhaxuatban-checkbox" name="nhaxuatban[]" value="{{ $nxb->id }}">
-                                {{ $nxb->name }}
-                            </label>
-                        @endforeach
-                    </div>
-                </form>
-            </div>
-            
             <div class="boxloai mb-4 bg-white">
                 <h3 class="p-2">Lọc theo giá</h3>
                 <div class="locgia">
@@ -89,9 +55,9 @@
                         <input type="submit" name="filter_price" value="Lọc giá" class="btn btn-default">
                         </form>
                     </div>
-                
-               
-              
+
+
+
 
             </div>
         </section>
@@ -103,10 +69,10 @@
                 @else
                     @if($selectedCategory)
                         <div class="col-sm-7 mt-2"><h4>{{ $selectedCategory->name }} </h4></div>
-                        
+
                     @endif
                 @endif
-                
+
                     <div class="col-sm-2 mt-2"> <label for="amount">Sắp xếp theo: </label></div>
                     <div class="col-sm-3">
                         <form action="">
@@ -119,9 +85,9 @@
                                 <option value="{{Request::url()}}?sort_by=tuzdena">Lọc theo tên từ Z đến A</option>
                             </select>
                         </form>
-                        
+
                     </div>
-                    
+
                 </div>
                 <hr>
             </div>
@@ -158,7 +124,7 @@
                         <p>Danh mục hiện không có sản phẩm</p>
                     </div>
                 @endif
-                    
+
                     {{ $products->links() }}
         </section>
     </div>

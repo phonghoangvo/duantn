@@ -34,6 +34,8 @@ Dashboard - Quản Trị Website
                   <th scope="col" class="col-lg-1">Tổng Tiền</th>
                   <th scope="col" class="col-lg-1">Trạng Thái</th>
                   <th scope="col" class="col-lg-1">Thời Gian Mua Hàng</th>
+                  <th scope="col" class="col-lg-1">Địa Chỉ</th>
+                  <th scope="col" class="col-lg-1">SDT</th>
                   <th scope="col" class="col-lg-1">Chức năng</th>
                 </tr>
               </thead>
@@ -46,16 +48,24 @@ Dashboard - Quản Trị Website
                   <td class="limited-text">{{$data->quantity}}</td>
                   <td class="limited-text">{{$data->total}}</td>
                   <td class="limited-text">
-                      <input type="checkbox" value="Choxacnhan" name="Order" class="form-check-input">
+                        <select>
+                            <option selected="selected">Chờ xác nhận</option>
+                            <option>Đang vận chuyển</option>
+                            <option>Đã giao hàng thành công</option>
+                        </select>
+                      {{-- <input type="checkbox" value="Choxacnhan" name="Order" class="form-check-input">
                       <label class="form-check-label">Đang Chờ Xác Nhận</label><br>
                       <input type="checkbox" value="Choxacnhan" name="Order" class="form-check-input">
                       <label class="form-check-label">Đang Chờ Vận Chuyển</label><br>
                       <input type="checkbox" value="Choxacnhan" name="Order" class="form-check-input">
-                      <label class="form-check-label">Giao Hàng Thành Công</label>
+                      <label class="form-check-label">Giao Hàng Thành Công</label> --}}
                   </td>
                   <td class="limited-text">{{$data->created_at}}</td>
+                  <td class="limited-text">{{$data->order->address}}</td>
+                  <td class="limited-text">0{{$data->order->phone}}</td>
+
                   <td>
-                    <input type="submit" value="Save" class="btn btn-success">
+                    {{-- <input type="submit" value="Chi Tiết" class="btn btn-success"> --}}
                     <a href="{{url('deleteorder/'.$data->id)}}" onclick="return confirm('Bạn muốn xóa đơn hàng ?')"
                       title="Xoa"><button type="button" class="btn btn-danger w-100 mb-2">Xóa</button></a>
                   </td>

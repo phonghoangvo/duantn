@@ -64,7 +64,8 @@ Chi tiết sản phẩm
                     <label class="badge bg-danger">Hết Hàng</label>
                     @endif
                 </div>
-                <div class="pt-3 pb-3" style="font-size: 25px;"><b class="text-danger">{{number_format($value->price)}}.000đ</b>
+                <div class="pt-3 pb-3" style="font-size: 25px;"><b class="text-danger">{{number_format($value->priceSale)}}đ</b>
+                    <div class="pt-3 pb-3" style="font-size: 20px;"><del class="text-muted">{{number_format($value->price)}}đ</del>
                 </div>
                 <div id="amount" class="d-flex align-items-center pt-3 pb-3">
                     <span>Số lượng:</span>
@@ -124,11 +125,11 @@ Chi tiết sản phẩm
                     </div>
                 </div>
             <div class="pt-3 pb-1">
-                @if($value->quantity > 0)
+                {{-- @if($value->quantity > 0)
                 <a href="#" onclick="muaNgay({{ $value->id }})">
                     <p><button id="purchaseButton" class="btn btn-primary p-2 w-100">Mua ngay</button></p>
                 </a>
-                @endif
+                @endif --}}
                 <div id="stock-message"></div>
                 <a href="{{ route('add_to_cart', $value->id) }}">
                     <p><button class="btn btn-danger p-2 w-100">Thêm vào giỏ hàng</button></p>
@@ -262,8 +263,8 @@ Chi tiết sản phẩm
                                     <div class="col-sm-10">
                                         <p>
                                             <span
-                                                style="color: red;"><b>{{number_format($lienquan->price)}}.000</b></span><br>
-                                            <span><del>{{number_format($lienquan->priceSale)}}.000</del></span>
+                                                style="color: red;"><b>{{number_format($lienquan->price)}}</b></span><br>
+                                            <span><del>{{number_format($lienquan->priceSale)}}</del></span>
                                         </p>
                                     </div>
                                     <div class="col-sm-2">

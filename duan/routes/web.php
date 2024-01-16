@@ -79,8 +79,8 @@ Route::controller(TinController::class)->group(function () {
     Route::get('/admin/edit/{id}', [ProductController::class, 'edit'])->name('edit');
     Route::put('update/{id}', [ProductController::class, 'update']);
     Route::get('/delproduct/{id}', [ProductController::class, 'delproduct']);
-    Route::get('/admin/comment/list', [ProductController::class, 'list']);
-    Route::get('/del/{id}', [ProductController::class, 'del']);
+    Route::get('/admin/comment/list', [CommentController::class, 'list']);
+    Route::get('/del/{id}', [CommentController::class, 'del']);
     //contact
     Route::get('/lienhe', [ContactController::class, 'lienhe']);
     Route::post('/send', [ContactController::class, 'send'])->name('sendemail');

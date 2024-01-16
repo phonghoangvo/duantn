@@ -31,7 +31,9 @@ class OrderConfirmation extends Mailable
      */
     public function build()
     {
+        $logoUrl = config('app.url') . '/' . config('MAIL_LOGO_URL');
         return $this->subject('Đơn hàng của bạn đã được xác nhận')
-                    ->markdown('vendor.mail.order_confirmation', $this->data);
+                    ->markdown('vendor.mail.order_confirmation', $this->data)
+                    ->with(['logoUrl' => $logoUrl]);
     }
 }
