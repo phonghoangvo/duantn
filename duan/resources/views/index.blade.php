@@ -103,7 +103,7 @@
 </section>
  <div class="container pt-2 pb-2 px-0">
     <a href="#">
-        <img class="w-100" src="img/banner2.jpg" alt="" height="400px">
+        <img class="w-100" src="img/yt.jpg" alt="" height="400px">
     </a>
 </div>
 <section class="pt-2 pb-2">
