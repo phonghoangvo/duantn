@@ -54,7 +54,7 @@ Chi tiết sản phẩm
             <div class="col-sm-7 p-4">
                 <div class="pb-1">
                     <h4 class="pb-1">{{$value->name}}</h4>
-                    <small>Luot xem: <b>{{$value->luotxem}}</b></small><br>
+                    <small>Lượt xem: <b>{{$value->luotxem}}</b></small><br>
                     @foreach ($theloai as $theloai)
                     <small>Thể loại: <b> {{$theloai->category->name}}</b></small>
                     @endforeach
