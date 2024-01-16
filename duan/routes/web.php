@@ -22,7 +22,7 @@ use App\Http\Controllers\SessionsController;
 //     Route::get('/account', function () {
 //         return view('trangtestdangnhap');
 //     })->name('account');
-// });  
+// });
 
 
 //giaodien
@@ -110,15 +110,21 @@ Route::get('/favorite', [AccountController::class, 'favorite'])->name('favorite'
 //  Route::get('404', function () {
 //     return view('404');
 // })->name('404');
-Route::get('/giohang', [CartController::class, 'cart'])->name('giohang');
-Route::get('/thanhtoan', [CartController::class, 'cartcheck']);
-Route::post('/thanhtoan', [CartController::class, 'cartcheck'])->name('thanhtoan');
-Route::post('/quatrinh-thanhtoan', [CartController::class, 'processCheckout'])->name('quatrinhtt');
-Route::any('add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add_to_cart');
-Route::put('update-cart', [CartController::class, 'updateCart'])->name('update_cart');
-Route::delete('remove-from-cart', [CartController::class, 'remove'])->name('remove_from_cart');
+Route::get('/giohang',[CartController::class,'cart'])->name('giohang');
+Route::get('/thanhtoan',[CartController::class,'cartcheck']);
+Route::post('/thanhtoan',[CartController::class,'cartcheck'])->name('thanhtoan');
+Route::post('/quatrinh-thanhtoan',[CartController::class,'processCheckout'])->name('quatrinhtt');
+Route::any('add-to-cart/{id}', [CartController::class,'addToCart'])->name('add_to_cart');
+Route::put('update-cart', [CartController::class,'updateCart'])->name('update_cart');
+Route::delete('remove-from-cart', [CartController::class,'remove'])->name('remove_from_cart');
 
-Route::get('/cart_check', [CartController::class, 'cart_check'])->name('checkout');
+Route::get('/cart_check', [Checkout::class, 'index'])->name('checkout');
+//Pay offline
+Route::post('/order/store', [Checkout::class, 'store'])->name('order.store');
+Route::get('/order/confirm', [Checkout::class, 'confirm'])->name('order.confirm');
+
+//Pay online
 Route::any('/checkout', [CartController::class, 'checkout'])->name('checkout');
 Route::get('/success', [CartController::class, 'success'])->name('success');
 Route::get('/cancel', [CartController::class, 'cancel'])->name('cancel');
+
