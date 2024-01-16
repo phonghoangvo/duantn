@@ -137,22 +137,15 @@ class CartController extends Controller
             $product_name = $details['name'];
             $total = $details['price'];
             $quantity = $details['quantity'];
-<<<<<<< HEAD
 
             $unit_amount = "$total";
 
-=======
- 
-            $two0 = "00";
-            $unit_amount = "$total$two0";
- 
->>>>>>> fb200323ef340c1b8a28d5a0261ad8a3541440a2
             $productItems[] = [
                 'price_data' => [
                     'product_data' => [
                         'name' => $product_name,
                     ],
-                    'currency'     => 'USD',
+                    'currency'     => 'VND',
                     'unit_amount'  => $unit_amount,
                 ],
                 'quantity' => $quantity
@@ -167,11 +160,7 @@ class CartController extends Controller
             'metadata'              => [
                 'user_id' => "0001"
             ],
-<<<<<<< HEAD
             'customer_email' => "khavodinh46@gmail.com",
-=======
-            'customer_email' => "khavodinh46@gmail.com", //$user->email,
->>>>>>> fb200323ef340c1b8a28d5a0261ad8a3541440a2
             'success_url' => route('success'),
             'cancel_url'  => route('cancel'),
         ]);
@@ -180,17 +169,5 @@ class CartController extends Controller
 
         return redirect()->away($checkoutSession->url);
     }
-<<<<<<< HEAD
     // ------------------------------------------------
-=======
-    public function success()
-    {
-        return view('check_out');
-    }
- 
-    public function cancel()
-    {
-        return view('cancel');
-    }
->>>>>>> fb200323ef340c1b8a28d5a0261ad8a3541440a2
 }

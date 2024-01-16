@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\Tacgia;
-use App\Models\Voucher;
-use App\Models\nhaxuatban;
 use DB;
 use Illuminate\Pagination\Paginator;
 use App\Http\Requests\RuleThemsp;
@@ -19,11 +16,8 @@ class ProductController extends Controller
     {
         $page = Product::orderBy('ngayDang', 'desc')->paginate(15);
         $data = $page->items();
-        $tacgia = Tacgia::all();
-        $voucher = Voucher::all();
-        $nhaxuatban = nhaxuatban::all();
-        $nhaxuatban = nhaxuatban::all();
-        return view ('admin.sanpham.list',compact('data','page','tacgia','nhaxuatban','voucher'));
+        $category = Category::all();
+        return view ('admin.sanpham.list',compact('data','page'));
     }
 
     /**
@@ -31,10 +25,8 @@ class ProductController extends Controller
      */
     public function add()
     {
-        $tacgia = Tacgia::all();
-        $nhaxuatban = nhaxuatban::all();
-        $voucher = Voucher::all();
-        return view('admin.sanpham.add',['tacgia'=>$tacgia,'nhaxuatban'=>$nhaxuatban,'voucher'=>$voucher]);
+        $category = Category::all();
+        return view('admin.sanpham.add',['category'=>$category]);
     }
     /**
      * Store a newly created resource in storage.
@@ -43,35 +35,21 @@ class ProductController extends Controller
     {
 
         $data = $request->all();
-<<<<<<< HEAD
 
         $category = Category::where('name','=','name');
-=======
-        
-        $tacgia = Tacgia::where('name','=','name');
-        $voucher = Voucher::where('magiamgia','=','magiamgia');
-        $nhaxuatban = nhaxuatban::where('name','=','name');
->>>>>>> fb200323ef340c1b8a28d5a0261ad8a3541440a2
         $filename = $request->file('img')->getClientOriginalName();
         $path = $request->file('img')->storeAs('uploads',$filename,'public');
         $data["img"] = '/'.$path;
 
         Product::create($data);
-<<<<<<< HEAD
 
         return redirect()->back() -> with('success','Sản phẩm đã được thêm thành công');
-=======
-        
-        return redirect()->to('/admin/list')-> with('success','Sản phẩm đã được thêm thành công');
->>>>>>> fb200323ef340c1b8a28d5a0261ad8a3541440a2
     }
     public function edit($id)
     {
-        $tacgia = Tacgia::all();
-        $nhaxuatban = nhaxuatban::all();
-        $voucher = Voucher::all();
+        $category = Category::all();
         $product = Product::find($id);
-        return view('admin.sanpham.edit',['product'=>$product,'nhaxuatban'=>$nhaxuatban,'tacgia'=>$tacgia,'voucher'=>$voucher]);
+        return view('admin.sanpham.edit',['product'=>$product,'category'=>$category]);
     }
 
     /**
@@ -83,15 +61,12 @@ class ProductController extends Controller
         $product-> name = $request->input('name');
         $product-> price = $request->input('price');
         $product-> priceSale = $request->input('priceSale');
-        $product-> idNhaxuatban = $request->input('idNhaxuatban');
-        $product-> idTacgia = $request->input('idTacgia');
-        $product-> idVoucher = $request->input('idVoucher');
-        $product-> luotxem = $request->input('luotxem');
-        $product-> namsanxuat = $request->input('namsanxuat'); 
-        $product-> yeuthich = $request->input('yeuthich');  
-        $product-> quantity = $request->input('quantity');
+        $product-> nhacungcap = $request->input('nhacungcap');
+        $product-> nhaxuatban = $request->input('nhaxuatban');
+        $product-> tacgia = $request->input('tacgia');
+        $product-> ngayDang = $request->input('ngayDang');
         $product-> moTa = $request->input('moTa');
-        $product-> tomTat = $request->input('tomTat');
+        $product-> idCategory = $request->input('idCategory');
 
 
         if($request->hasFile('img')){
@@ -106,11 +81,9 @@ class ProductController extends Controller
             $product->img = $filename;
         }
 
-        $tacgia = Tacgia::where('name','=','name');
-        $voucher = Voucher::where('magiamgia','=','magiamgia');
-        $nhaxuatban = nhaxuatban::where('name','=','name');
+        $category = Category::where('name','=','name');
         $product->update();
-        return redirect()->to('/admin/list') -> with('success','Sản phẩm đã được cập nhật thành công');
+        return redirect()->back() -> with('success','Sản phẩm đã được cập nhật thành công');
 
     }
     public function delproduct($id){

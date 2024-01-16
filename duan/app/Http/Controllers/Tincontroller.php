@@ -10,8 +10,6 @@ use App\Models\Product;
 use App\Models\Comment;
 use App\Models\Category;
 use App\Models\pro_cate;
-use App\Models\nhaxuatban;
-use App\Models\tacgia;
 Paginator::useBootstrap();
 
 use Illuminate\Http\Request;
@@ -21,55 +19,35 @@ class Tincontroller extends Controller
     function index()
     {
         $giamgia = DB::table('product')
-            ->where('giamgia', 1)
+            // ->where('giamgia', 1)
             ->where('hidden', 1)
             ->orderBy('ngayDang', 'desc')
-            ->take(6)
+            ->limit(6)
             ->get();
 
         $hot = DB::table('product')
             ->where('hot', 1)
             ->where('hidden', 1)
             ->orderBy('ngayDang', 'desc')
-            ->take(6)
+            ->limit(6)
             ->get();
 
-        $danhchoban= DB::table('product')
-        ->where('hidden', 1)
-        ->orderBy(DB::raw('CAST(luotxem AS SIGNED)'), 'desc')
-        ->take(6)
-        ->get();
-
-        $yeuthich= DB::table('product')
-        ->where('hidden', 1)
-        ->orderBy(DB::raw('CAST(yeuthich AS SIGNED)'), 'desc')
-        ->take(6)
-        ->get();
 
         $danhmucsach = DB::table('category')
             ->select('id', 'name')
-            ->orderByRaw('CAST(thutu AS SIGNED) ASC')
+            ->orderby('thutu', 'asc')
             ->where('hidden', '=', '1')
-            ->get();
-
-
-        $nhaxuatban = DB::table('nhaxuatban')
-            ->select('name','img')
             ->get();
 
         return view('index', [
             'giamgia' => $giamgia,
             'hot' => $hot,
             'danhmucsach' => $danhmucsach,
-            'nhaxuatban' => $nhaxuatban,
-            'danhchoban' => $danhchoban,
-            'yeuthich' => $yeuthich,
+
         ]);
     }
 
-
     public function cuahang($id = null)
-<<<<<<< HEAD
     {
         $perpage = 24;
         $danhmucsach = null;
@@ -106,67 +84,10 @@ class Tincontroller extends Controller
                 // Mặc định sắp xếp theo id giảm dần
                 $products = Cuahang::with('category')->whereIn('id', $idCategories)->orderBy('id', 'DESC')->paginate($perpage)->appends(request()->query());
                 break;
-=======
-{
-    $perpage = 24;
-
-    // Initialize the query builder
-    $query = Product::query();
-
-    // Initialize $selectedCategory
-    $selectedCategory = null;
-
-    // Check if $id is provided, then filter by it
-    if ($id !== null) {
-        // Lọc sản phẩm theo danh mục trong bảng pro_cate
-        $query->whereHas('proCates', function ($q) use ($id, &$selectedCategory) {
-            $q->where('idCategory', $id);
-            $selectedCategory = Category::find($id); // Gán giá trị cho $selectedCategory
-        });
     }
 
-    // Lọc theo giá
-    $minPrice = request()->query('min_price');
-    $maxPrice = request()->query('max_price');
-    if ($minPrice !== null && $maxPrice !== null) {
-        $query->whereBetween('priceSale', [$minPrice, $maxPrice]);
->>>>>>> fb200323ef340c1b8a28d5a0261ad8a3541440a2
-    }
-
-    // Lọc theo tên
-    $productName = request()->query('product_name');
-    if ($productName !== null) {
-        $query->where('name', 'like', '%' . $productName . '%');
-    }
-
-    $products = $query->paginate($perpage)->appends(request()->query());
-
-    // Trả về view 'cuahang.blade.php' với dữ liệu sản phẩm và $selectedCategory
-    return view('cuahang', ['products' => $products, 'selectedCategory' => $selectedCategory]);
-}
-
-public function filterProducts(Request $request)
-{
-    $minPrice = $request->input('minPrice');
-    $maxPrice = $request->input('maxPrice');
-    $sortType = $request->input('sortType');
-
-    // Thực hiện lọc và sắp xếp theo giá
-    $filteredProducts = Product::whereBetween('priceSale', [$minPrice, $maxPrice]);
-
-    if ($sortType == 'giatangdan') {
-        $filteredProducts->orderBy('priceSale');
-    } elseif ($sortType == 'giagiamdan') {
-        $filteredProducts->orderByDesc('priceSale');
-    } elseif ($sortType == 'tuadenz') {
-        $filteredProducts->orderBy('name');
-    } elseif ($sortType == 'tuzdena') {
-        $filteredProducts->orderByDesc('name');
-    }
-
-    $filteredProducts = $filteredProducts->paginate(12);
-
-    return view('filtered', compact('filteredProducts'));
+    // Trả về view 'cuahang.blade.php' với dữ liệu sản phẩm
+    return view('cuahang', ['products' => $products, 'danhmucsach' => $danhmucsach]);
 }
 
 
@@ -175,17 +96,29 @@ public function timkiem(Request $request)
     $searchTerm = $request->input('timkiem');
     $page = 24;
 
-    $products = Product::with('categories')
-        ->where('name', 'like', '%' . $searchTerm . '%')
-        ->orWhereHas('categories', function ($q) use ($searchTerm) {
-            $q->where('name', 'like', '%' . $searchTerm . '%');
-        })
-        ->paginate($page);
+    // Thực hiện tìm kiếm dựa trên $searchTerm
+    $productsQuery = Cuahang::with('category')
+        ->where('name', 'like', '%' . $searchTerm . '%');
+
+    // Thực hiện tìm kiếm theo tên danh mục
+    $productsQuery->orWhereHas('category', function ($q) use ($searchTerm) {
+        $q->where('name', 'like', '%' . $searchTerm . '%');
+    });
+
+    // Lọc theo
+    if ($sortBy = $request->input('sort_by')) {
+        $validSortOptions = ['giagiamdan', 'giatangdan', 'tuadenz', 'tuzdena'];
+        if (in_array($sortBy, $validSortOptions)) {
+            $direction = $sortBy === 'giatangdan' ? 'ASC' : 'DESC';
+            $productsQuery->orderBy('name', $direction)->orderBy('price', $direction);
+        }
+    }
+
+    $products = $productsQuery->paginate($page)->appends(request()->query());
 
     return view('cuahang', ['products' => $products]);
 }
 
-   
     //chitietsanpham
     public function chitiet($id){
         $hot = DB::table('product')
@@ -194,7 +127,7 @@ public function timkiem(Request $request)
             ->orderBy('ngayDang', 'desc')
             ->limit(7)
             ->get();
-        $products = Product::where('id','=',$id)->get();
+        $products = cuahang::where('id','=',$id)->get();
         $comment = Comment::where('idProduct',$products[0]->id)->orderBy('id','DESC')->get();
         $tg = Product::where('id','=',$id)->get();
         foreach ($products as $key => $value) {
@@ -204,7 +137,6 @@ public function timkiem(Request $request)
         $sanphamlienquan = DB::table('pro_cate')
             ->where('idCategory',$idCategory)
             ->limit(6)
-            // ->join('product', 'pro_cate.idProduct', '=', 'product.id')
             ->get();
 
         return view('chitiet',compact('products','hot','comment','yeuthich','tg'))
